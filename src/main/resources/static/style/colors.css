@@ -1,0 +1,132 @@
+/**/
+
+/* Couleurs d'arrière-plan */
+
+.bg-orange
+{
+    background-color: #FEA100;
+}
+
+.bg-blue
+{
+    background-color: #00629F;
+}
+
+.bg-cyan
+{
+    background-color: #9FC5F8;
+}
+
+.bg-lightgrey
+{
+    background-color: #F3F3F3;
+}
+
+.bg-grey
+{
+    background-color: #DDDDDD;
+}
+
+.bg-darkgrey
+{
+    transition-duration: 0.3s;
+    background-color: #AAAAAA;
+}
+.bg-darkgrey:hover
+{
+    transition-duration: 0.3s;
+    background-color: #919191;
+}
+
+.bg-black
+{
+    background-color: #333333;
+}
+
+.bg-lightgreen
+{
+    background-color: #D8FFD9;
+}
+
+.bg-green
+{
+    background-color: #49A011;
+}
+
+.bg-red
+{
+    background-color: #CF2A28;
+}
+
+
+
+/* Couleur de polices */
+
+[class*="link-"]
+{
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.text-orange, .element-orange, .icon-orange, .link-orange
+{
+    color: #FEA100;
+}
+.icon-orange:hover, .link-orange:hover
+{
+    color: #e68d00;
+}
+
+.text-blue, .element-blue, .icon-blue, .link-blue
+{
+    color: #00629f;
+}
+.icon-blue:hover, .link-blue:hover
+{
+    color: #003e86;
+}
+
+.text-cyan, .element-cyan, .icon-cyan, .link-cyan
+{
+    color: #9FC5F8;
+}
+.icon-cyan:hover, .link-cyan:hover
+{
+    color: #87addf;
+}
+
+.text-red, .element-red, .icon-red, .link-red
+{
+    color: #CF2A28;
+}
+.icon-red:hover, .link-red:hover
+{
+    color: #b62a28;
+}
+
+.text-darkgrey, .element-darkgrey, .icon-darkgrey, .link-darkgrey
+{
+    color: #474747;
+}
+.icon-darkgrey:hover, .link-darkgrey:hover
+{
+    color: #333333;
+}
+
+.text-black, .element-black, .icon-black
+{
+    color: #333333;
+}
+
+
+/*  */
+.text-bold
+{
+    font-weight: bold;
+}
+
+.text-italic
+{
+    font-style: italic;
+}

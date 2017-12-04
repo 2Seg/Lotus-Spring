@@ -1,0 +1,34 @@
+<!-- Header utilisateur connecté -->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Header utilisateur connecté</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+
+</head>
+<body>
+
+    <header>
+        <div class="container-fluid bg-grey">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="TODO"><img th:src="@{/elements/icons/avatar-small.png}" /></a>
+                    <a class="link-darkgrey text-bold btn hide-when-small" href="TODO">Nom d'utilisateur</a>
+                </div>
+                <div class="col-xs-4" align="center">
+                    <img class="" th:src="@{/elements/logos/isep.png}" />
+                </div>
+                <div class="col-xs-4" align="right">
+                    <a class="link-darkgrey text-bold btn hide-when-small" href="TODO">Déconnexion</a>
+                    <a href="TODO"><img th:src="@{/elements/icons/sign-out.png}" /></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+</body>
+</html>

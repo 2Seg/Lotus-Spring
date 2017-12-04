@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Page d'accueil</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+
+</head>
+<body>
+    <header th:replace="incluable/header/headernonconnecte :: header" />
+
+    <nav th:replace="incluable/menu/menuprof :: nav" />
+
+    <!--<h1 th:text="${eleve.prenom}" />-->
+    <h1>Contenu</h1><h1>Contenu</h1><h1>Contenu</h1><h1>Contenu</h1>
+
+    <footer th:replace="incluable/footer :: footer" />
+
+</body>
+</html>

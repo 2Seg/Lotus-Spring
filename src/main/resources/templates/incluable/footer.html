@@ -1,0 +1,44 @@
+<!-- Footer -->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Footer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+</head>
+<body>
+
+    <footer>
+        <div class="container-fluid bg-black">
+            <br/>
+            <div class="row">
+                <div class="col-sm-4" align="center">
+                    <p class="text-orange text-bold">Autres sites de l'ISEP</p>
+                    <p>
+                        <a href="https://www.isep.fr/" class="link-cyan">Site officiel</a><br/>
+                        <a href="https://weberp.isep.fr/" class="link-cyan">Weberp</a><br/>
+                        <a href="https://educ.isep.fr/moodle/" class="link-cyan">Moodle</a><br/>
+                    </p>
+                </div>
+                <div class="col-sm-4" align="center">
+                    <p><a href="TODO" class="link-orange text-bold">Mentions légales</a></p>
+                </div>
+                <div class="col-sm-4" align="center">
+                    <p class="text-orange text-bold">Réseaux sociaux</p>
+                    <p>
+                        <a href="https://www.facebook.com/ISEP.Paris/"><img th:src="@{/elements/icons/facebook.png}" /></a>
+                        <a href="https://www.instagram.com/isepparis/"><img th:src="@{/elements/icons/instagram.png}" /></a>
+                        <a href="https://www.linkedin.com/company/559343/"><img th:src="@{/elements/icons/linkedin.png}" /></a>
+                        <a href="https://twitter.com/isep"><img th:src="@{/elements/icons/twitter.png}" /></a>
+                    </p>
+                </div>
+            </div>
+            <br/>
+        </div>
+    </footer>
+
+</body>
+</html>
