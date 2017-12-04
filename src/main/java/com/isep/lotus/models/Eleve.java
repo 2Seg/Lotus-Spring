@@ -1,31 +1,48 @@
 package com.isep.lotus.models;
 
+import javax.persistence.Entity;
+
+@Entity(name = "eleve")
 public class Eleve {
 
+    private int id;
+
     private String prenom;
+
     private String nom;
+
     private String email;
-    private boolean enregistre;
-    private int numero_etudiant;
-    private String annee_scolaire; // = P1, I2, A3
-    private String statut_scolaire;
-    private String promotion; // changer le type à DateTime ou Date ?
+
+    private boolean inscrit;
+
+    private int numeroEtudiant;
+
+    private String anneeScolaire; // = P1, I2, A3
+
+    private String statutScolaire;
+
+    private String promotion; // changer le type Date ?
 
 
-    // TODO : compléter le mapping Hibernate
 
-    public Eleve() {
-    }
-
-    public Eleve(String prenom, String nom, String email, boolean enregistre, int numero_etudiant, String annee_scolaire, String statut_scolaire, String promotion) {
+    public Eleve(int id, String prenom, String nom, String email, boolean inscrit, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion) {
+        this.id = id;
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
-        this.enregistre = enregistre;
-        this.numero_etudiant = numero_etudiant;
-        this.annee_scolaire = annee_scolaire;
-        this.statut_scolaire = statut_scolaire;
+        this.inscrit = inscrit;
+        this.numeroEtudiant = numeroEtudiant;
+        this.anneeScolaire = anneeScolaire;
+        this.statutScolaire = statutScolaire;
         this.promotion = promotion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPrenom() {
@@ -52,28 +69,36 @@ public class Eleve {
         this.email = email;
     }
 
-    public int getNumero_etudiant() {
-        return numero_etudiant;
+    public boolean isInscrit() {
+        return inscrit;
     }
 
-    public void setNumero_etudiant(int numero_etudiant) {
-        this.numero_etudiant = numero_etudiant;
+    public void setInscrit(boolean inscrit) {
+        this.inscrit = inscrit;
     }
 
-    public String getAnnee_scolaire() {
-        return annee_scolaire;
+    public int getNumeroEtudiant() {
+        return numeroEtudiant;
     }
 
-    public void setAnnee_scolaire(String annee_scolaire) {
-        this.annee_scolaire = annee_scolaire;
+    public void setNumeroEtudiant(int numeroEtudiant) {
+        this.numeroEtudiant = numeroEtudiant;
     }
 
-    public String getStatut_scolaire() {
-        return statut_scolaire;
+    public String getAnneeScolaire() {
+        return anneeScolaire;
     }
 
-    public void setStatut_scolaire(String statut_scolaire) {
-        this.statut_scolaire = statut_scolaire;
+    public void setAnneeScolaire(String anneeScolaire) {
+        this.anneeScolaire = anneeScolaire;
+    }
+
+    public String getStatutScolaire() {
+        return statutScolaire;
+    }
+
+    public void setStatutScolaire(String statutScolaire) {
+        this.statutScolaire = statutScolaire;
     }
 
     public String getPromotion() {
@@ -83,4 +108,5 @@ public class Eleve {
     public void setPromotion(String promotion) {
         this.promotion = promotion;
     }
+
 }

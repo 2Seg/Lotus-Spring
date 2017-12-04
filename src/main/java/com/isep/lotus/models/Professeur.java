@@ -1,23 +1,36 @@
 package com.isep.lotus.models;
 
+import javax.persistence.Entity;
+
+@Entity(name = "professeur")
 public class Professeur {
 
+    private int id;
+
     private String prenom;
+
     private String nom;
+
     private String email;
-    private boolean enregistre; // pour vérifier si le prof à déjà complété son profil
 
-    // TODO : compléter le mapping Hibernate
+    private boolean inscrit; // pour vérifier si le prof à déjà complété son profil
 
 
-    public Professeur() {
-    }
 
-    public Professeur(String prenom, String nom, String email, boolean enregistre) {
+    public Professeur(int id, String prenom, String nom, String email, boolean inscrit) {
+        this.id = id;
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
-        this.enregistre = enregistre;
+        this.inscrit = inscrit;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPrenom() {
@@ -44,11 +57,12 @@ public class Professeur {
         this.email = email;
     }
 
-    public boolean isEnregistre() {
-        return enregistre;
+    public boolean isInscrit() {
+        return inscrit;
     }
 
-    public void setEnregistre(boolean enregistre) {
-        this.enregistre = enregistre;
+    public void setInscrit(boolean inscrit) {
+        this.inscrit = inscrit;
     }
+
 }
