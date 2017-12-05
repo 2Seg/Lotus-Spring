@@ -1,21 +1,26 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity(name = "activite_profesionnelle")
 public class ActivitePro {
 
+    @Id
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "eleve_id", foreignKey = @ForeignKey(name = "ELEVE_ACTIVITE_PRO_FK"))
     private Eleve eleve;
 
+    @JoinColumn(name = "contrat_id")
     private ListeTypeContrat type;
 
     private String duree;
 
-    private String dateDebut; // Changer le type à Date ?
+    private Date dateDebut;
 
-    private String dateFin; // Changer le type à Date ?
+    private Date dateFin;
 
     private String nomEntreprise;
 
@@ -37,7 +42,7 @@ public class ActivitePro {
     private String connaissanceRequise;*/
 
 
-    public ActivitePro(int id, Eleve eleve, ListeTypeContrat type, String duree, String dateDebut, String dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
+    public ActivitePro(int id, Eleve eleve, ListeTypeContrat type, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
         this.id = id;
         this.eleve = eleve;
         this.type = type;
@@ -84,19 +89,19 @@ public class ActivitePro {
         this.duree = duree;
     }
 
-    public String getDateDebut() {
+    public Date getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(String dateDebut) {
+    public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public String getDateFin() {
+    public Date getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(String dateFin) {
+    public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
     }
 

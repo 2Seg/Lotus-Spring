@@ -1,12 +1,15 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity(name = "activite_extra_scolaire")
 public class ActiviteExtra {
 
+    @Id
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "eleve_id", foreignKey = @ForeignKey(name = "ELEVE_ACTIVITE_EXTRA_FK"))
     private Eleve eleve;
 
     private String nom;

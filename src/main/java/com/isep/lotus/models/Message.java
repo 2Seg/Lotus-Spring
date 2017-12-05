@@ -1,9 +1,6 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
-
-@Entity(name = "parcours")
-public class Parcours {
+public class Message {
 
     private int id;
 
@@ -11,14 +8,17 @@ public class Parcours {
 
     private Professeur professeur;
 
-    private String nom;
+    private int idDestinataire;
+
+    private String message;
 
 
-    public Parcours(int id, Eleve eleve, Professeur professeur, String nom) {
+    public Message(int id, Eleve eleve, Professeur professeur, int idDestinataire, String message) {
         this.id = id;
         this.eleve = eleve;
         this.professeur = professeur;
-        this.nom = nom;
+        this.idDestinataire = idDestinataire;
+        this.message = message;
     }
 
     public int getId() {
@@ -45,11 +45,19 @@ public class Parcours {
         this.professeur = professeur;
     }
 
-    public String getNom() {
-        return nom;
+    public int getIdDestinataire() {
+        return idDestinataire;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setIdDestinataire(int idDestinataire) {
+        this.idDestinataire = idDestinataire;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

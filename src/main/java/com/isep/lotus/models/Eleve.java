@@ -1,10 +1,12 @@
 package com.isep.lotus.models;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity(name = "eleve")
 public class Eleve {
 
+    @Id
     private int id;
 
     private String prenom;
@@ -23,7 +25,8 @@ public class Eleve {
 
     private String promotion; // changer le type Date ?
 
-
+    public Eleve() {
+    }
 
     public Eleve(int id, String prenom, String nom, String email, boolean inscrit, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion) {
         this.id = id;

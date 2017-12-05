@@ -12,6 +12,7 @@ public class ListeTypeContrat {
     private String typeContrat;
 
 
+
     public ListeTypeContrat(int id, String typeContrat) {
         this.id = id;
         this.typeContrat = typeContrat;
