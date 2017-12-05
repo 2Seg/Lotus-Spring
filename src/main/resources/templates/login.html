@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Page de connexion</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+
+</head>
+<body>
+<header th:replace="incluable/header/headernonconnecte :: header" />
+
+<nav th:replace="incluable/menu/menunonconnecte :: nav" />
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-push-4 bg-lightgrey fond">
+
+            <div class="row">
+                <div class="col-lg-5 titreCO text-blue"> Votre connexion :
+                </div>
+                <br/>
+            </div>
+
+            <div class="row form-group">
+
+                <div class=" col-lg-5 text-orange entreeCO">
+                    Identifiant *:
+                </div>
+                <br/>
+                <input type="text"  id="identifiant" class=" form-control"  placeholder="identifiant.." />
+
+
+
+            </div>
+
+            <div class="row form-group">
+                <div class=" col-lg-5 text-orange entreeCO">
+                    Mot de passe *:
+                </div>
+                <br/>
+                <input type="mdp" id="mdp" class="form-control"  placeholder="Mot de passe..."/>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="form-group">
+                    <button class="pull-right btn btn-default bg-orange">Se connecter</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<footer th:replace="incluable/footer :: footer" />
+
+</body>
+</html>
