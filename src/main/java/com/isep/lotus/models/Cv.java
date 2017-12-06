@@ -1,17 +1,21 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity(name = "cv")
 public class Cv {
 
+    @Id
     private int id;
 
+    @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(nullable = false)
     private Eleve eleve;
 
     private String fichier;
 
 
+    public Cv() {}
 
     public Cv(int id, Eleve eleve, String fichier) {
         this.id = id;

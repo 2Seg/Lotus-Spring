@@ -1,23 +1,33 @@
 package com.isep.lotus.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity(name = "message")
 public class Message {
 
+    @Id
     private int id;
 
+    @ManyToOne
     private Eleve eleve;
 
+    @ManyToOne
     private Professeur professeur;
 
-    private int idDestinataire;
+    private int destinataire_id;
 
     private String message;
 
 
-    public Message(int id, Eleve eleve, Professeur professeur, int idDestinataire, String message) {
+    public Message() {}
+
+    public Message(int id, Eleve eleve, Professeur professeur, int destinataire_id, String message) {
         this.id = id;
         this.eleve = eleve;
         this.professeur = professeur;
-        this.idDestinataire = idDestinataire;
+        this.destinataire_id = destinataire_id;
         this.message = message;
     }
 
@@ -45,12 +55,12 @@ public class Message {
         this.professeur = professeur;
     }
 
-    public int getIdDestinataire() {
-        return idDestinataire;
+    public int getDestinataire_id() {
+        return destinataire_id;
     }
 
-    public void setIdDestinataire(int idDestinataire) {
-        this.idDestinataire = idDestinataire;
+    public void setDestinataire_id(int destinataire_id) {
+        this.destinataire_id = destinataire_id;
     }
 
     public String getMessage() {

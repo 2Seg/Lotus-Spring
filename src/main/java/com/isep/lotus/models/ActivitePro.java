@@ -9,12 +9,12 @@ public class ActivitePro {
     @Id
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "eleve_id", foreignKey = @ForeignKey(name = "ELEVE_ACTIVITE_PRO_FK"))
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(nullable = false)
     private Eleve eleve;
 
-    @JoinColumn(name = "contrat_id")
-    private ListeTypeContrat type;
+    @ManyToOne
+    private TypeContrat type;
 
     private String duree;
 
@@ -34,15 +34,11 @@ public class ActivitePro {
 
     private String ville;
 
-    // TODO : préciser les attributs ci-dessous
-    /*private String objectif;
-
-    private String etape;
-
-    private String connaissanceRequise;*/
 
 
-    public ActivitePro(int id, Eleve eleve, ListeTypeContrat type, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
+    public ActivitePro() {}
+
+    public ActivitePro(int id, Eleve eleve, TypeContrat type, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
         this.id = id;
         this.eleve = eleve;
         this.type = type;
@@ -73,11 +69,11 @@ public class ActivitePro {
         this.eleve = eleve;
     }
 
-    public ListeTypeContrat getType() {
+    public TypeContrat getType() {
         return type;
     }
 
-    public void setType(ListeTypeContrat type) {
+    public void setType(TypeContrat type) {
         this.type = type;
     }
 

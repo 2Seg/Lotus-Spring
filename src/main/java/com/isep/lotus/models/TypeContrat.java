@@ -3,17 +3,20 @@
 package com.isep.lotus.models;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity(name = "liste_type_contrat")
-public class ListeTypeContrat {
+public class TypeContrat {
 
+    @Id
     private int id;
 
     private String typeContrat;
 
 
+    public TypeContrat() {}
 
-    public ListeTypeContrat(int id, String typeContrat) {
+    public TypeContrat(int id, String typeContrat) {
         this.id = id;
         this.typeContrat = typeContrat;
     }

@@ -1,23 +1,33 @@
 package com.isep.lotus.models;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "parcours")
 public class Parcours {
 
+    @Id
     private int id;
 
-    private Eleve eleve;
+    @OneToMany(mappedBy = "parcours")
+    private List<Eleve> eleves = new ArrayList<>();
 
-    private Professeur professeur;
+    @ManyToMany
+    private List<Professeur> professeurs = new ArrayList<>();
 
     private String nom;
 
 
-    public Parcours(int id, Eleve eleve, Professeur professeur, String nom) {
+    public Parcours() {}
+
+    public Parcours(int id, List<Eleve> eleves, List<Professeur> professeurs, String nom) {
         this.id = id;
-        this.eleve = eleve;
-        this.professeur = professeur;
+        this.eleves = eleves;
+        this.professeurs = professeurs;
         this.nom = nom;
     }
 
@@ -29,20 +39,20 @@ public class Parcours {
         this.id = id;
     }
 
-    public Eleve getEleve() {
-        return eleve;
+    public List<Eleve> getEleves() {
+        return eleves;
     }
 
-    public void setEleve(Eleve eleve) {
-        this.eleve = eleve;
+    public void setEleves(List<Eleve> eleves) {
+        this.eleves = eleves;
     }
 
-    public Professeur getProfesseur() {
-        return professeur;
+    public List<Professeur> getProfesseurs() {
+        return professeurs;
     }
 
-    public void setProfesseur(Professeur professeur) {
-        this.professeur = professeur;
+    public void setProfesseurs(List<Professeur> professeurs) {
+        this.professeurs = professeurs;
     }
 
     public String getNom() {

@@ -1,10 +1,13 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "professeur")
 public class Professeur {
 
+    @Id
     private int id;
 
     private String prenom;
@@ -13,16 +16,30 @@ public class Professeur {
 
     private String email;
 
-    private boolean inscrit; // pour vérifier si le prof à déjà complété son profil
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Image image;
+
+    @OneToMany(mappedBy = "professeur")
+    private List<Message> messages = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "professeurs")
+    private List<Parcours> parcours = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "professeurs")
+    private List<Cours> cours = new ArrayList<>();
 
 
+    public Professeur() {}
 
-    public Professeur(int id, String prenom, String nom, String email, boolean inscrit) {
+    public Professeur(int id, String prenom, String nom, String email, Image image, List<Message> messages, List<Parcours> parcours, List<Cours> cours) {
         this.id = id;
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
-        this.inscrit = inscrit;
+        this.image = image;
+        this.messages = messages;
+        this.parcours = parcours;
+        this.cours = cours;
     }
 
     public int getId() {
@@ -57,12 +74,35 @@ public class Professeur {
         this.email = email;
     }
 
-    public boolean isInscrit() {
-        return inscrit;
+    public Image getImage() {
+        return image;
     }
 
-    public void setInscrit(boolean inscrit) {
-        this.inscrit = inscrit;
+    public void setImage(Image image) {
+        this.image = image;
     }
 
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Parcours> getParcours() {
+        return parcours;
+    }
+
+    public void setParcours(List<Parcours> parcours) {
+        this.parcours = parcours;
+    }
+
+    public List<Cours> getCours() {
+        return cours;
+    }
+
+    public void setCours(List<Cours> cours) {
+        this.cours = cours;
+    }
 }

@@ -8,11 +8,15 @@ public class ActiviteExtra {
     @Id
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "eleve_id", foreignKey = @ForeignKey(name = "ELEVE_ACTIVITE_EXTRA_FK"))
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(nullable = false)
     private Eleve eleve;
 
     private String nom;
+
+
+
+    public ActiviteExtra() {}
 
     public ActiviteExtra(int id, Eleve eleve, String nom) {
         this.id = id;

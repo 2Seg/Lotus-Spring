@@ -1,18 +1,21 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "sejour_academique")
 public class SejourAcademique {
 
+    @Id
     private int id;
 
+    @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(nullable = false)
     private Eleve eleve;
 
     private String duree;
 
-    private Date datedebut; // Changer le type à Date ?
+    private Date datedebut;
 
     private Date dateFin;
 
@@ -22,6 +25,8 @@ public class SejourAcademique {
 
     private String etablissement;
 
+
+    public SejourAcademique() {}
 
     public SejourAcademique(int id, Eleve eleve, String duree, Date datedebut, Date dateFin, String semestre, String pays, String etablissement) {
         this.id = id;
