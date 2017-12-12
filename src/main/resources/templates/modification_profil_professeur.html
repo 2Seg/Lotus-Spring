@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> modification_profil_professeur </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+
+
+</head>
+<body>
+<header th:replace="incluable/header/headerconnecte :: header" />
+
+<nav th:replace="incluable/menu/menuconnecte :: nav" />
+
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 bg-lightgrey fond">
+                <div class="row">
+                    <p class="text-blue PROFIL"> MODIFIER SON PROFIL </p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-push-1 fond2 ">
+                        <p class="text-cyan"> Informations personelles : </p>
+                        <div class="col-lg-4 text-orange">
+                            <label> Photo de Profil: </label><br/><br/>
+                            <div class=" col-sm-2 col-sm-push-1">
+                                <button class=" btn btn-default bg-darkgrey" align="center"> Ajouter une photo</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="col-lg-5 text-orange">
+                                <label for="exampleInputNom"> Nom*: </label><br/><br/>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="text" name="nom" id="exampleInputNom" placeholder="Nom"/><br/><br/>
+                            </div>
+                            <div class="col-lg-5 text-orange">
+                                <label for="exampleInputPrenom">Prénom*:</label><br/><br/>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="text" name="prenom" id="exampleInputPrenom" placeholder="Prénom"/><br/><br/>
+                            </div>
+                            <div class="col-lg-5 text-orange">
+                                <label for="exampleInputEmail">Adresse e-mail*:</label><br/><br/>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="email" name="email" id="exampleInputEmail" placeholder="Email"/><br/><br/>
+                            </div>
+                            <div class="col-lg-5 text-orange">
+                                <label >Responsable de parcours: </label><br/>
+                            </div>
+                            <div class="col-lg-7">
+                                <input class="checkboxinput" type="checkbox" id="checkbox P1" value="Parcours 1" />
+                                <label class="checkboxlabel"> Architecte des SI</label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox P2" value="Parcours 2" />
+                                <label class="checkboxlabel"> Ingénieur en BI</label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox P3" value="Parcours 3" />
+                                <label class="checkboxlabel"> Ingénieur Logiciel</label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox P4" value="Parcours 4" />
+                                <label class="checkboxlabel"> Ingénieur Numérique et Santé </label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox P5" value="Parcours 5" />
+                                <label class="checkboxlabel"> Architecte télécommunication et IOT </label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox P6" value="Parcours 6" />
+                                <label class="checkboxlabel"> Ingénieur Sécurité Numérique et Réseaux </label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox P7" value="Parcours 7" />
+                                <label class="checkboxlabel"> Concepteur des Systèmes Embarqués </label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox P8" value="Parcours 8" />
+                                <label class="checkboxlabel"> Innovation et Création d entreprise </label><br/>
+                            </div>
+                            <div class="col-lg-5 text-orange">
+                                <label> Cours:</label><br/>
+                            </div>
+                            <div class="col-lg-7">
+                                <input class="checkboxinput" type="checkbox" id="checkbox C1" value="cours 1" />
+                                <label class="checkboxlabel"> Cours 1</label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox C2" value="cours 2" />
+                                <label class="checkboxlabel"> Cours 2</label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox C3" value="cours 3" />
+                                <label class="checkboxlabel"> Cours 3</label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox C4" value="cours 4" />
+                                <label class="checkboxlabel"> Cours 4</label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox C5" value="cours 5" />
+                                <label class="checkboxlabel"> Cours 5</label><br/>
+                                <input class="checkboxinput" type="checkbox" id="checkbox C6" value="cours 6" />
+                                <label class="checkboxlabel"> Cours 6</label><br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="TODO"><button class="btn btn-default pull-right bg-orange" > Annuler </button></a>
+                    <a href=".profil_professeur.html"><button class="btn btn-default pull-right bg-orange" > Enregistrer </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<footer th:replace="incluable/footer :: footer" />
+
+</body>
+</html>
