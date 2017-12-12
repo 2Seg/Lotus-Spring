@@ -1,5 +1,6 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
+Lotus-Spring/src/main/resources/hibernate.cfg.xml
 
 ### STS ###
 .apt_generated
