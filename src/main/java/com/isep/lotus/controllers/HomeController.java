@@ -33,9 +33,9 @@ public class HomeController {
         return "profil_professeur";
     }
 
-    @RequestMapping("/modification_profil_professeur ")
+    @RequestMapping("/modification_profil_professeur")
     public String modification_profil_professeur () {
-        return "modification_profil_professeur ";
+        return "modification_profil_professeur";
 
     }
 }
