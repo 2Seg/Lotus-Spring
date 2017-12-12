@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FormulaireProfesseur</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+
+</head>
+<body>
+<header th:replace="incluable/header/headerconnecte :: header" />
+
+<nav th:replace="incluable/menu/menuprof :: nav" />
+
+<form>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <p> FORMULAIRE D'INSCRIPTION </p>
+            <div class="col-lg-6">
+                <p> Informations personnelles: </p>
+            </div>
+            <div class="col-lg-6">
+                <label for="exampleInputNom"> Nom: </label>
+                <input type="text" name="nom" id="exampleInputNom" placeholder="Nom"/><br/>
+                <label for="exampleInputPrenom">Prénom:</label>
+                <input type="text" name="prenom" id="exampleInputPrenom" placeholder="Prénom"/><br/>
+                <label for="exampleInputEmail">Adresse e-mail:</label>
+                <input type="email" name="email" id="exampleInputEmail" placeholder="Email"/><br/>
+                <label >Responsable de parcours: </label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox P1" value="Parcours 1" />
+                    <label class="checkboxlabel"> Architecte des SI</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox P2" value="Parcours 2" />
+                    <label class="checkboxlabel"> Ingénieur en BI</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox P3" value="Parcours 3" />
+                    <label class="checkboxlabel"> Ingénieur Logiciel</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox P4" value="Parcours 4" />
+                    <label class="checkboxlabel"> Ingénieur Numérique et Santé </label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox P5" value="Parcours 5" />
+                    <label class="checkboxlabel"> Architecte télécommunication et IOT </label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox P6" value="Parcours 6" />
+                    <label class="checkboxlabel"> Ingénieur Sécurité Numérique et Réseaux </label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox P7" value="Parcours 7" />
+                    <label class="checkboxlabel"> Concepteur des Systèmes Embarqués </label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox P8" value="Parcours 8" />
+                    <label class="checkboxlabel"> Innovation et Création d entreprise </label><br/>
+                <label> Cours:</label>
+                    <label class="checkboxlabel"> Cours 1</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox C1" value="cours 1" />
+                    <label class="checkboxlabel"> Cours 2</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox C2" value="cours 2" />
+                    <label class="checkboxlabel"> Cours 3</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox C3" value="cours 3" />
+                    <label class="checkboxlabel"> Cours 4</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox C4" value="cours 4" />
+                    <label class="checkboxlabel"> Cours 5</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox C5" value="cours 5" />
+                    <label class="checkboxlabel"> Cours 6</label>
+                    <input class="checkboxinput" type="checkbox" id="checkbox C6" value="cours 6" /><br/>
+        <button th:type="submit"> Annuler </button>
+        <button th:type="submit"> Enregistrer </button><br/> <br/>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<footer th:replace="incluable/footer :: footer" />
+
+</body>
+</html>
