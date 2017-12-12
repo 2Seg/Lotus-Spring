@@ -1,21 +1,27 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity(name = "activite_profesionnelle")
 public class ActivitePro {
 
+    @Id
+    @GeneratedValue
     private int id;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(nullable = false)
     private Eleve eleve;
 
-    private ListeTypeContrat type;
+    @ManyToOne
+    private TypeContrat type;
 
     private String duree;
 
-    private String dateDebut; // Changer le type à Date ?
+    private Date dateDebut;
 
-    private String dateFin; // Changer le type à Date ?
+    private Date dateFin;
 
     private String nomEntreprise;
 
@@ -29,15 +35,11 @@ public class ActivitePro {
 
     private String ville;
 
-    // TODO : préciser les attributs ci-dessous
-    /*private String objectif;
-
-    private String etape;
-
-    private String connaissanceRequise;*/
 
 
-    public ActivitePro(int id, Eleve eleve, ListeTypeContrat type, String duree, String dateDebut, String dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
+    public ActivitePro() {}
+
+    public ActivitePro(int id, Eleve eleve, TypeContrat type, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
         this.id = id;
         this.eleve = eleve;
         this.type = type;
@@ -68,11 +70,11 @@ public class ActivitePro {
         this.eleve = eleve;
     }
 
-    public ListeTypeContrat getType() {
+    public TypeContrat getType() {
         return type;
     }
 
-    public void setType(ListeTypeContrat type) {
+    public void setType(TypeContrat type) {
         this.type = type;
     }
 
@@ -84,19 +86,19 @@ public class ActivitePro {
         this.duree = duree;
     }
 
-    public String getDateDebut() {
+    public Date getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(String dateDebut) {
+    public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public String getDateFin() {
+    public Date getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(String dateFin) {
+    public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
     }
 
