@@ -1,10 +1,14 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "eleve")
 public class Eleve {
 
+    @Id
+    @GeneratedValue
     private int id;
 
     private String prenom;
@@ -23,9 +27,43 @@ public class Eleve {
 
     private String promotion; // changer le type Date ?
 
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Image image;
+
+    @OneToMany(mappedBy = "eleve")
+    private List<ActiviteExtra> activiteExtras = new ArrayList<>();
+
+    @OneToMany(mappedBy = "eleve")
+    private List<ActivitePro> activitePros = new ArrayList<>();
+
+    @OneToMany(mappedBy = "eleve")
+    private List<Bulletin> bulletins = new ArrayList<>();
+
+    @OneToMany(mappedBy = "eleve")
+    private List<Cv> cvs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "eleve")
+    private List<LettreMotivation> lettreMotivations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "eleve")
+    private List<LettreRecommandation> lettreRecommandations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "eleve")
+    private List<SejourAcademique> sejourAcademiques = new ArrayList<>();
+
+    @OneToMany(mappedBy = "eleve")
+    private List<Message> messages = new ArrayList<>();
+
+    @ManyToOne
+    private Parcours parcours;
+
+    @ManyToMany(mappedBy = "eleves")
+    private List<Cours> cours = new ArrayList<>();
 
 
-    public Eleve(int id, String prenom, String nom, String email, boolean inscrit, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion) {
+    public Eleve() {}
+
+    public Eleve(int id, String prenom, String nom, String email, boolean inscrit, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, Image image, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<LettreRecommandation> lettreRecommandations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
         this.id = id;
         this.prenom = prenom;
         this.nom = nom;
@@ -35,6 +73,17 @@ public class Eleve {
         this.anneeScolaire = anneeScolaire;
         this.statutScolaire = statutScolaire;
         this.promotion = promotion;
+        this.image = image;
+        this.activiteExtras = activiteExtras;
+        this.activitePros = activitePros;
+        this.bulletins = bulletins;
+        this.cvs = cvs;
+        this.lettreMotivations = lettreMotivations;
+        this.lettreRecommandations = lettreRecommandations;
+        this.sejourAcademiques = sejourAcademiques;
+        this.messages = messages;
+        this.parcours = parcours;
+        this.cours = cours;
     }
 
     public int getId() {
@@ -109,4 +158,91 @@ public class Eleve {
         this.promotion = promotion;
     }
 
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public List<ActiviteExtra> getActiviteExtras() {
+        return activiteExtras;
+    }
+
+    public void setActiviteExtras(List<ActiviteExtra> activiteExtras) {
+        this.activiteExtras = activiteExtras;
+    }
+
+    public List<ActivitePro> getActivitePros() {
+        return activitePros;
+    }
+
+    public void setActivitePros(List<ActivitePro> activitePros) {
+        this.activitePros = activitePros;
+    }
+
+    public List<Bulletin> getBulletins() {
+        return bulletins;
+    }
+
+    public void setBulletins(List<Bulletin> bulletins) {
+        this.bulletins = bulletins;
+    }
+
+    public List<Cv> getCvs() {
+        return cvs;
+    }
+
+    public void setCvs(List<Cv> cvs) {
+        this.cvs = cvs;
+    }
+
+    public List<LettreMotivation> getLettreMotivations() {
+        return lettreMotivations;
+    }
+
+    public void setLettreMotivations(List<LettreMotivation> lettreMotivations) {
+        this.lettreMotivations = lettreMotivations;
+    }
+
+    public List<LettreRecommandation> getLettreRecommandations() {
+        return lettreRecommandations;
+    }
+
+    public void setLettreRecommandations(List<LettreRecommandation> lettreRecommandations) {
+        this.lettreRecommandations = lettreRecommandations;
+    }
+
+    public List<SejourAcademique> getSejourAcademiques() {
+        return sejourAcademiques;
+    }
+
+    public void setSejourAcademiques(List<SejourAcademique> sejourAcademiques) {
+        this.sejourAcademiques = sejourAcademiques;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public Parcours getParcours() {
+        return parcours;
+    }
+
+    public void setParcours(Parcours parcours) {
+        this.parcours = parcours;
+    }
+
+    public List<Cours> getCours() {
+        return cours;
+    }
+
+    public void setCours(List<Cours> cours) {
+        this.cours = cours;
+    }
 }
