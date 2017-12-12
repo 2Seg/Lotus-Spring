@@ -1,17 +1,24 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity(name = "sejour_academique")
 public class SejourAcademique {
 
+    @Id
+    @GeneratedValue
     private int id;
 
+    @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(nullable = false)
     private Eleve eleve;
 
     private String duree;
 
-    private String annee; // Changer le type à Date ?
+    private Date datedebut;
+
+    private Date dateFin;
 
     private String semestre;
 
@@ -20,11 +27,14 @@ public class SejourAcademique {
     private String etablissement;
 
 
-    public SejourAcademique(int id, Eleve eleve, String duree, String annee, String semestre, String pays, String etablissement) {
+    public SejourAcademique() {}
+
+    public SejourAcademique(int id, Eleve eleve, String duree, Date datedebut, Date dateFin, String semestre, String pays, String etablissement) {
         this.id = id;
         this.eleve = eleve;
         this.duree = duree;
-        this.annee = annee;
+        this.datedebut = datedebut;
+        this.dateFin = dateFin;
         this.semestre = semestre;
         this.pays = pays;
         this.etablissement = etablissement;
@@ -54,12 +64,20 @@ public class SejourAcademique {
         this.duree = duree;
     }
 
-    public String getAnnee() {
-        return annee;
+    public Date getDatedebut() {
+        return datedebut;
     }
 
-    public void setAnnee(String annee) {
-        this.annee = annee;
+    public void setDatedebut(Date datedebut) {
+        this.datedebut = datedebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 
     public String getSemestre() {

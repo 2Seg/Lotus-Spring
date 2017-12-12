@@ -10,12 +10,14 @@
 
 </head>
 <body>
-    <header th:replace="incluable/header/headerconnecte :: header" />
 
-    <nav th:replace="incluable/menu/menuprof :: nav" />
+    <header th:replace="incluable/header/headernonconnecte :: header" />
 
-    <!--<h1 th:text="${eleve.prenom}" />-->
+    <nav th:replace="incluable/menu/menueleve :: nav" />
+
+
     <h1>Contenu</h1><h1>Contenu</h1><h1>Contenu</h1><h1>Contenu</h1>
+
 
     <footer th:replace="incluable/footer :: footer" />
 

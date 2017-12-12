@@ -2,25 +2,35 @@ package com.isep.lotus.models;
 
 import javax.persistence.*;
 
-@Entity(name = "bulletin")
-public class Bulletin {
+/**
+ * Created by IntelliJ.
+ * User:  eliott
+ * Date: 05/12/17
+ * Time: 21:45
+ */
+@Entity(name = "image")
+public class Image {
 
     @Id
     @GeneratedValue
     private int id;
 
-    @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(nullable = false)
+    @OneToOne(mappedBy = "image", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Eleve eleve;
+
+    @OneToOne(mappedBy = "image", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Professeur professeur;
 
     private String fichier;
 
 
-    public Bulletin() {}
 
-    public Bulletin(int id, Eleve eleve, String fichier) {
+    public Image() {}
+
+    public Image(int id, Eleve eleve, Professeur professeur, String fichier) {
         this.id = id;
         this.eleve = eleve;
+        this.professeur = professeur;
         this.fichier = fichier;
     }
 
@@ -38,6 +48,14 @@ public class Bulletin {
 
     public void setEleve(Eleve eleve) {
         this.eleve = eleve;
+    }
+
+    public Professeur getProfesseur() {
+        return professeur;
+    }
+
+    public void setProfesseur(Professeur professeur) {
+        this.professeur = professeur;
     }
 
     public String getFichier() {
