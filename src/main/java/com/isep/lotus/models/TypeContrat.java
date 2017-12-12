@@ -3,12 +3,14 @@
 package com.isep.lotus.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity(name = "liste_type_contrat")
+@Entity(name = "type_contrat")
 public class TypeContrat {
 
     @Id
+    @GeneratedValue
     private int id;
 
     private String typeContrat;

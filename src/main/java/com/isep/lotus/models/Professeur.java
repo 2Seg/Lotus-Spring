@@ -8,6 +8,7 @@ import java.util.List;
 public class Professeur {
 
     @Id
+    @GeneratedValue
     private int id;
 
     private String prenom;

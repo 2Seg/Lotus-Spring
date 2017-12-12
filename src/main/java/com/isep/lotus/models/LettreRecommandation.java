@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class LettreRecommandation {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

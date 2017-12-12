@@ -28,7 +28,7 @@ public class LotusApplication {
 		}
 	}
 
-	public static Session getSession() throws HibernateException {
+	private static Session getSession() throws HibernateException {
 		return ourSessionFactory.openSession();
 	}
 
@@ -39,7 +39,7 @@ public class LotusApplication {
 
 		final Session session = getSession();
 		try {
-			System.out.println("querying all the managed entities...");
+			System.out.println("querying all the managed models...");
 			final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
 			for (Object key : metadataMap.keySet()) {
 				final ClassMetadata classMetadata = (ClassMetadata) metadataMap.get(key);

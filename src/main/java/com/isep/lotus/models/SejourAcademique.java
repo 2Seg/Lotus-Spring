@@ -7,6 +7,7 @@ import java.util.Date;
 public class SejourAcademique {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

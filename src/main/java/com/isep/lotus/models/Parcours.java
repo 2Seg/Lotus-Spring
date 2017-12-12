@@ -1,9 +1,6 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +8,7 @@ import java.util.List;
 public class Parcours {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @OneToMany(mappedBy = "parcours")
