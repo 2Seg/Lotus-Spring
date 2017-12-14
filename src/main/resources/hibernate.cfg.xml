@@ -18,7 +18,6 @@
         <mapping class="com.isep.lotus.models.Eleve" />
         <mapping class="com.isep.lotus.models.Image" />
         <mapping class="com.isep.lotus.models.LettreMotivation" />
-        <mapping class="com.isep.lotus.models.LettreRecommandation" />
         <mapping class="com.isep.lotus.models.Message" />
         <mapping class="com.isep.lotus.models.Parcours" />
         <mapping class="com.isep.lotus.models.Professeur" />

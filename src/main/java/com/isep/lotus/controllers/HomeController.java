@@ -1,6 +1,8 @@
 package com.isep.lotus.controllers;
 
 import com.isep.lotus.models.Eleve;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        Eleve eleve = new Eleve(1,"Eliott", "de SEGUIER", "eliottdes@gmail.com", true, 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null, null);
+        Eleve eleve = new Eleve(1,"Eliott", "de SEGUIER", "eliottdes@gmail.com", 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null);
 //        model.addAllAttributes(Collections.singleton(eleve));
         model.addAttribute(eleve);
         return "home";
