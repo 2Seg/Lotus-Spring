@@ -28,7 +28,7 @@ public class HomeController {
         return "login";
     }
 
-    @RequestMapping("/profil-professeur")
+    @RequestMapping("/profil_professeur")
     public String profil_professeur() {
        /* Professeur professeur = new Professeur(1,"Zakia", "Kazi-Aoul", "zakia@gmail.com");
 //        model.addAllAttributes(Collections.singleton(professeur));
