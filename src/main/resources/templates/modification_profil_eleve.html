@@ -1,0 +1,409 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modification_profil_eleve</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+
+</head>
+<body>
+<header th:replace="incluable/header/headerconnecte :: header" />
+
+<nav th:replace="incluable/menu/menueleve :: nav" />
+<nav th:replace="incluable/barre_recherche :: nav" />
+
+<div class="container">
+
+    <div class="row">
+        <form class="form-horizontal" action="profil-eleve">
+            <div class=" col-lg-12  bg-lightgrey bloc_gris">
+                <div class="row">
+                    <div class="col-lg-5 text-blue"> MODIFICATION PROFIL
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-7">
+
+                        <div class="row form-group">
+                            <div class=" col-lg-12 fond2 bloc_blanc">
+
+                                <div class="row form-group" >
+                                    <div class="col-lg-5  text-blue"> Informations personnelles :
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+
+                                    <div class="col-lg-3 bloc_dans_blanc ">
+
+                                        <div class="row form-group">
+                                            <div align="center"> <img  th:src="@{/elements/icons/profilVide.png}" /> </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div align="center">
+
+                                                <button class=" btn btn-default  bg-darkgrey" > Ajouter une photo</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-lg-9 bloc_dans_blanc">
+                                        <div class="row form-group">
+
+                                            <div class=" col-lg-5  text-orange entreeCO">
+                                                Nom *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <input type="text"  id="nom" class=" form-control"  placeholder="nom" />
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5  entreeCO text-orange">
+                                                Prénom *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <input type="umdp" id="prenom" class="form-control"  placeholder="prénom"/>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5  entreeCO text-orange">
+                                                Identifiant *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <input type="umdp" id="identifiant" class="form-control"  placeholder="Entrer votre identifiant de connexion"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5  entreeCO text-orange">
+                                                Mot de passe *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <input type="password" id="mot_de_passe" class="form-control"  placeholder="Entrer votre mot de passe"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5 text-orange entreeCO">
+                                                Confirmer mot de passe *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <input type="password" id="confirmer_mdp" class="form-control"  placeholder="Confirmer votre mot de passe"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-push-5 col-lg-7 text-black entreeCO">
+                                                <input type="checkbox" name="Contacter" />  Je ne souhaite pas être contacté
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5 text-orange entreeCO">
+                                                Numéro étudiant *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <input type="umdp" id="numero_etudiant" class="form-control"  placeholder="ex:8885"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5 text-orange entreeCO">
+                                                Lien profil LinkedIn *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <input type="umdp" id="linkedin" class="form-control"  placeholder="Lien LinkedIn "/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                        <div class="row form-group">
+
+
+
+                            <div class="col-lg-12 fond2 bloc_blanc">
+                                <div class="row form-group" >
+                                    <div class="col-lg-5 bloc_dans_blanc text-blue"> Activité(s) extra-scolaire(s):
+                                    </div>
+                                    <div class=" col-lg-5 bloc_dans_blanc">
+                                        <input type="umdp" id="activité-extra" class="form-control"  placeholder="Entrer une de vos activités extra-scolaires"/>
+                                    </div>
+                                    <div class=" col-lg-2 bloc_dans_blanc">
+
+                                            <input type="submit" name="ajout" value="Ajouter" class="btn btn-default bg-darkgrey" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 fond2 bloc_blanc">
+
+                                <div class="row form-group">
+                                    <div class="col-lg-12 ">
+                                    <div class="row form-group">
+                                        <div align="center" >
+                                            <a href="TODO"><button class="btn btn-default  bg-darkgrey col-lg-push-3 col-lg-6"  > Ajouter une activité professionnelle </button></a>
+                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-lg-5  text-blue"> Activité(s) Professionnelle ajouté(s):</div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-lg-12 ">
+                                        <div class="row form-group">
+                                            <div align="center" >
+                                                <a href="TODO"><button class="btn btn-default  bg-darkgrey col-lg-push-3 col-lg-6"  > Ajouter un stage </button></a>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-lg-5  text-blue">Stage(s) ajouté(s):</div>
+                                            <div class="col-lg-7 text-blue"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-lg-12 ">
+                                        <div class="row form-group">
+                                            <div align="center" >
+                                                <a href="TODO"><button class="col-lg-push-3 col-lg-6 btn btn-default  bg-darkgrey"  > Ajouter un séjour académique </button></a>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-lg-5  text-blue">Séjour(s) académique ajouté(s):</div>
+                                            <div class="col-lg-7 text-blue"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-lg-5">
+
+                        <div class="row form-group">
+                            <div class=" col-lg-12 fond2 bloc_blanc">
+
+                                <div class="row form-group" >
+                                    <div class="col-lg-5  text-blue"> Informations scolaires :
+                                    </div></div>
+
+
+
+                                <div class="row form-group" >
+                                    <div class="bloc_dans_blanc">
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5 text-orange entreeCO">
+                                                Année  *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <select  id="annee" class="form-control">
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                    <option>2019</option>
+                                                    <option>2020</option>
+                                                    <option>2021</option>
+                                                    <option>2022</option>
+                                                    <option>2023</option>
+                                                    <option>2024</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5 text-orange entreeCO">
+                                                Parcours  *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <select  id="parcours" class="form-control">
+                                                    <option>Classique</option>
+                                                    <option>International</option>
+                                                    <option>Alternant</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5 text-orange entreeCO">
+                                                Statut  *:
+                                            </div>
+                                            <div class=" col-lg-7">
+                                                <select  id="statut" class="form-control">
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5 text-orange entreeCO">
+                                                Bulletin(s) de notes *:
+                                            </div>
+                                            <form method="post" action="TODO" >
+                                                <div class="col-lg-7">
+                                                    <div class=" col-lg-8 ">
+                                                        <input type="file" name="bulletin_de_note"  />
+                                                    </div>
+                                                    <div class=" col-lg-4">
+                                                        <input type="submit" name="fichier" value="Ajouter" class="btn btn-default bg-darkgrey" />
+                                                    </div>
+                                                </div>
+                                            </form>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 bloc_blanc fond2">
+<div class="bloc_dans_blanc">
+                                <div class="row form-group" >
+                                    <div class="col-lg-5  text-blue"> Documents ptofessionnels :
+                                    </div></div>
+
+                                <div class="row form-group">
+
+                                    <div class="row form-group">
+                                    <div class=" col-lg-5 text-orange entreeCO">
+                                        CV:
+                                    </div>
+                                    <form method="post" action="TODO" >
+                                        <div class="col-lg-7">
+                                            <div class=" col-lg-8 ">
+                                                <input type="file" name="bulletin_de_note"  />
+                                            </div>
+                                            <div class=" col-lg-4">
+                                                <input type="submit" name="fichier" value="Ajouter" class="btn btn-default bg-darkgrey" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class=" col-lg-push-2 col-lg-10 text-blue"></div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="row form-group">
+                                        <div class=" col-lg-5 text-orange entreeCO">
+                                            Lettre de motivation:
+                                        </div>
+                                        <form method="post" action="TODO" >
+                                            <div class="col-lg-7">
+                                                <div class=" col-lg-8 ">
+                                                    <input type="file" name="bulletin_de_note"  />
+                                                </div>
+                                                <div class=" col-lg-4">
+                                                    <input type="submit" name="fichier" value="Ajouter" class="btn btn-default bg-darkgrey" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class=" col-lg-push-2 col-lg-10 text-blue"></div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="row form-group">
+                                        <div class=" col-lg-5 text-orange entreeCO">
+                                            Lettre de recommandation:
+                                        </div>
+                                        <form method="post" action="TODO" >
+                                            <div class="col-lg-7">
+                                                <div class=" col-lg-8 ">
+                                                    <input type="file" name="bulletin_de_note"  />
+                                                </div>
+                                                <div class=" col-lg-4">
+                                                    <input type="submit" name="fichier" value="Ajouter" class="btn btn-default bg-darkgrey" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class=" col-lg-push-2 col-lg-10 text-blue"></div>
+                                    </div>
+
+                                </div>
+
+</div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row ">
+                    <a href="TODO"><button class="btn btn-default pull-right bg-orange" > Annuler </button></a>
+                    <input type="submit" name="envoi_formulaire" value="Enregistrer" class="btn btn-default bg-orange pull-right " />
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+        </form>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<footer th:replace="incluable/footer :: footer" />
+
+</body>
+</html>

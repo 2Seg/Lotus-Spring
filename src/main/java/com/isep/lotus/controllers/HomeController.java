@@ -24,7 +24,7 @@ public class HomeController {
         return "login";
     }
 
-    @RequestMapping("/profil_professeur")
+    @RequestMapping("/profil-professeur")
     public String profil_professeur() {
        /* Professeur professeur = new Professeur(1,"Zakia", "Kazi-Aoul", "zakia@gmail.com");
 //        model.addAllAttributes(Collections.singleton(professeur));
@@ -51,4 +51,16 @@ public class HomeController {
     public String PageAccueilEleve () {
         return "PageAccueilEleve";
     }
+
+    @RequestMapping("/FormulaireProfesseur")
+    public String FormulaireProfesseur () {
+        return "FormulaireProfesseur";
+    }
+
+    @RequestMapping("/formulaire-eleve")
+    public String formulaire_eleve () { return "formulaire_eleve"; }
+
+    @RequestMapping("/modification-profil-eleve")
+    public String modification_profil_eleve () { return "modification_profil_eleve"; }
 }
+

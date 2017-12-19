@@ -94,14 +94,43 @@
     margin-top: -25px;
 }
 
-.search-facets .facet-item .facet-value label {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    margin: 0;
-    padding: 8px 12px 8px 36px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #87888D;
-    white-space: nowrap;
+
+
+.bloc_gris{
+    border: 1px solid #F3F3F3;
+    border-radius: 6px;
+    line-height: 40px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    padding-bottom:20px;
+    padding-right:20px ;
+    padding-left: 20px;
+    padding-top: 20px;
+
+}
+
+.bloc_blanc{
+    border: 1px solid #F3F3F3;
+    border-radius: 6px;
+    line-height: 40px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-right:20px ;
+    padding-left: 20px;
+    padding-top: 20px;
+
+
+}
+
+.bloc_dans_blanc{
+
+
+
+    padding-bottom: 10px;
+    padding-right:10px ;
+    padding-left: 10px;
+    padding-top: 10px;
+
 }
