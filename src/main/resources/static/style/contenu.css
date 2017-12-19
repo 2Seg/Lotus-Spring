@@ -24,11 +24,12 @@
     padding-right:20px ;
     padding-left: 20px;
     padding-top: 20px;
-
 }
+
 .titreCO{
     text-align: center;
 }
+
 .PROFIL{
     font-size:  30px;
 }
@@ -36,18 +37,17 @@
 .fond2{
  background-color: WHITE;
    /* margin-left:30px;*/
-
 }
-
 
 .fond3{
     margin-left: 30px;
     margin-bottom: 20px;
 }
+
 .hello2{
  /*margin-left: 50px;*/
-
 }
+
 .profil{
 /*margin-bottom: 30px;*/
 }
@@ -94,21 +94,16 @@
     margin-top: -25px;
 }
 
-
-
 .bloc_gris{
     border: 1px solid #F3F3F3;
     border-radius: 6px;
     line-height: 40px;
-
     margin-top: 20px;
     margin-bottom: 20px;
-
     padding-bottom:20px;
     padding-right:20px ;
     padding-left: 20px;
     padding-top: 20px;
-
 }
 
 .bloc_blanc{
@@ -120,17 +115,11 @@
     padding-right:20px ;
     padding-left: 20px;
     padding-top: 20px;
-
-
 }
 
 .bloc_dans_blanc{
-
-
-
     padding-bottom: 10px;
     padding-right:10px ;
     padding-left: 10px;
     padding-top: 10px;
-
 }
