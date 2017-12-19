@@ -1,15 +1,12 @@
 package com.isep.lotus.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity(name = "message")
 public class Message {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
@@ -18,8 +15,10 @@ public class Message {
     @ManyToOne
     private Professeur professeur;
 
+    @JoinColumn(nullable = false)
     private int destinataire_id;
 
+    @JoinColumn(nullable = false)
     private String message;
 
 

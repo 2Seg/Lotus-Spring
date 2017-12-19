@@ -6,13 +6,14 @@ import javax.persistence.*;
 public class ActiviteExtra {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(nullable = false)
     private Eleve eleve;
 
+    @JoinColumn(nullable = false)
     private String nom;
 
 

@@ -7,7 +7,7 @@ import java.util.Date;
 public class ActivitePro {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

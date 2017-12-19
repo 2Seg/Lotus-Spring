@@ -1,32 +1,34 @@
 package com.isep.lotus;
 
 
+import com.isep.lotus.models.Eleve;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.metadata.ClassMetadata;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import java.util.Map;
 
 @SpringBootApplication
 public class LotusApplication {
 
-	private static final SessionFactory ourSessionFactory;
+	private static final SessionFactory sessionFactory;
 
 	static {
 		try {
 			Configuration configuration = new Configuration();
 			configuration.configure();
-			ourSessionFactory = configuration.buildSessionFactory();
+			sessionFactory = configuration.buildSessionFactory();
 		} catch (Throwable ex) {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
 
-	public static Session getSession() throws HibernateException {
-		return ourSessionFactory.openSession();
+	private static Session getSession() throws HibernateException {
+		return sessionFactory.openSession();
 	}
 
 
@@ -34,7 +36,7 @@ public class LotusApplication {
 	public static void main(final String[] args) throws Exception {
 		SpringApplication.run(LotusApplication.class, args);
 
-//		final Session session = getSession();
+		final Session session = getSession();
 //		try {
 //			System.out.println("querying all the managed models...");
 //			final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
@@ -51,7 +53,12 @@ public class LotusApplication {
 //			session.close();
 //		}
 
-
+		Eleve eleve = new Eleve(1,"Eliott", "de SEGUIER", "eliottdes@gmail.com", 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null);
+		Transaction tx = session.beginTransaction();
+		session.save(eleve);
+		session.flush();
+		tx.commit();
+		session.close();
 
 
 	}

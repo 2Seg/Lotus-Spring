@@ -8,13 +8,16 @@ import java.util.List;
 public class Professeur {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @JoinColumn(nullable = false)
     private String prenom;
 
+    @JoinColumn(nullable = false)
     private String nom;
 
+    @JoinColumn(nullable = false)
     private String email;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

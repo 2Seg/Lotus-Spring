@@ -6,13 +6,14 @@ import javax.persistence.*;
 public class Cv {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(nullable = false)
     private Eleve eleve;
 
+    @JoinColumn(nullable = false)
     private String fichier;
 
 

@@ -8,7 +8,7 @@ import java.util.List;
 public class Parcours {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToMany(mappedBy = "parcours")
@@ -17,6 +17,7 @@ public class Parcours {
     @ManyToMany
     private List<Professeur> professeurs = new ArrayList<>();
 
+    @JoinColumn(nullable = false)
     private String nom;
 
 
