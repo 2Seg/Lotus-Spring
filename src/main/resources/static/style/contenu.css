@@ -35,4 +35,46 @@
 
 .fond2{
     background-color: white;
+<<<<<<< Updated upstream
+=======
+    margin-left: 15%;
+}
+
+.filtre{
+    margin-top: -10px;
+}
+
+.loupe{
+    margin-top: -5px;
+    margin-left: -25px;
+}
+
+.taper{
+    border: 0px solid red;
+    height: 40px;
+    width: 50%;
+    margin-top: -25px;
+}
+
+.search-facets .facet-item .facet-value label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    padding: 8px 12px 8px 36px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #87888D;
+    white-space: nowrap;
+}
+
+.bouttonacc{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.gras
+{
+    font-weight: bold;
+>>>>>>> Stashed changes
 }
