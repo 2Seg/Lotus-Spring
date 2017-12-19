@@ -33,9 +33,18 @@ public class HomeController {
         return "profil_professeur";
     }
 
-    @RequestMapping("/modification_profil_professeur")
-    public String modification_profil_professeur () {
-        return "modification_profil_professeur";
+    @RequestMapping("/ModificationProfilProfesseur")
+    public String ModificationProfilProfesseur () {
+        return "ModificationProfilProfesseur";
+    }
 
+    @RequestMapping("/PageAccueilProfesseur")
+    public String PageAccueilProfesseur () {
+        return "PageAccueilProfesseur";
+    }
+
+    @RequestMapping("/PageAccueilEleve")
+    public String PageAccueilEleve () {
+        return "PageAccueilEleve";
     }
 }
