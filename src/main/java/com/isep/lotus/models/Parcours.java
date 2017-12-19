@@ -8,7 +8,7 @@ import java.util.List;
 public class Parcours {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
 
     @OneToMany(mappedBy = "parcours")
