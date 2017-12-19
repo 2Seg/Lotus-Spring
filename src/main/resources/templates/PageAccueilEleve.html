@@ -17,17 +17,16 @@
 <nav th:replace="incluable/menu/menueleve :: nav" />
 <nav th:replace="incluable/barre_recherche :: nav" />
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4">
-            <a href="profil-eleve"><button class="btn btn-default bg-grey" > Accès a Votre Profil </button></a>
+        <div class="col-lg-6">
+            <a href="profil_professeur"><button  class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" > Accès a Votre Profil <br/><img th:src="@{/elements/icons/avatar-orange.png}"/> </button></a>
         </div>
-        <div class="col-lg-4">
-            <a href="todo"><button class="btn btn-default bg-grey" > Accès a Votre Messagerie </button></a>
+        <div class="col-lg-6">
+            <a href="TODO"><button class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" > Accès a Votre Messagerie  <br/><img th:src="@{/elements/icons/envelope-orange.png}"/></button></a>
         </div>
     </div>
 </div>
-
 
 <footer th:replace="incluable/footer :: footer" />
 
