@@ -1,28 +1,24 @@
 package com.isep.lotus.controllers;
 
-import com.isep.lotus.models.Bulletin;
-import com.isep.lotus.models.Eleve;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import static com.isep.lotus.LotusApplication.getSession;
 
 @Controller
 public class LoginController {
 
-    @RequestMapping("/test")
-    public String test() {
-        Session session = getSession();
-        Transaction transaction = session.beginTransaction();
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginDisplay() {return "login";}
 
-        Eleve eleve = new Eleve("Eliott", "de SEGUIER", "eliottdes@gmail.com", 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null);
-        Bulletin bulletin = new Bulletin(eleve, "fichier");
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginHandling(@RequestParam("identifiant") String identifiant, Model model) {
 
-        session.persist(bulletin);
-        transaction.commit();
-        session.close();
+        model.addAttribute("identifiant", identifiant);
 
         return "home";
     }

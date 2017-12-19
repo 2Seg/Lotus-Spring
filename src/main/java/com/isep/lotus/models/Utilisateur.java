@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 
 // Faire des relations OneToOne avec Eleve et Professeur
+//@Entity(name = "utilisateur")
 public class Utilisateur {
 
     @Id
