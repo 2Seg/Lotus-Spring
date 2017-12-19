@@ -1,16 +1,16 @@
-@media (min-width: 768px) {
+@media (min-width: 868px) {
     .container {
-        width: 750px;
+        width: 850px;
     }
 }
-@media (min-width: 992px) {
-    .container {
-        width: 970px;
-    }
-}
-@media (min-width: 1200px) {
+@media (min-width: 1192px) {
     .container {
         width: 1170px;
+    }
+}
+@media (min-width: 1300px) {
+    .container {
+        width: 1270px;
     }
 }
 
@@ -34,5 +34,74 @@
 }
 
 .fond2{
+ background-color: WHITE;
+   /* margin-left:30px;*/
+
+}
+
+
+.fond3{
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.hello2{
+ /*margin-left: 50px;*/
+
+}
+.profil{
+/*margin-bottom: 30px;*/
+}
+
+.espace{
+    margin-bottom: 50px;
+}
+
+.stage{
+    margin-bottom: 10px;
+}
+
+.groupe{
+    margin-left:10px;
+}
+
+.cadrebleu{
+    padding-bottom: 50px;
+}
+
+.barreR{
+    border: 1px solid #F3F3F3;
+    /*line-height: 20%;*/
+    border-width: 3px;
+    margin-top: -25px;
+    height: 50px;
     background-color: white;
+    margin-left: 15%;
+}
+
+.filtre{
+    margin-top: -10px;
+}
+
+.loupe{
+    margin-top: -5px;
+    margin-left: -25px;
+}
+
+.taper{
+    border: 0px solid red;
+    height: 40px;
+    width: 50%;
+    margin-top: -25px;
+}
+
+.search-facets .facet-item .facet-value label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    padding: 8px 12px 8px 36px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #87888D;
+    white-space: nowrap;
 }

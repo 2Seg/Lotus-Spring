@@ -19,10 +19,9 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping("/FormulaireProfesseur")
-    public String FormulaireProfesseur() {
-        return "FormulaireProfesseur";
-
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
     }
 
     @RequestMapping("/profil_professeur")
@@ -31,6 +30,11 @@ public class HomeController {
 //        model.addAllAttributes(Collections.singleton(professeur));
         model.addAttribute(professeur);*/
         return "profil_professeur";
+    }
+
+    @RequestMapping("/profil-eleve")
+    public String profil_eleve() {
+        return "profil_eleve";
     }
 
     @RequestMapping("/ModificationProfilProfesseur")
