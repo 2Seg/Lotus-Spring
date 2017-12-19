@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class ActiviteExtra {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

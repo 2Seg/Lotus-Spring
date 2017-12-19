@@ -23,4 +23,36 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping("/profil_professeur")
+    public String profil_professeur() {
+       /* Professeur professeur = new Professeur(1,"Zakia", "Kazi-Aoul", "zakia@gmail.com");
+//        model.addAllAttributes(Collections.singleton(professeur));
+        model.addAttribute(professeur);*/
+        return "profil_professeur";
+    }
+
+    @RequestMapping("/profil-eleve")
+    public String profil_eleve() {
+        return "profil_eleve";
+    }
+
+    @RequestMapping("/ModificationProfilProfesseur")
+    public String ModificationProfilProfesseur () {
+        return "ModificationProfilProfesseur";
+    }
+
+    @RequestMapping("/PageAccueilProfesseur")
+    public String PageAccueilProfesseur () {
+        return "PageAccueilProfesseur";
+    }
+
+    @RequestMapping("/PageAccueilEleve")
+    public String PageAccueilEleve () {
+        return "PageAccueilEleve";
+    }
 }

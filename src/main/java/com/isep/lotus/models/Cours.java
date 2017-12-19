@@ -1,9 +1,6 @@
 package com.isep.lotus.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +8,7 @@ import java.util.List;
 public class Cours {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToMany

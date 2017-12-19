@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class Image {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @OneToOne(mappedBy = "image", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
