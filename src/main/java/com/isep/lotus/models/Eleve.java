@@ -8,23 +8,28 @@ import java.util.List;
 public class Eleve {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @JoinColumn(nullable = false)
     private String prenom;
 
+    @JoinColumn(nullable = false)
     private String nom;
 
+    @JoinColumn(nullable = false)
     private String email;
 
-    private boolean inscrit;
-
+    @JoinColumn(nullable = false)
     private int numeroEtudiant;
 
+    @JoinColumn(nullable = false)
     private String anneeScolaire; // = P1, I2, A3
 
+    @JoinColumn(nullable = false)
     private String statutScolaire;
 
+    @JoinColumn(nullable = false)
     private String promotion; // changer le type Date ?
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
@@ -46,9 +51,6 @@ public class Eleve {
     private List<LettreMotivation> lettreMotivations = new ArrayList<>();
 
     @OneToMany(mappedBy = "eleve")
-    private List<LettreRecommandation> lettreRecommandations = new ArrayList<>();
-
-    @OneToMany(mappedBy = "eleve")
     private List<SejourAcademique> sejourAcademiques = new ArrayList<>();
 
     @OneToMany(mappedBy = "eleve")
@@ -63,12 +65,10 @@ public class Eleve {
 
     public Eleve() {}
 
-    public Eleve(int id, String prenom, String nom, String email, boolean inscrit, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, Image image, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<LettreRecommandation> lettreRecommandations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
-        this.id = id;
+    public Eleve(String prenom, String nom, String email, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, Image image, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
-        this.inscrit = inscrit;
         this.numeroEtudiant = numeroEtudiant;
         this.anneeScolaire = anneeScolaire;
         this.statutScolaire = statutScolaire;
@@ -79,7 +79,6 @@ public class Eleve {
         this.bulletins = bulletins;
         this.cvs = cvs;
         this.lettreMotivations = lettreMotivations;
-        this.lettreRecommandations = lettreRecommandations;
         this.sejourAcademiques = sejourAcademiques;
         this.messages = messages;
         this.parcours = parcours;
@@ -116,14 +115,6 @@ public class Eleve {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public boolean isInscrit() {
-        return inscrit;
-    }
-
-    public void setInscrit(boolean inscrit) {
-        this.inscrit = inscrit;
     }
 
     public int getNumeroEtudiant() {
@@ -204,14 +195,6 @@ public class Eleve {
 
     public void setLettreMotivations(List<LettreMotivation> lettreMotivations) {
         this.lettreMotivations = lettreMotivations;
-    }
-
-    public List<LettreRecommandation> getLettreRecommandations() {
-        return lettreRecommandations;
-    }
-
-    public void setLettreRecommandations(List<LettreRecommandation> lettreRecommandations) {
-        this.lettreRecommandations = lettreRecommandations;
     }
 
     public List<SejourAcademique> getSejourAcademiques() {

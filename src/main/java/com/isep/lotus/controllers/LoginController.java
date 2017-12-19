@@ -17,8 +17,8 @@ public class LoginController {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
 
-        Eleve eleve = new Eleve(1,"Eliott", "de SEGUIER", "eliottdes@gmail.com", true, 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null, null);
-        Bulletin bulletin = new Bulletin(1, eleve, "fichier");
+        Eleve eleve = new Eleve("Eliott", "de SEGUIER", "eliottdes@gmail.com", 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null);
+        Bulletin bulletin = new Bulletin(eleve, "fichier");
 
         session.persist(bulletin);
         transaction.commit();

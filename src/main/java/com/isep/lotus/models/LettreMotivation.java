@@ -6,20 +6,20 @@ import javax.persistence.*;
 public class LettreMotivation {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(nullable = false)
     private Eleve eleve;
 
+    @JoinColumn(nullable = false)
     private String fichier;
 
 
     public LettreMotivation() {}
 
-    public LettreMotivation(int id, Eleve eleve, String fichier) {
-        this.id = id;
+    public LettreMotivation(Eleve eleve, String fichier) {
         this.eleve = eleve;
         this.fichier = fichier;
     }

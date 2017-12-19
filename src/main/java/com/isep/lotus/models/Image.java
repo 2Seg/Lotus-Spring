@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Image {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToOne(mappedBy = "image", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
@@ -21,14 +21,14 @@ public class Image {
     @OneToOne(mappedBy = "image", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Professeur professeur;
 
+    @JoinColumn(nullable = false)
     private String fichier;
 
 
 
     public Image() {}
 
-    public Image(int id, Eleve eleve, Professeur professeur, String fichier) {
-        this.id = id;
+    public Image(Eleve eleve, Professeur professeur, String fichier) {
         this.eleve = eleve;
         this.professeur = professeur;
         this.fichier = fichier;
