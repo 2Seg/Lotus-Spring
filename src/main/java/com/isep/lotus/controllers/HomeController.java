@@ -16,7 +16,7 @@ public class HomeController {
     @RequestMapping("/")
     public String index(Model model) {
 
-        Eleve eleve = new Eleve(1,"Francis", "JOSSELAIN", "eliottdes@gmail.com", true, 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null, null);
+        Eleve eleve = new Eleve("Francis", "JOSSELAIN", "eliottdes@gmail.com", 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null);
 //        model.addAllAttributes(Collections.singleton(eleve));
 
         model.addAttribute(eleve);

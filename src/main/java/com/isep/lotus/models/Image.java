@@ -28,8 +28,7 @@ public class Image {
 
     public Image() {}
 
-    public Image(int id, Eleve eleve, Professeur professeur, String fichier) {
-        this.id = id;
+    public Image(Eleve eleve, Professeur professeur, String fichier) {
         this.eleve = eleve;
         this.professeur = professeur;
         this.fichier = fichier;

@@ -24,8 +24,7 @@ public class Message {
 
     public Message() {}
 
-    public Message(int id, Eleve eleve, Professeur professeur, int destinataire_id, String message) {
-        this.id = id;
+    public Message(Eleve eleve, Professeur professeur, int destinataire_id, String message) {
         this.eleve = eleve;
         this.professeur = professeur;
         this.destinataire_id = destinataire_id;

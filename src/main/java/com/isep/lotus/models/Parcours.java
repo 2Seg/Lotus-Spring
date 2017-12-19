@@ -23,8 +23,7 @@ public class Parcours {
 
     public Parcours() {}
 
-    public Parcours(int id, List<Eleve> eleves, List<Professeur> professeurs, String nom) {
-        this.id = id;
+    public Parcours(List<Eleve> eleves, List<Professeur> professeurs, String nom) {
         this.eleves = eleves;
         this.professeurs = professeurs;
         this.nom = nom;

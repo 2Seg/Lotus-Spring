@@ -27,7 +27,7 @@ public class LotusApplication {
 		}
 	}
 
-	private static Session getSession() throws HibernateException {
+	public static Session getSession() throws HibernateException {
 		return sessionFactory.openSession();
 	}
 
@@ -53,12 +53,12 @@ public class LotusApplication {
 //			session.close();
 //		}
 
-		Eleve eleve = new Eleve(1,"Eliott", "de SEGUIER", "eliottdes@gmail.com", 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null);
-		Transaction tx = session.beginTransaction();
-		session.save(eleve);
-		session.flush();
-		tx.commit();
-		session.close();
+//		Eleve eleve = new Eleve(1,"Eliott", "de SEGUIER", "eliottdes@gmail.com", 8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null, null);
+//		Transaction tx = session.beginTransaction();
+//		session.save(eleve);
+//		session.flush();
+//		tx.commit();
+//		session.close();
 
 
 	}

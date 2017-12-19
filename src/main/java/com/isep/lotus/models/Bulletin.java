@@ -18,8 +18,7 @@ public class Bulletin {
 
     public Bulletin() {}
 
-    public Bulletin(int id, Eleve eleve, String fichier) {
-        this.id = id;
+    public Bulletin(Eleve eleve, String fichier) {
         this.eleve = eleve;
         this.fichier = fichier;
     }

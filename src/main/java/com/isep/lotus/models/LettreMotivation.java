@@ -19,8 +19,7 @@ public class LettreMotivation {
 
     public LettreMotivation() {}
 
-    public LettreMotivation(int id, Eleve eleve, String fichier) {
-        this.id = id;
+    public LettreMotivation(Eleve eleve, String fichier) {
         this.eleve = eleve;
         this.fichier = fichier;
     }

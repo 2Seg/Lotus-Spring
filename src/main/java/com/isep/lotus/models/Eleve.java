@@ -65,8 +65,7 @@ public class Eleve {
 
     public Eleve() {}
 
-    public Eleve(int id, String prenom, String nom, String email, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, Image image, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
-        this.id = id;
+    public Eleve(String prenom, String nom, String email, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, Image image, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;

@@ -35,8 +35,7 @@ public class Professeur {
 
     public Professeur() {}
 
-    public Professeur(int id, String prenom, String nom, String email, Image image, List<Message> messages, List<Parcours> parcours, List<Cours> cours) {
-        this.id = id;
+    public Professeur(String prenom, String nom, String email, Image image, List<Message> messages, List<Parcours> parcours, List<Cours> cours) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;

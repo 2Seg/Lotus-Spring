@@ -19,8 +19,7 @@ public class TypeContrat {
 
     public TypeContrat() {}
 
-    public TypeContrat(int id, String typeContrat) {
-        this.id = id;
+    public TypeContrat(String typeContrat) {
         this.typeContrat = typeContrat;
     }
 

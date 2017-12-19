@@ -19,8 +19,7 @@ public class Cv {
 
     public Cv() {}
 
-    public Cv(int id, Eleve eleve, String fichier) {
-        this.id = id;
+    public Cv(Eleve eleve, String fichier) {
         this.eleve = eleve;
         this.fichier = fichier;
     }

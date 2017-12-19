@@ -32,8 +32,7 @@ public class SejourAcademique {
 
     public SejourAcademique() {}
 
-    public SejourAcademique(int id, Eleve eleve, String duree, Date datedebut, Date dateFin, String semestre, String pays, String etablissement) {
-        this.id = id;
+    public SejourAcademique(Eleve eleve, String duree, Date datedebut, Date dateFin, String semestre, String pays, String etablissement) {
         this.eleve = eleve;
         this.duree = duree;
         this.datedebut = datedebut;
