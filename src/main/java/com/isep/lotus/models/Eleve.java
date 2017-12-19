@@ -5,20 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "eleve")
-public class Eleve {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @JoinColumn(nullable = false)
-    private String prenom;
-
-    @JoinColumn(nullable = false)
-    private String nom;
-
-    @JoinColumn(nullable = false)
-    private String email;
+public class Eleve extends Utilisateur {
 
     @JoinColumn(nullable = false)
     private int numeroEtudiant;
@@ -32,8 +19,8 @@ public class Eleve {
     @JoinColumn(nullable = false)
     private String promotion; // changer le type Date ?
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Image image;
+    @OneToOne(mappedBy = "eleve")
+    private Utilisateur utilisateur;
 
     @OneToMany(mappedBy = "eleve")
     private List<ActiviteExtra> activiteExtras = new ArrayList<>();
@@ -65,15 +52,11 @@ public class Eleve {
 
     public Eleve() {}
 
-    public Eleve(String prenom, String nom, String email, int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, Image image, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
-        this.prenom = prenom;
-        this.nom = nom;
-        this.email = email;
+    public Eleve(int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
         this.numeroEtudiant = numeroEtudiant;
         this.anneeScolaire = anneeScolaire;
         this.statutScolaire = statutScolaire;
         this.promotion = promotion;
-        this.image = image;
         this.activiteExtras = activiteExtras;
         this.activitePros = activitePros;
         this.bulletins = bulletins;
@@ -83,38 +66,6 @@ public class Eleve {
         this.messages = messages;
         this.parcours = parcours;
         this.cours = cours;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getNumeroEtudiant() {
@@ -149,12 +100,12 @@ public class Eleve {
         this.promotion = promotion;
     }
 
-    public Image getImage() {
-        return image;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public List<ActiviteExtra> getActiviteExtras() {
