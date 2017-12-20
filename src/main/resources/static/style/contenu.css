@@ -3,16 +3,6 @@
         width: 750px;
     }
 }
-@media (min-width: 992px) {
-    .container {
-        width: 970px;
-    }
-}
-@media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-    }
-}
 
 .fond{
     border: 1px solid #F3F3F3;
@@ -31,6 +21,10 @@
 }
 .PROFIL{
     font-size:  30px;
+}
+
+.Information{
+    font-size:  20px;
 }
 
 .fond2{
