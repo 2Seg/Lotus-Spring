@@ -13,7 +13,29 @@
         width: 1270px;
     }
 }
+.change_margin_botom{
+    margin-bottom: -8px;
+}
 
+.change_margin_botom2{
+    margin-bottom: -20px;
+}
+.prenom{
+    font-size:  10px;
+    height: auto;
+
+}
+.nom{
+    font-size:  10px;
+    height: 26px;
+
+}
+image_eleve{
+    width: 50px;
+    height: auto;
+
+
+}
 .fond{
     border: 1px solid #F3F3F3;
     border-radius: 6px;
@@ -137,6 +159,7 @@
     padding-right:20px ;
     padding-left: 20px;
     padding-top: 0px;
+
 
 
 }

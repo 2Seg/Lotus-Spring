@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Modification_profil_eleve</title>
+    <title>Liste_ancien_eleve</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
     <link rel="stylesheet" th:href="@{/style/colors.css}"/>
@@ -18,7 +18,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-7 text-blue"> LISTE DES ANCIENS ELEVES DE VOTRE PARCOURS
+        <div class="col-lg-7  text-blue"> LISTE DES ANCIENS ELEVES DE VOTRE PARCOURS
         </div>
     </div>
     <form class="form-horizontal" action="TODO">
@@ -40,36 +40,47 @@
 
                 </div>
                 <div class="row form-group">
-                    <div class="col-lg-2 fond2 bloc_blanc_eleve">
+                    <div class="col-lg-1 col-md-2 col-sm-2   fond2 bloc_blanc_eleve">
                         <div class="row">
                             <div class="pull-right">
                                 <input type="checkbox" name="Selectionner" />
                             </div>
                         </div>
-                        <div class="row" align="center">
-                            <img  th:src="@{/elements/icons/profilVide.png}" />
+                        <div class="row change_margin_botom" align="center">
+
+                            <img  th:src="@{/elements/icons/profilVide.png}" width="90" height="auto" />
+
                         </div>
-                        <div class="row" align="center">
-                            PRENOM <br/>
+                        <div class="row prenom change_margin_botom2" align="center">
+
+                            PRENOM
+                        </div>
+                        <div class="row nom" align="center">
                             NOM
                         </div>
                     </div>
 
 
-                    <div class="col-lg-2 fond2 bloc_blanc_eleve">
+                    <div class="col-lg-1 col-md-2 col-sm-2   fond2 bloc_blanc_eleve">
                         <div class="row">
                             <div class="pull-right">
                                 <input type="checkbox" name="Selectionner" />
                             </div>
                         </div>
-                        <div class="row" align="center">
-                            <img  th:src="@{/elements/icons/profilVide.png}" />
+                        <div class="row change_margin_botom" align="center">
+
+                            <img  th:src="@{/elements/icons/profilVide.png}" width="90" height="auto" />
+
                         </div>
-                        <div class="row" align="center">
-                            PRENOM <br/>
+                        <div class="row prenom change_margin_botom2" align="center">
+
+                            PRENOM
+                        </div>
+                        <div class="row nom" align="center">
                             NOM
                         </div>
                     </div>
+
 
 
                 </div>
