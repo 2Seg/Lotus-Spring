@@ -1,16 +1,6 @@
-@media (min-width: 868px) {
+@media (min-width: 768px) {
     .container {
-        width: 850px;
-    }
-}
-@media (min-width: 1192px) {
-    .container {
-        width: 1170px;
-    }
-}
-@media (min-width: 1300px) {
-    .container {
-        width: 1270px;
+        width: 750px;
     }
 }
 
@@ -33,21 +23,24 @@
     font-size:  30px;
 }
 
+.Information{
+    font-size:  20px;
+}
+
 .fond2{
  background-color: WHITE;
    /* margin-left:30px;*/
-
 }
-
 
 .fond3{
     margin-left: 30px;
     margin-bottom: 20px;
 }
+
 .hello2{
  /*margin-left: 50px;*/
-
 }
+
 .profil{
 /*margin-bottom: 30px;*/
 }
@@ -78,6 +71,37 @@
     margin-left: 15%;
 }
 
+.bloc_gris{
+    border: 1px solid #F3F3F3;
+    border-radius: 6px;
+    line-height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom:20px;
+    padding-right:20px ;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.bloc_blanc{
+    border: 1px solid #F3F3F3;
+    border-radius: 6px;
+    line-height: 40px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-right:20px ;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.bloc_dans_blanc{
+    padding-bottom: 10px;
+    padding-right:10px ;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-left: 15%;
+}
+
 .filtre{
     margin-top: -10px;
 }
@@ -94,43 +118,31 @@
     margin-top: -25px;
 }
 
-
-
-.bloc_gris{
-    border: 1px solid #F3F3F3;
-    border-radius: 6px;
-    line-height: 40px;
-
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    padding-bottom:20px;
-    padding-right:20px ;
-    padding-left: 20px;
-    padding-top: 20px;
-
+.margeboutonacc{
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
-.bloc_blanc{
-    border: 1px solid #F3F3F3;
-    border-radius: 6px;
-    line-height: 40px;
-    margin-bottom: 10px;
-    padding-bottom: 20px;
-    padding-right:20px ;
-    padding-left: 20px;
-    padding-top: 20px;
-
-
+.tailleboutonaccp{
+    width: 650px;
+    height: 650px
 }
 
-.bloc_dans_blanc{
+.taillepetitboutonaccp{
+    width: 650px;
+    height: 285px
+}
 
+.gras{
+    font-weight: bold;
+}
 
+.text-acc
+{
+    font-size: 30px;
+}
 
-    padding-bottom: 10px;
-    padding-right:10px ;
-    padding-left: 10px;
-    padding-top: 10px;
-
+.tailleboutonacce{
+    width: 965px;
+    height: 700px;
 }
