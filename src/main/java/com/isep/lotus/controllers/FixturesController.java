@@ -22,10 +22,13 @@ public class FixturesController {
         Professeur professeur1 = new Professeur(null, null, null);
         Utilisateur utilisateur2 = new Utilisateur("zakiazi", "aze", "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr", null, null, professeur1);
 
+        Utilisateur utilisateur3 = new Utilisateur("quent77np", "aze", "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr", null, null, null);
+
         Session session = getSession();
         Transaction tx = session.beginTransaction();
         session.persist(utilisateur1);
         session.persist(utilisateur2);
+        session.persist(utilisateur3);
         tx.commit();
         session.close();
 

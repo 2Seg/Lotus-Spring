@@ -1,13 +1,19 @@
 package com.isep.lotus.controllers;
 
 
+import com.isep.lotus.models.Utilisateur;
+import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 import static com.isep.lotus.LotusApplication.getSession;
+import static org.unbescape.html.HtmlEscape.escapeHtml4;
 
 @Controller
 public class LoginController {
@@ -16,11 +22,48 @@ public class LoginController {
     public String loginDisplay() {return "login";}
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginHandling(@RequestParam("identifiant") String identifiant, Model model) {
+    public ModelAndView loginProcess(@RequestParam("identifiant") String login, @RequestParam("mdp") String password, ModelAndView modelAndView, HttpSession httpSession) {
+        String erreur = "Erreur : ";
+        String identifiant = secureFieldString(login);
+        String mdp = secureFieldString(password);
 
-        model.addAttribute("identifiant", identifiant);
+        if (identifiant.isEmpty() || mdp.isEmpty()) {
+            erreur = erreur + "veuillez remplir tous les champs du formulaire";
+            modelAndView.addObject("erreur", erreur).setViewName("login");
+            return modelAndView;
+        } else {
+            Session sessionHibernate = getSession();
+            Utilisateur utilisateur = (Utilisateur) sessionHibernate.createQuery("select u " +
+                    "from utilisateur u " +
+                    "where u.identifiant like :identifiant")
+                    .setParameter("identifiant", identifiant)
+                    .uniqueResult();
+            sessionHibernate.close();
 
-        return "home";
+            if (utilisateur == null) {
+                erreur = erreur + "identifiant inconnu";
+                modelAndView.addObject("erreur", erreur).setViewName("login");
+                return modelAndView;
+            } else {
+
+                if (!utilisateur.getMdp().equals(mdp)) {
+                    erreur = erreur + "mot de passe incorrect";
+                    modelAndView.addObject("erreur", erreur).setViewName("login");
+                    return modelAndView;
+                } else {
+
+                    httpSession.setAttribute("id", utilisateur.getId());
+                    modelAndView.setViewName("redirect:/");
+                    return modelAndView;
+
+                }
+            }
+        }
+
+    }
+
+    public String secureFieldString (String inputString) {
+        return escapeHtml4(inputString.trim().replaceAll("\\\\", ""));
     }
 
 }

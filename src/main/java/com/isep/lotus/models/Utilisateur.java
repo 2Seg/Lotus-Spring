@@ -125,4 +125,18 @@ public class Utilisateur {
     public void setProfesseur(Professeur professeur) {
         this.professeur = professeur;
     }
+
+    public String checkUserType () {
+
+        if (this.getProfesseur() == null) {
+            if (this.getEleve() == null) {
+                return "none";
+            } else {
+                return "eleve";
+            }
+        } else {
+            return "professeur";
+        }
+    }
+
 }

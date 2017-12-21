@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Page de connexion</title>
+    <title>Connexion</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
     <link rel="stylesheet" th:href="@{/style/colors.css}"/>
@@ -20,27 +20,23 @@
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 col-xs-9 col-lg-push-4 col-md-push-3 col-sm-push-2 col-xs-push-1 bg-lightgrey fond">
             <form method="post" action="/login">
+
+                <div th:if="${erreur}" th:text="${erreur}" class="alert-danger" align="center">Erreur</div>
+
                 <div class="row">
                     <div class="col-lg-5 titreCO text-blue"><h3>Connexion</h3></div>
                     <br/>
                 </div>
 
                 <div class="row form-group">
-
-                    <label class=" col-lg-5 text-orange entreeCO" for="identifiant">
-                        Identifiant* :
-                    </label>
-                    <br/>
-                    <input type="text" name="identifiant" id="identifiant" class=" form-control"  placeholder="identifiant.." />
+                    <label class=" col-lg-5 text-orange entreeCO" for="identifiant">Identifiant* :</label><br/>
+                    <input type="text" name="identifiant" id="identifiant" class="form-control"  placeholder="identifiant..." />
                 </div>
-
                 <div class="row form-group">
-                    <label class=" col-lg-5 text-orange entreeCO" for="mdp">
-                        Mot de passe* :
-                    </label>
-                    <br/>
+                    <label class=" col-lg-5 text-orange entreeCO" for="mdp">Mot de passe* :</label><br/>
                     <input type="password" name="mdp" id="mdp" class="form-control"  placeholder="Mot de passe..."/>
                 </div>
+
                 <br/>
                 <div class="row">
                     <div class="form-group">
