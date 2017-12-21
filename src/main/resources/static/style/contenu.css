@@ -32,6 +32,9 @@
 .PROFIL{
     font-size:  30px;
 }
+.text_promo{
+    font-size:  20px;
+}
 
 .fond2{
  background-color: WHITE;
@@ -75,7 +78,7 @@
     margin-top: -25px;
     height: 50px;
     background-color: white;
-    margin-left: 15%;
+    /*margin-left: 15%;*/
 }
 
 .filtre{
@@ -84,14 +87,14 @@
 
 .loupe{
     margin-top: -5px;
-    margin-left: -25px;
+   /* margin-left: -25px;*/
 }
 
 .taper{
     border: 0px solid red;
     height: 40px;
     width: 50%;
-    margin-top: -25px;
+    /*margin-top: -25px;*/
 }
 
 
@@ -120,6 +123,20 @@
     padding-right:20px ;
     padding-left: 20px;
     padding-top: 20px;
+
+
+}
+
+.bloc_blanc_eleve{
+    border: 1px solid #F3F3F3;
+    border-radius: 6px;
+    line-height: 40px;
+    margin-left:10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-right:20px ;
+    padding-left: 20px;
+    padding-top: 0px;
 
 
 }
