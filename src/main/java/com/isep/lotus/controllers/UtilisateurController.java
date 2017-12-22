@@ -33,5 +33,14 @@ public class UtilisateurController {
 
     }
 
+    @RequestMapping(value = "/profil", method = RequestMethod.GET)
+    public ModelAndView profil(HttpSession httpSession) {
+        if(httpSession.isNew()) {
+            return new ModelAndView("login");
+        }
+
+        return new ModelAndView();
+    }
+
 
 }
