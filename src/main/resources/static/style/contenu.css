@@ -170,14 +170,13 @@ image_eleve{
 
 }
 
-.bloc_dans_blanc{
-
-
+.bloc_dans_blanc {
 
     padding-bottom: 10px;
-    padding-right:10px ;
+    padding-right: 10px;
     padding-left: 10px;
     padding-top: 10px;
+}
 
 .filtre{
     margin-top: -10px;
