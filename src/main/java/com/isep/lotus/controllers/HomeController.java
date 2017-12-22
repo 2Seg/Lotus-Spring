@@ -56,5 +56,8 @@ public class HomeController {
 
     @RequestMapping("/modification-profil-eleve")
     public String modification_profil_eleve () { return "modification_profil_eleve"; }
+
+    @RequestMapping("/liste-ancien-eleve")
+    public String liste_ancien_eleve () { return "liste_ancien_eleve"; }
 }
 

@@ -1,9 +1,41 @@
-@media (min-width: 768px) {
+@media (min-width: 868px) {
     .container {
-        width: 750px;
+        width: 850px;
     }
 }
+@media (min-width: 1192px) {
+    .container {
+        width: 1170px;
+    }
+}
+@media (min-width: 1300px) {
+    .container {
+        width: 1270px;
+    }
+}
+.change_margin_botom{
+    margin-bottom: -8px;
+}
 
+.change_margin_botom2{
+    margin-bottom: -20px;
+}
+.prenom{
+    font-size:  10px;
+    height: auto;
+
+}
+.nom{
+    font-size:  10px;
+    height: 26px;
+
+}
+image_eleve{
+    width: 50px;
+    height: auto;
+
+
+}
 .fond{
     border: 1px solid #F3F3F3;
     border-radius: 6px;
@@ -22,6 +54,9 @@
 .PROFIL{
     font-size:  30px;
 }
+.text_promo{
+    font-size:  20px;
+}
 
 .Information{
     font-size:  20px;
@@ -30,7 +65,9 @@
 .fond2{
  background-color: WHITE;
    /* margin-left:30px;*/
+
 }
+
 
 .fond3{
     margin-left: 30px;
@@ -39,6 +76,7 @@
 
 .hello2{
  /*margin-left: 50px;*/
+
 }
 
 .profil{
@@ -71,16 +109,37 @@
     margin-left: 15%;
 }
 
+.filtre{
+    margin-top: -10px;
+}
+
+.loupe{
+    margin-top: -5px;
+    margin-left: -25px;
+}
+
+.taper{
+    border: 0px solid red;
+    height: 40px;
+    width: 50%;
+    margin-top: -25px;
+}
+
+
+
 .bloc_gris{
     border: 1px solid #F3F3F3;
     border-radius: 6px;
     line-height: 40px;
+
     margin-top: 20px;
     margin-bottom: 20px;
+
     padding-bottom:20px;
     padding-right:20px ;
     padding-left: 20px;
     padding-top: 20px;
+
 }
 
 .bloc_blanc{
@@ -92,15 +151,33 @@
     padding-right:20px ;
     padding-left: 20px;
     padding-top: 20px;
+
+
+}
+
+.bloc_blanc_eleve{
+    border: 1px solid #F3F3F3;
+    border-radius: 6px;
+    line-height: 40px;
+    margin-left:10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-right:20px ;
+    padding-left: 20px;
+    padding-top: 0px;
+
+
+
 }
 
 .bloc_dans_blanc{
+
+
+
     padding-bottom: 10px;
     padding-right:10px ;
     padding-left: 10px;
     padding-top: 10px;
-    margin-left: 15%;
-}
 
 .filtre{
     margin-top: -10px;
