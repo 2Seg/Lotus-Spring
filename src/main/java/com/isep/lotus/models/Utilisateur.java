@@ -127,7 +127,6 @@ public class Utilisateur {
     }
 
     public String checkUserType () {
-
         if (this.getProfesseur() == null) {
             if (this.getEleve() == null) {
                 return "none";

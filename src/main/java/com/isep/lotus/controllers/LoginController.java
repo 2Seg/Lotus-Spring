@@ -12,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import static com.isep.lotus.LotusApplication.getSession;
 import static org.unbescape.html.HtmlEscape.escapeHtml4;
 
@@ -19,13 +22,13 @@ import static org.unbescape.html.HtmlEscape.escapeHtml4;
 public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginDisplay() {return "login";}
+    public ModelAndView loginDisplay() {return new ModelAndView("login");}
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView loginProcess(@RequestParam("identifiant") String login, @RequestParam("mdp") String password, ModelAndView modelAndView, HttpSession httpSession) {
         String erreur = "Erreur : ";
         String identifiant = secureFieldString(login);
-        String mdp = secureFieldString(password);
+        String mdp = passWordEncryption(password);
 
         if (identifiant.isEmpty() || mdp.isEmpty()) {
             erreur = erreur + "veuillez remplir tous les champs du formulaire";
@@ -71,6 +74,29 @@ public class LoginController {
 
     public String secureFieldString (String inputString) {
         return escapeHtml4(inputString.trim().replaceAll("\\\\", ""));
+    }
+
+    public String passWordEncryption(String password) {
+        if (password.isEmpty()) {
+            return password;
+        }
+        String outputPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            outputPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return outputPassword;
     }
 
 }
