@@ -4,13 +4,14 @@ package com.isep.lotus.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "type_contrat")
 public class TypeContrat {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String typeContrat;
@@ -18,8 +19,7 @@ public class TypeContrat {
 
     public TypeContrat() {}
 
-    public TypeContrat(int id, String typeContrat) {
-        this.id = id;
+    public TypeContrat(String typeContrat) {
         this.typeContrat = typeContrat;
     }
 

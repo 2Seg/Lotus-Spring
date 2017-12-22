@@ -58,6 +58,10 @@ image_eleve{
     font-size:  20px;
 }
 
+.Information{
+    font-size:  20px;
+}
+
 .fond2{
  background-color: WHITE;
    /* margin-left:30px;*/
@@ -69,10 +73,12 @@ image_eleve{
     margin-left: 30px;
     margin-bottom: 20px;
 }
+
 .hello2{
  /*margin-left: 50px;*/
 
 }
+
 .profil{
 /*margin-bottom: 30px;*/
 }
@@ -100,7 +106,7 @@ image_eleve{
     margin-top: -25px;
     height: 50px;
     background-color: white;
-    /*margin-left: 15%;*/
+    margin-left: 15%;
 }
 
 .filtre{
@@ -109,14 +115,14 @@ image_eleve{
 
 .loupe{
     margin-top: -5px;
-   /* margin-left: -25px;*/
+    margin-left: -25px;
 }
 
 .taper{
     border: 0px solid red;
     height: 40px;
     width: 50%;
-    /*margin-top: -25px;*/
+    margin-top: -25px;
 }
 
 
@@ -173,4 +179,47 @@ image_eleve{
     padding-left: 10px;
     padding-top: 10px;
 
+.filtre{
+    margin-top: -10px;
+}
+
+.loupe{
+    margin-top: -5px;
+    margin-left: -25px;
+}
+
+.taper{
+    border: 0px solid red;
+    height: 40px;
+    width: 50%;
+    margin-top: -25px;
+}
+
+.margeboutonacc{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.tailleboutonaccp{
+    width: 650px;
+    height: 650px
+}
+
+.taillepetitboutonaccp{
+    width: 650px;
+    height: 285px
+}
+
+.gras{
+    font-weight: bold;
+}
+
+.text-acc
+{
+    font-size: 30px;
+}
+
+.tailleboutonacce{
+    width: 965px;
+    height: 700px;
 }

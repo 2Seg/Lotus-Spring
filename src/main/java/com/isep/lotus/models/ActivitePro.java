@@ -7,7 +7,7 @@ import java.util.Date;
 public class ActivitePro {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
@@ -39,8 +39,7 @@ public class ActivitePro {
 
     public ActivitePro() {}
 
-    public ActivitePro(int id, Eleve eleve, TypeContrat type, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
-        this.id = id;
+    public ActivitePro(Eleve eleve, TypeContrat type, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
         this.eleve = eleve;
         this.type = type;
         this.duree = duree;

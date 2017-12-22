@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Compte non activé</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+
+</head>
+<body>
+
+<header th:replace="incluable/header/headerconnecte :: header" />
+
+<nav th:replace="incluable/menu/menunonconnecte :: nav" />
+
+
+<h1>Votre compte n'est pas encore activé. Veuillez contacter un administrateur.</h1>
+
+
+<footer th:replace="incluable/footer :: footer" />
+
+</body>
+</html>

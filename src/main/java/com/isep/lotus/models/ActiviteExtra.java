@@ -6,21 +6,21 @@ import javax.persistence.*;
 public class ActiviteExtra {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(nullable = false)
     private Eleve eleve;
 
+    @JoinColumn(nullable = false)
     private String nom;
 
 
 
     public ActiviteExtra() {}
 
-    public ActiviteExtra(int id, Eleve eleve, String nom) {
-        this.id = id;
+    public ActiviteExtra(Eleve eleve, String nom) {
         this.eleve = eleve;
         this.nom = nom;
     }
