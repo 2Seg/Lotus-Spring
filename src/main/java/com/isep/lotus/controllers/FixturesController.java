@@ -33,7 +33,7 @@ public class FixturesController {
         session.close();
 
 
-        return "home";
+        return "accueil";
     }
 
 }

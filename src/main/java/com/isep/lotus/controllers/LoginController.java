@@ -62,6 +62,13 @@ public class LoginController {
 
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ModelAndView logout(HttpSession httpSession) {
+        httpSession.invalidate();
+        return new ModelAndView("redirect:/");
+    }
+
+
     public String secureFieldString (String inputString) {
         return escapeHtml4(inputString.trim().replaceAll("\\\\", ""));
     }

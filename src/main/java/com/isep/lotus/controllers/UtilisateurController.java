@@ -27,20 +27,10 @@ public class UtilisateurController {
                 .uniqueResult();
         sessionHibernate.close();
         modelAndView.addObject(utilisateur);
+        modelAndView.addObject("type", utilisateur.checkUserType());
+        modelAndView.setViewName("accueil");
+        return modelAndView;
 
-        switch (utilisateur.checkUserType()) {
-            case "professeur":
-                modelAndView.setViewName("PageAccueilProfesseur");
-                return modelAndView;
-
-            case "eleve":
-                modelAndView.setViewName("PageAccueilEleve");
-                return modelAndView;
-
-            default:
-                modelAndView.setViewName("PageAccueilUtilisateur");
-                return modelAndView;
-        }
     }
 
 
