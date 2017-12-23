@@ -7,21 +7,24 @@ import java.util.Date;
 public class SejourAcademique {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne(targetEntity = Eleve.class, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(nullable = false)
     private Eleve eleve;
 
+    @JoinColumn(nullable = false)
     private String duree;
 
     private Date datedebut;
 
     private Date dateFin;
 
+    @JoinColumn(nullable = false)
     private String semestre;
 
+    @JoinColumn(nullable = false)
     private String pays;
 
     private String etablissement;
@@ -29,8 +32,7 @@ public class SejourAcademique {
 
     public SejourAcademique() {}
 
-    public SejourAcademique(int id, Eleve eleve, String duree, Date datedebut, Date dateFin, String semestre, String pays, String etablissement) {
-        this.id = id;
+    public SejourAcademique(Eleve eleve, String duree, Date datedebut, Date dateFin, String semestre, String pays, String etablissement) {
         this.eleve = eleve;
         this.duree = duree;
         this.datedebut = datedebut;

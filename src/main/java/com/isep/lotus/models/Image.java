@@ -12,25 +12,19 @@ import javax.persistence.*;
 public class Image {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(mappedBy = "image", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Eleve eleve;
+    @OneToOne(mappedBy = "image")
+    private Utilisateur utilisateur;
 
-    @OneToOne(mappedBy = "image", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Professeur professeur;
-
+    @JoinColumn(nullable = false)
     private String fichier;
-
-
 
     public Image() {}
 
-    public Image(int id, Eleve eleve, Professeur professeur, String fichier) {
-        this.id = id;
-        this.eleve = eleve;
-        this.professeur = professeur;
+    public Image(Utilisateur utilisateur, String fichier) {
+        this.utilisateur = utilisateur;
         this.fichier = fichier;
     }
 
@@ -42,20 +36,12 @@ public class Image {
         this.id = id;
     }
 
-    public Eleve getEleve() {
-        return eleve;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setEleve(Eleve eleve) {
-        this.eleve = eleve;
-    }
-
-    public Professeur getProfesseur() {
-        return professeur;
-    }
-
-    public void setProfesseur(Professeur professeur) {
-        this.professeur = professeur;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public String getFichier() {

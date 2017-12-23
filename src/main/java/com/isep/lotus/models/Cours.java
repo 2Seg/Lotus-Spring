@@ -8,7 +8,7 @@ import java.util.List;
 public class Cours {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToMany
@@ -24,8 +24,7 @@ public class Cours {
 
     public Cours() {}
 
-    public Cours(int id, List<Eleve> eleves, List<Professeur> professeurs, String nom, String reference) {
-        this.id = id;
+    public Cours(List<Eleve> eleves, List<Professeur> professeurs, String nom, String reference) {
         this.eleves = eleves;
         this.professeurs = professeurs;
         this.nom = nom;

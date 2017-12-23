@@ -13,7 +13,29 @@
         width: 1270px;
     }
 }
+.change_margin_botom{
+    margin-bottom: -8px;
+}
 
+.change_margin_botom2{
+    margin-bottom: -20px;
+}
+.prenom{
+    font-size:  10px;
+    height: auto;
+
+}
+.nom{
+    font-size:  10px;
+    height: 26px;
+
+}
+image_eleve{
+    width: 50px;
+    height: auto;
+
+
+}
 .fond{
     border: 1px solid #F3F3F3;
     border-radius: 6px;
@@ -32,6 +54,13 @@
 .PROFIL{
     font-size:  30px;
 }
+.text_promo{
+    font-size:  20px;
+}
+
+.Information{
+    font-size:  20px;
+}
 
 .fond2{
  background-color: WHITE;
@@ -44,10 +73,12 @@
     margin-left: 30px;
     margin-bottom: 20px;
 }
+
 .hello2{
  /*margin-left: 50px;*/
 
 }
+
 .profil{
 /*margin-bottom: 30px;*/
 }
@@ -124,13 +155,70 @@
 
 }
 
-.bloc_dans_blanc{
+.bloc_blanc_eleve{
+    border: 1px solid #F3F3F3;
+    border-radius: 6px;
+    line-height: 40px;
+    margin-left:10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-right:20px ;
+    padding-left: 20px;
+    padding-top: 0px;
 
 
+
+}
+
+.bloc_dans_blanc {
 
     padding-bottom: 10px;
-    padding-right:10px ;
+    padding-right: 10px;
     padding-left: 10px;
     padding-top: 10px;
+}
 
+.filtre{
+    margin-top: -10px;
+}
+
+.loupe{
+    margin-top: -5px;
+    margin-left: -25px;
+}
+
+.taper{
+    border: 0px solid red;
+    height: 40px;
+    width: 50%;
+    margin-top: -25px;
+}
+
+.margeboutonacc{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.tailleboutonaccp{
+    width: 650px;
+    height: 650px
+}
+
+.taillepetitboutonaccp{
+    width: 650px;
+    height: 285px
+}
+
+.gras{
+    font-weight: bold;
+}
+
+.text-acc
+{
+    font-size: 30px;
+}
+
+.tailleboutonacce{
+    width: 965px;
+    height: 700px;
 }

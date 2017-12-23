@@ -7,7 +7,7 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost/lotus-spring</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.password">root</property>
         <!--<property name="hbm2ddl.auto">create</property>-->
 
         <mapping class="com.isep.lotus.models.ActiviteExtra" />
@@ -18,11 +18,11 @@
         <mapping class="com.isep.lotus.models.Eleve" />
         <mapping class="com.isep.lotus.models.Image" />
         <mapping class="com.isep.lotus.models.LettreMotivation" />
-        <mapping class="com.isep.lotus.models.LettreRecommandation" />
         <mapping class="com.isep.lotus.models.Message" />
         <mapping class="com.isep.lotus.models.Parcours" />
         <mapping class="com.isep.lotus.models.Professeur" />
         <mapping class="com.isep.lotus.models.SejourAcademique" />
         <mapping class="com.isep.lotus.models.TypeContrat" />
+        <mapping class="com.isep.lotus.models.Utilisateur" />
     </session-factory>
 </hibernate-configuration>
