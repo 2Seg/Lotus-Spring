@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recherche</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+
+
+</head>
+<body>
+<header th:replace="incluable/header/headerconnecte :: header" />
+
+<nav th:replace="incluable/menu/menuprof :: nav" />
+
+<nav th:replace="incluable/barre_recherche :: nav" />
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="text-blue PROFIL"> Résultat de la recherche  </div>
+        <div class="col-sm-12 bg-lightgrey fond">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

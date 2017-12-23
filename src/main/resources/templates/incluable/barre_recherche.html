@@ -12,29 +12,38 @@
 <nav>
     <div class="container">
         <div class="row">
-            <div class="col-xs-8 barreR">
+            <div class=" col-lg-8  col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
                 <form class="navbar-form inline-form form-group">
-                    <div class="btn loupe"> <img th:src="@{/elements/icons/loupe25.png}" /></div>
+                    <div class="btn loupe"> <img th:src="@{/elements/icons/loupe25.png}" /> </div>
                     <input type="search" class="taper" placeholder="Elève, numéro étudiant..."/>
-
-                    <ul class="nav navbar-nav pull-right  filtre ">
-
-                        <li> <a href="#">Promotion</a> </li>
-
-                        <li> <a href="#">Année</a> </li>
-
-                        <li> <a href="#">Parcours</a> </li>
-
-                        <li> <a href="#">Activité</a> </li>
-
-                    </ul>
-
-
-
 
                 </form>
 
             </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-8 col-lg-push-3 col-md-push-3 col-sm-push-4 col-xs-push-8 ">
+            <ul class="nav navbar-nav pull-right  filtre ">
+
+                <li> <a href="#">Promotion</a> </li>
+
+                <li> <a href="#">Année</a> </li>
+
+                <li> <a href="#">Parcours</a> </li>
+
+                <li> <a href="#">Activité</a> </li>
+
+            </ul>
+            </div>
+        </div>
+
+
+
+        <div class="row col-xs-5 col-xs-push-5">
+
+            <div class="btn text-orange "><img th:src="@{/elements/icons/reinitialiser2.png}" /><span> reinitialiser  </span></div>
+
         </div>
 
     </div>

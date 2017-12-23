@@ -66,5 +66,8 @@ public class HomeController {
 
     @RequestMapping("/modification-profil-eleve")
     public String modification_profil_eleve () { return "modification_profil_eleve"; }
+
+    @RequestMapping("/Recherche-prof")
+    public String Recherche_prof() { return "Recherche_prof"; }
 }
 
