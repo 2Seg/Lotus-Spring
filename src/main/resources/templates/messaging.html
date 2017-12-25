@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Messagerie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+
+</head>
+<body>
+
+<div th:if="${session.type == 'professeur' || session.type == 'eleve'}">
+    <header th:replace="incluable/header/headerconnecte :: header" />
+    <nav th:replace="incluable/menu/menuconnecte :: nav" />
+    <nav th:replace="incluable/barre_recherche :: nav" />
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" ><h2>La messagerie n'est pas encore fonctionnelle.</h2></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:if="${session.type == 'none'}">
+    <header th:replace="incluable/header/headerconnecte :: header" />
+    <nav th:replace="incluable/menu/menunonconnecte :: nav" />
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" ><h2>La messagerie n'est pas encore fonctionnelle.</h2></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:replace="incluable/footer :: footer" />
+
+</body>
+</html>

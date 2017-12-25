@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -18,7 +19,7 @@ import static com.isep.lotus.LotusApplication.getSession;
 public class FixturesController {
 
     @RequestMapping(value = "/fixtures", method = RequestMethod.GET)
-    public String fixtures() {
+    public ModelAndView fixtures() {
         Eleve eleve1 = new Eleve(8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null);
         Utilisateur utilisateur1 = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "de SEGUIER", "eliottdes@gmail.com", null, eleve1, null);
 
@@ -35,8 +36,7 @@ public class FixturesController {
         tx.commit();
         session.close();
 
-
-        return "accueil";
+        return new ModelAndView("redirect:/");
     }
 
     public String passWordEncryption(String password) {

@@ -56,6 +56,7 @@ public class LoginController {
                 } else {
 
                     httpSession.setAttribute("id", utilisateur.getId());
+                    httpSession.setAttribute("type", utilisateur.checkUserType());
                     modelAndView.setViewName("redirect:/");
                     return modelAndView;
 

@@ -12,10 +12,10 @@ import javax.servlet.http.HttpSession;
 import static com.isep.lotus.LotusApplication.getSession;
 
 @Controller
-public class UtilisateurController {
+public class ProfilController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView home(HttpSession httpSession, ModelAndView modelAndView) {
+    @RequestMapping(value = "/profil", method = RequestMethod.GET)
+    public ModelAndView profilDisplay(HttpSession httpSession, ModelAndView modelAndView) {
         if(httpSession.isNew()) {
             return new ModelAndView("login");
         }
@@ -26,21 +26,12 @@ public class UtilisateurController {
                 .setParameter("id", httpSession.getAttribute("id"))
                 .uniqueResult();
         sessionHibernate.close();
-        modelAndView.addObject(utilisateur);
-        modelAndView.addObject("type", utilisateur.checkUserType());
-        modelAndView.setViewName("accueil");
-        return modelAndView;
-
-    }
-
-    @RequestMapping(value = "/profil", method = RequestMethod.GET)
-    public ModelAndView profil(HttpSession httpSession) {
-        if(httpSession.isNew()) {
-            return new ModelAndView("login");
+        if (utilisateur == null) {
+            return new ModelAndView("/login");
         }
-
-        return new ModelAndView();
+        modelAndView.addObject(utilisateur);
+        modelAndView.setViewName("/profil");
+        return modelAndView;
     }
-
 
 }
