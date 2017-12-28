@@ -20,11 +20,7 @@ public class MessagingController {
             return new ModelAndView("login");
         }
         Session sessionHibernate = getSession();
-        Utilisateur utilisateur = (Utilisateur) sessionHibernate.createQuery("select u " +
-                "from utilisateur u " +
-                "where u.id like :id")
-                .setParameter("id", httpSession.getAttribute("id"))
-                .uniqueResult();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         sessionHibernate.close();
         if (utilisateur == null) {
             return new ModelAndView("/login");

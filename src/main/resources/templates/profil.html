@@ -16,13 +16,63 @@
     <nav th:replace="incluable/menu/menuconnecte :: nav" />
     <nav th:replace="incluable/barre_recherche :: nav" />
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
-                <button class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" ><h2>L'accès au profil n'est pas encore fonctionnel.</h2></button>
+    <div th:if="${session.type == 'professeur'}">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 bg-lightgrey fond">
+                    <div class="row">
+                        <p class=" col-sm-1 col-sm-push-0.5 text-blue PROFIL">Profil</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-push-1 fond2 ">
+                            <div class="text-cyan"> Informations personelles</div>
+                            <br/>
+                            <div class="row form-group">
+                                <div class="col-sm-2 col-sm-push-1 photoprofil" align="center">
+                                    <img th:src="@{/elements/icons/profilVide.png}" />
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-lg-push-3 col-md-push-3 col-sm-push-2  text-orange form-group">
+                                    <ul>
+                                        <dl>Nom</dl>
+                                        <dl>Prénom</dl>
+                                        <dl>Email</dl>
+                                        <dl>Parcours</dl>
+                                        <dl>Cours enseignés</dl>
+                                    </ul>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-lg-push-2 col-md-push-2 col-sm-push-2  form-group">
+                                    <ul>
+                                        <dl>zakia</dl>
+                                        <dl>Aoul</dl>
+                                        <dl>zakia@gmail.com</dl>
+                                        <dl>Systèmes d'information</dl>
+                                        <dl>
+                                            <ul>
+                                                <li>Génie logiciel</li>
+                                                <li>Architecture des SI </li>
+                                            </ul>
+                                        </dl>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <a href="ModificationProfilProfesseur"><button class="btn btn-default pull-right bg-orange" > Modifier votre profil </button></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <div th:if="${session.type == 'eleve'}">
+
+    </div>
+
 </div>
 
 

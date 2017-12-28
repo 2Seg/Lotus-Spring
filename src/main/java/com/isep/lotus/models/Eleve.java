@@ -19,6 +19,11 @@ public class Eleve extends Utilisateur {
     @JoinColumn(nullable = false)
     private String promotion; // changer le type Date ?
 
+    @JoinColumn(nullable = false)
+    private boolean contact = true;
+
+    private String linkedin;
+
     @OneToOne(mappedBy = "eleve")
     private Utilisateur utilisateur;
 
@@ -52,11 +57,13 @@ public class Eleve extends Utilisateur {
 
     public Eleve() {}
 
-    public Eleve(int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
+    public Eleve(int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, boolean contact, String linkedin, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
         this.numeroEtudiant = numeroEtudiant;
         this.anneeScolaire = anneeScolaire;
         this.statutScolaire = statutScolaire;
         this.promotion = promotion;
+        this.contact = contact;
+        this.linkedin = linkedin;
         this.activiteExtras = activiteExtras;
         this.activitePros = activitePros;
         this.bulletins = bulletins;
@@ -98,6 +105,22 @@ public class Eleve extends Utilisateur {
 
     public void setPromotion(String promotion) {
         this.promotion = promotion;
+    }
+
+    public boolean isContact() {
+        return contact;
+    }
+
+    public void setContact(boolean contact) {
+        this.contact = contact;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
     }
 
     public Utilisateur getUtilisateur() {

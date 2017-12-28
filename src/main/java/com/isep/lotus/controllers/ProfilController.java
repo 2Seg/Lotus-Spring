@@ -1,5 +1,6 @@
 package com.isep.lotus.controllers;
 
+import com.isep.lotus.models.Eleve;
 import com.isep.lotus.models.Utilisateur;
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
@@ -19,12 +20,9 @@ public class ProfilController {
         if(httpSession.isNew()) {
             return new ModelAndView("login");
         }
+
         Session sessionHibernate = getSession();
-        Utilisateur utilisateur = (Utilisateur) sessionHibernate.createQuery("select u " +
-                "from utilisateur u " +
-                "where u.id like :id")
-                .setParameter("id", httpSession.getAttribute("id"))
-                .uniqueResult();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         sessionHibernate.close();
         if (utilisateur == null) {
             return new ModelAndView("/login");

@@ -20,23 +20,32 @@ public class FixturesController {
 
     @RequestMapping(value = "/fixtures", method = RequestMethod.GET)
     public ModelAndView fixtures() {
-        Eleve eleve1 = new Eleve(8740, "A2", "Académique", "2019", null, null, null, null, null, null, null, null, null);
-        Utilisateur utilisateur1 = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "de SEGUIER", "eliottdes@gmail.com", null, eleve1, null);
+        Eleve eleve1 = new Eleve(8740, "A2", "Académique", "2019", true, "http://linkedin.com/eliott-de-seguier", null, null, null, null, null, null, null, null, null);
+        Utilisateur utilisateur1 = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "DE SEGUIER", "eliottdes@gmail.com", null, eleve1, null);
+
+        Utilisateur utilisateur2 = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr", null, null, null);
+
+        Utilisateur utilisateur3 = new Utilisateur("oriajo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@isep.fr", null, null, null);
+
+        Utilisateur utilisateur4 = new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr", null, null, null);
 
         Professeur professeur1 = new Professeur(null, null, null);
-        Utilisateur utilisateur2 = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr", null, null, professeur1);
+        Utilisateur utilisateur5 = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr", null, null, professeur1);
 
-        Utilisateur utilisateur3 = new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr", null, null, null);
+        Utilisateur utilisateur6 = new Utilisateur("herfel", passWordEncryption("aze"), "Hervé", "FELLER", "herve.feller@isep.fr", null, null, null);
 
         Session session = getSession();
         Transaction tx = session.beginTransaction();
         session.persist(utilisateur1);
         session.persist(utilisateur2);
         session.persist(utilisateur3);
+        session.persist(utilisateur4);
+        session.persist(utilisateur5);
+        session.persist(utilisateur6);
         tx.commit();
         session.close();
 
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/login");
     }
 
     public String passWordEncryption(String password) {
