@@ -1,5 +1,9 @@
 package com.isep.lotus.controllers;
 
+import com.isep.lotus.models.Bulletin;
+import com.isep.lotus.models.Eleve;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +25,11 @@ public class HomeController {
         return "login";
     }
 
-    @RequestMapping("/profil_professeur")
+    @RequestMapping("/profil-professeur")
     public String profil_professeur() {
+       /* Professeur professeur = new Professeur(1,"Zakia", "Kazi-Aoul", "zakia@gmail.com");
+//        model.addAllAttributes(Collections.singleton(professeur));
+        model.addAttribute(professeur);*/
         return "profil_professeur";
     }
 
@@ -59,5 +66,8 @@ public class HomeController {
 
     @RequestMapping("/liste-ancien-eleve")
     public String liste_ancien_eleve () { return "liste_ancien_eleve"; }
+
+    @RequestMapping("/Recherche-prof")
+    public String Recherche_prof() { return "Recherche_prof"; }
 }
 
