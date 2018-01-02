@@ -12,10 +12,7 @@ public class Cours {
     private int id;
 
     @ManyToMany
-    private List<Eleve> eleves = new ArrayList<>();
-
-    @ManyToMany
-    private List<Professeur> professeurs = new ArrayList<>();
+    private List<Utilisateur> utilisateurs = new ArrayList<>();
 
     private String nom;
 
@@ -24,11 +21,19 @@ public class Cours {
 
     public Cours() {}
 
-    public Cours(List<Eleve> eleves, List<Professeur> professeurs, String nom, String reference) {
-        this.eleves = eleves;
-        this.professeurs = professeurs;
+    public Cours(String nom, String reference) {
         this.nom = nom;
         this.reference = reference;
+    }
+
+    public void addUtilisateur(Utilisateur utilisateurToAdd) {
+        utilisateurs.add(utilisateurToAdd);
+        utilisateurToAdd.getCours().add(this);
+    }
+
+    public void removeUtilisateur(Utilisateur utilisateurToRemove) {
+        utilisateurs.remove(utilisateurToRemove);
+        utilisateurToRemove.getCours().remove(this);
     }
 
     public int getId() {
@@ -39,20 +44,8 @@ public class Cours {
         this.id = id;
     }
 
-    public List<Eleve> getEleves() {
-        return eleves;
-    }
-
-    public void setEleves(List<Eleve> eleves) {
-        this.eleves = eleves;
-    }
-
-    public List<Professeur> getProfesseurs() {
-        return professeurs;
-    }
-
-    public void setProfesseurs(List<Professeur> professeurs) {
-        this.professeurs = professeurs;
+    public List<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
     }
 
     public String getNom() {

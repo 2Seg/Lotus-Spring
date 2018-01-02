@@ -90,7 +90,9 @@ public class SigninController {
                         modelAndView.addObject("erreur", erreur).setViewName("signin");
                         return modelAndView;
                     } else {
-                        Utilisateur utilisateur = new Utilisateur(identifiant, mdp, prenom, nom, email, null, null, null);
+                        Utilisateur utilisateur = new Utilisateur(identifiant, mdp, prenom, nom, email);
+
+                        // TODO : gérer l'ajout de la photo
 
                         Session sessionHibernate3 = getSession();
                         Transaction tx = sessionHibernate3.beginTransaction();

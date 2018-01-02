@@ -48,31 +48,16 @@ public class Eleve extends Utilisateur {
     @OneToMany(mappedBy = "eleve")
     private List<Message> messages = new ArrayList<>();
 
-    @ManyToOne
-    private Parcours parcours;
-
-    @ManyToMany(mappedBy = "eleves")
-    private List<Cours> cours = new ArrayList<>();
-
 
     public Eleve() {}
 
-    public Eleve(int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, boolean contact, String linkedin, List<ActiviteExtra> activiteExtras, List<ActivitePro> activitePros, List<Bulletin> bulletins, List<Cv> cvs, List<LettreMotivation> lettreMotivations, List<SejourAcademique> sejourAcademiques, List<Message> messages, Parcours parcours, List<Cours> cours) {
+    public Eleve(int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, boolean contact, String linkedin) {
         this.numeroEtudiant = numeroEtudiant;
         this.anneeScolaire = anneeScolaire;
         this.statutScolaire = statutScolaire;
         this.promotion = promotion;
         this.contact = contact;
         this.linkedin = linkedin;
-        this.activiteExtras = activiteExtras;
-        this.activitePros = activitePros;
-        this.bulletins = bulletins;
-        this.cvs = cvs;
-        this.lettreMotivations = lettreMotivations;
-        this.sejourAcademiques = sejourAcademiques;
-        this.messages = messages;
-        this.parcours = parcours;
-        this.cours = cours;
     }
 
     public int getNumeroEtudiant() {
@@ -185,21 +170,5 @@ public class Eleve extends Utilisateur {
 
     public void setMessages(List<Message> messages) {
         this.messages = messages;
-    }
-
-    public Parcours getParcours() {
-        return parcours;
-    }
-
-    public void setParcours(Parcours parcours) {
-        this.parcours = parcours;
-    }
-
-    public List<Cours> getCours() {
-        return cours;
-    }
-
-    public void setCours(List<Cours> cours) {
-        this.cours = cours;
     }
 }

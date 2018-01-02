@@ -1,6 +1,8 @@
 package com.isep.lotus.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ.
@@ -40,18 +42,21 @@ public class Utilisateur {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Professeur professeur;
 
+    @ManyToMany(mappedBy = "utilisateurs", cascade = {CascadeType.PERSIST})
+    private List<Parcours> parcours = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "utilisateurs", cascade = {CascadeType.PERSIST})
+    private List<Cours> cours = new ArrayList<>();
+
 
     public Utilisateur() {}
 
-    public Utilisateur(String identifiant, String mdp, String prenom, String nom, String email, Image image, Eleve eleve, Professeur professeur) {
+    public Utilisateur(String identifiant, String mdp, String prenom, String nom, String email) {
         this.identifiant = identifiant;
         this.mdp = mdp;
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
-        this.image = image;
-        this.eleve = eleve;
-        this.professeur = professeur;
     }
 
     public int getId() {
@@ -124,6 +129,34 @@ public class Utilisateur {
 
     public void setProfesseur(Professeur professeur) {
         this.professeur = professeur;
+    }
+
+    public List<Parcours> getParcours() {
+        return parcours;
+    }
+
+    public void addParcours(Parcours parcoursToAdd) {
+        parcours.add(parcoursToAdd);
+        parcoursToAdd.getUtilisateurs().add(this);
+    }
+
+    public void removeParcours(Parcours parcoursToRemove) {
+        parcours.remove(parcoursToRemove);
+        parcoursToRemove.getUtilisateurs().remove(this);
+    }
+
+    public List<Cours> getCours() {
+        return cours;
+    }
+
+    public void addCours(Cours coursToAdd) {
+        cours.add(coursToAdd);
+        coursToAdd.getUtilisateurs().add(this);
+    }
+
+    public void removeCours(Cours coursToRemove) {
+        cours.remove(coursToRemove);
+        coursToRemove.getUtilisateurs().remove(this);
     }
 
     public String checkUserType () {

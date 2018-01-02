@@ -1,6 +1,6 @@
 package com.isep.lotus.controllers;
 
-import com.isep.lotus.models.Eleve;
+import com.isep.lotus.models.Parcours;
 import com.isep.lotus.models.Utilisateur;
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.isep.lotus.LotusApplication.getSession;
 
@@ -23,11 +26,25 @@ public class ProfilController {
 
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
-        sessionHibernate.close();
+
         if (utilisateur == null) {
             return new ModelAndView("/login");
         }
+
         modelAndView.addObject(utilisateur);
+
+        if (httpSession.getAttribute("type") == "professeur") {
+
+            modelAndView.addObject("listParcours", utilisateur.getProfesseur().getParcours());
+            modelAndView.addObject("listCours", utilisateur.getProfesseur().getCours());
+
+        } else if (httpSession.getAttribute("type") == "eleve") {
+
+
+
+
+        }
+
         modelAndView.setViewName("/profil");
         return modelAndView;
     }

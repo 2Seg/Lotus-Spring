@@ -11,11 +11,9 @@ public class Parcours {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy = "parcours")
-    private List<Eleve> eleves = new ArrayList<>();
-
     @ManyToMany
-    private List<Professeur> professeurs = new ArrayList<>();
+    private List<Utilisateur> utilisateurs = new ArrayList<>();
+
 
     @JoinColumn(nullable = false)
     private String nom;
@@ -23,9 +21,7 @@ public class Parcours {
 
     public Parcours() {}
 
-    public Parcours(List<Eleve> eleves, List<Professeur> professeurs, String nom) {
-        this.eleves = eleves;
-        this.professeurs = professeurs;
+    public Parcours(String nom) {
         this.nom = nom;
     }
 
@@ -37,20 +33,18 @@ public class Parcours {
         this.id = id;
     }
 
-    public List<Eleve> getEleves() {
-        return eleves;
+    public List<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
     }
 
-    public void setEleves(List<Eleve> eleves) {
-        this.eleves = eleves;
+    public void addUtilisateur(Utilisateur utilisateurToAdd) {
+        utilisateurs.add(utilisateurToAdd);
+        utilisateurToAdd.getParcours().add(this);
     }
 
-    public List<Professeur> getProfesseurs() {
-        return professeurs;
-    }
-
-    public void setProfesseurs(List<Professeur> professeurs) {
-        this.professeurs = professeurs;
+    public void removeUtilisateur(Utilisateur utilisateurToRemove) {
+        utilisateurs.remove(utilisateurToRemove);
+        utilisateurToRemove.getParcours().remove(this);
     }
 
     public String getNom() {
