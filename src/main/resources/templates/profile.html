@@ -21,7 +21,11 @@
             <div class="row">
                 <div class="col-sm-12 bg-lightgrey fond">
                     <div class="row">
-                        <p class=" col-sm-1 col-sm-push-0.5 text-blue PROFIL">Profil</p>
+                        <p class="col-sm-1 col-sm-push-0.5 text-blue PROFIL">Profil</p>
+                        <p class="col-sm-3 pull-right text-blue PROFIL">
+                            <span th:text="${utilisateur.prenom}">Prénom</span>
+                            <span th:text="${utilisateur.nom}">Nom</span>
+                        </p>
                     </div>
 
                     <div class="row">
@@ -35,6 +39,7 @@
 
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-lg-push-3 col-md-push-3 col-sm-push-2  text-orange form-group">
                                     <ul>
+                                        <dl>Identifiant</dl>
                                         <dl>Nom</dl>
                                         <dl>Prénom</dl>
                                         <dl>Email</dl>
@@ -45,6 +50,7 @@
 
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-lg-push-2 col-md-push-2 col-sm-push-2  form-group">
                                     <ul>
+                                        <dl th:text="${utilisateur.identifiant}">Identifiant</dl>
                                         <dl th:text="${utilisateur.nom}">Nom</dl>
                                         <dl th:text="${utilisateur.prenom}">Prénom</dl>
                                         <dl th:text="${utilisateur.email}">Email</dl>
@@ -65,7 +71,7 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <a href="/profil/edit"><button class="btn btn-default pull-right bg-orange" > Modifier votre profil </button></a>
+                        <a href="/profile/edit"><button class="btn btn-default pull-right bg-orange" >Modifier votre profil</button></a>
                     </div>
                 </div>
             </div>
@@ -76,20 +82,6 @@
 
     </div>
 
-</div>
-
-
-<div th:if="${session.type == 'none'}">
-    <header th:replace="incluable/header/headerconnecte :: header" />
-    <nav th:replace="incluable/menu/menunonconnecte :: nav" />
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
-                <button class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" ><h2>L'accès au profil n'est pas encore fonctionnel.</h2></button>
-            </div>
-        </div>
-    </div>
 </div>
 
 

@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modification du profil</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+</head>
+<body>
+
+<div th:if="${session.type == 'professeur' || session.type == 'eleve'}">
+    <header th:replace="incluable/header/headerconnecte :: header" />
+    <nav th:replace="incluable/menu/menuconnecte :: nav" />
+    <nav th:replace="incluable/barre_recherche :: nav" />
+
+    <div th:if="${session.type == 'professeur'}">
+        <div th:if="${session.type == 'professeur'}">
+            <div class="container-fluide">
+
+                <div class="row">
+                    <div class=" col-lg-12  bg-lightgrey bloc_gris">
+                        <form class="form-horizontal" method="post" action="/profile/edit">
+
+                            <div th:if="${erreur}" th:text="${erreur}" class="alert-danger" align="center">Erreur</div>
+
+                            <div class="row">
+                                <div class="col-lg-5 text-blue"><h3>Modification du profil</h3></div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-lg-7 fond2 bloc_blanc">
+                                    <div class="row form-group" >
+                                        <div class="col-lg-5  text-blue">Informations personnelles</div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-lg-3 bloc_dans_blanc ">
+                                            <div class="row form-group">
+                                                <div align="center"> <img th:src="@{/elements/icons/profilVide.png}"/></div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div align="center">
+                                                    <input type="file" name="photo" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-9 bloc_dans_blanc">
+                                            <div class="row form-group">
+                                                <label for="prenom" class=" col-lg-5  entreeCO text-orange">Prénom<span class="text-red">*</span></label>
+                                                <div class=" col-lg-7">
+                                                    <input th:if="${utilisateur.prenom}" type="text" id="prenom" name="prenom" class="form-control" th:value="${utilisateur.prenom}" placeholder="Prénom"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <label for="nom" class=" col-lg-5  text-orange entreeCO">Nom<span class="text-red">*</span></label>
+                                                <div class=" col-lg-7">
+                                                    <input th:if="${utilisateur.nom}" type="text" id="nom" name="nom" class=" form-control" th:value="${utilisateur.nom}" placeholder="Nom" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <label for="email" class=" col-lg-5  entreeCO text-orange">Email <span class="text-red">*</span></label>
+                                                <div class=" col-lg-7">
+                                                    <input th:if="${utilisateur.email}" type="email" id="email" name="email" class="form-control" th:value="${utilisateur.email}" placeholder="Email"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class=" col-lg-5 fond2 bloc_blanc">
+                                    <div class="row form-group" >
+                                        <div class="col-lg-5  text-blue">Informations de connexion</div>
+                                    </div>
+
+                                    <div class="row form-group" >
+                                        <div class="bloc_dans_blanc">
+
+                                            <div class="row form-group">
+                                                <label for="identifiant" class=" col-lg-5  entreeCO text-orange">Identifiant<span class="text-red">*</span></label>
+                                                <div class=" col-lg-7">
+                                                    <input th:if="${utilisateur.identifiant}" type="text" id="identifiant" name="identifiant" class="form-control" th:value="${utilisateur.identifiant}" placeholder="Identifiant de connexion"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <label for="mdp" class=" col-lg-5  entreeCO text-orange">Mot de passe</label>
+                                                <div class=" col-lg-7">
+                                                    <input type="password" id="mdp" name="mdp" class="form-control" placeholder="Mot de passe"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <label for="conf-mdp" class=" col-lg-5 text-orange entreeCO">Confirmer le mot de passe</label>
+                                                <div class=" col-lg-7">
+                                                    <input type="password" id="conf-mdp" name="conf-mdp" class="form-control"  placeholder="Confirmation du mot de passe"/>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--<div class=" col-lg-5 fond2 bloc_blanc">-->
+                                    <!--<div class="row form-group" >-->
+                                        <!--<div class="col-lg-5  text-blue">Informations professorales</div>-->
+                                    <!--</div>-->
+
+                                    <!--<div class="row form-group" >-->
+                                        <!--<div class="bloc_dans_blanc">-->
+
+                                            <!--<div class="row form-group">-->
+                                                <!--<label for="parcours" class=" col-lg-5  entreeCO text-orange">Parcours</label>-->
+                                                <!--<div class=" col-lg-7">-->
+                                                    <!--<select name="parcours" id="parcours" >-->
+                                                        <!--<option selected="" disabled="">&#45;&#45; Choisir un parcours &#45;&#45;</option>-->
+                                                        <!--<option th:each="parcours : ${listParcours}" th:value="${parcours.id}" th:text="${parcours.nom}">Option</option>-->
+                                                    <!--</select>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                            <!--<div class="row form-group">-->
+                                                <!--<label for="cours" class=" col-lg-5  entreeCO text-orange">Cours</label>-->
+                                                <!--<div class="col-lg-7">-->
+                                                    <!--<input type="text" name="cours" id="cours" placeholder="Intitulé du cours enseigné" class="form-control"/>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+
+
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                <!--</div>-->
+                            </div>
+                            <input type="submit" name="submit" value="Confirmer" class="btn btn-default bg-orange pull-right" />
+                        </form>
+                        <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${session.type == 'eleve'}">
+
+    </div>
+
+</div>
+
+
+<div th:if="${session.type == 'none'}">
+    <header th:replace="incluable/header/headerconnecte :: header" />
+    <nav th:replace="incluable/menu/menunonconnecte :: nav" />
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" ><h2>L'accès au profil n'est pas encore fonctionnel.</h2></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:replace="incluable/footer :: footer" />
+
+
+</body>
+</html>

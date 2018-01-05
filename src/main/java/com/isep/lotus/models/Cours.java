@@ -16,14 +16,11 @@ public class Cours {
 
     private String nom;
 
-    private String reference;
-
 
     public Cours() {}
 
-    public Cours(String nom, String reference) {
+    public Cours(String nom) {
         this.nom = nom;
-        this.reference = reference;
     }
 
     public void addUtilisateur(Utilisateur utilisateurToAdd) {
@@ -54,13 +51,5 @@ public class Cours {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
     }
 }

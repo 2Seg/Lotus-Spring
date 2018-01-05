@@ -22,7 +22,7 @@ public class FixturesController {
     @RequestMapping(value = "/fixtures1", method = RequestMethod.GET)
     public ModelAndView fixtures1(ModelAndView modelAndView) {
 
-        Parcours si = new Parcours("Systèmes d'information");
+//        Parcours si = new Parcours("Systèmes d'information");
         Parcours bi = new Parcours("Bussiness Intelligence");
         Parcours gl = new Parcours("Génie Logiciel");
         Parcours ns = new Parcours("Numérique et santé");
@@ -44,11 +44,11 @@ public class FixturesController {
 //
 //        Utilisateur utilisateur4 = new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr", null, null, null);
 //
-        Professeur professeur1 = new Professeur();
-        professeur1.getParcours().add(si);
-
-        Utilisateur utilisateur5 = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr");
-        utilisateur5.setProfesseur(professeur1);
+//        Professeur professeur1 = new Professeur();
+//        professeur1.getParcours().add(si);
+//
+//        Utilisateur utilisateur5 = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr");
+//        utilisateur5.setProfesseur(professeur1);
 
 //        Utilisateur utilisateur6 = new Utilisateur("herfel", passWordEncryption("aze"), "Hervé", "FELLER", "herve.feller@isep.fr", null, null, null);
 //        utilisateur5.getProfesseur().getParcours().get(0).getNom();
@@ -57,7 +57,7 @@ public class FixturesController {
         Session session = getSession();
         Transaction tx = session.beginTransaction();
 
-        session.persist(si);
+//        session.persist(si);
         session.persist(bi);
         session.persist(gl);
         session.persist(ns);
@@ -70,7 +70,7 @@ public class FixturesController {
 //        session.persist(utilisateur2);
 //        session.persist(utilisateur3);
 //        session.persist(utilisateur4);
-        session.persist(utilisateur5);
+//        session.persist(utilisateur5);
 //        session.persist(utilisateur6);
         tx.commit();
         session.close();
@@ -81,14 +81,25 @@ public class FixturesController {
     @RequestMapping(value = "/fixtures2", method = RequestMethod.GET)
     public ModelAndView fixtures2(ModelAndView modelAndView) {
 
-        Session sessionHibernate = getSession();
-        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, 2);
+        Session session = getSession();
+        Parcours si = (Parcours) session.get(Parcours.class, 1);
+        Cours technoWeb = (Cours) session.get(Cours.class, 1);
 
-        Parcours si = (Parcours) sessionHibernate.get(Parcours.class, 1);
-        Transaction tx = sessionHibernate.beginTransaction();
-        utilisateur.getProfesseur().getParcours().add(si);
-        sessionHibernate.update(utilisateur);
-        tx.commit();
+        Eleve eleve = new Eleve(8740, "A2", "Académique", "2019", true, "www.linkedin.com/in/eliott-de-séguier");
+        Utilisateur utilisateur = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "DE SEGUIER", "eliottdes@gmail.com");
+
+        eleve.addParcours(si);
+        eleve.addCours(technoWeb);
+        utilisateur.setEleve(eleve);
+
+
+
+        session.beginTransaction();
+        session.persist(utilisateur);
+
+        session.getTransaction().commit();
+
+        session.close();
 
         modelAndView.setViewName("redirect:/login");
         return modelAndView;
@@ -99,8 +110,8 @@ public class FixturesController {
 
         Parcours si = new Parcours("Systèmes d'information");
 
-        Cours technoWeb = new Cours("Technologies Web", "[II.2306/II.2406]");
-        Cours archiSi = new Cours ("Architectures des Systèmes d'information", "[II.2316 / II.2416]");
+        Cours technoWeb = new Cours("Technologies Web");
+        Cours archiSi = new Cours ("Architectures des Systèmes d'information");
 
         Professeur professeur = new Professeur();
         Utilisateur utilisateur = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr");
