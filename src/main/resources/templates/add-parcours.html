@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajouter un parcours</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+</head>
+<body>
+
+<div th:if="${session.type == 'professeur' || session.type == 'eleve'}">
+    <header th:replace="incluable/header/headerconnecte :: header" />
+    <nav th:replace="incluable/menu/menuconnecte :: nav" />
+    <nav th:replace="incluable/barre_recherche :: nav" />
+
+    <div th:if="${session.type == 'professeur'}">
+        <div th:if="${session.type == 'professeur'}">
+            <div class="container-fluide">
+                <div class="row">
+                    <div class=" col-lg-12  bg-lightgrey bloc_gris">
+                        <form class="form-horizontal" method="post" action="/profile/edit/specialty/add">
+
+                            <div th:if="${erreur}" th:text="${erreur}" class="alert-danger" align="center">Erreur</div>
+
+                            <div class="row">
+                                <div class="col-lg-5 text-blue"><h3>Ajouter un parcours</h3></div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-lg-5 fond2 bloc_blanc">
+                                    <div class="row form-group" >
+                                        <div class="col-lg-5  text-blue">Choix du parcours à ajouter</div>
+                                    </div>
+
+                                    <div class="row form-group" >
+                                        <div class="bloc_dans_blanc">
+
+                                            <div class="row form-group">
+                                                <label for="parcours" class=" col-lg-5  entreeCO text-orange">Parcours</label>
+                                                <div class=" col-lg-7">
+                                                    <select name="parcours" id="parcours" >
+                                                        <option selected="" disabled="">-- Choisir un parcours --</option>
+                                                        <option th:each="parcours : ${listParcours}" th:value="${parcours.id}" th:text="${parcours.nom}">Option</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <input type="submit" name="submit" value="Ajouter" class="btn btn-default bg-orange pull-right" />
+                        </form>
+                        <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${session.type == 'eleve'}">
+
+    </div>
+
+</div>
+
+<footer th:replace="incluable/footer :: footer" />
+
+<script type="text/javascript" th:src="@{/scripts/specialties.js}"></script>
+
+</body>
+</html>
