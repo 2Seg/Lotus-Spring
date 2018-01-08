@@ -41,7 +41,7 @@
                                                 <label for="parcours" class=" col-lg-5  entreeCO text-orange">Parcours</label>
                                                 <div class=" col-lg-7">
                                                     <select name="parcours" id="parcours" >
-                                                        <option selected="" disabled="">-- Choisir un parcours --</option>
+                                                        <option selected="" value="unselected">-- Choisir un parcours --</option>
                                                         <option th:each="parcours : ${listParcours}" th:value="${parcours.id}" th:text="${parcours.nom}">Option</option>
                                                     </select>
                                                 </div>

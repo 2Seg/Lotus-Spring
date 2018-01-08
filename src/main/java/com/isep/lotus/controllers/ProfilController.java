@@ -1,5 +1,6 @@
 package com.isep.lotus.controllers;
 
+import com.isep.lotus.models.Cours;
 import com.isep.lotus.models.Parcours;
 import com.isep.lotus.models.Utilisateur;
 import org.hibernate.Session;
@@ -199,22 +200,31 @@ public class ProfilController {
                                            HttpSession httpSession,
                                            ModelAndView modelAndView) {
 
+        String erreur = "Erreur : ";
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
 
-        Parcours parcours = (Parcours) sessionHibernate.get(Parcours.class, new Integer(parcoursReq));
+        if (parcoursReq.equals("unselected")) {
+            erreur = erreur + "veuillez sélectionner une option";
+            modelAndView.addObject(utilisateur);
+            modelAndView.addObject("erreur", erreur).setViewName("add-parcours");
+            return modelAndView;
+        } else {
+            Parcours parcours = (Parcours) sessionHibernate.get(Parcours.class, new Integer(parcoursReq));
 
-        utilisateur.getProfesseur().addParcours(parcours);
+            utilisateur.getProfesseur().addParcours(parcours);
 
-        sessionHibernate.beginTransaction();
-        sessionHibernate.update(utilisateur);
-        sessionHibernate.update(parcours);
-        sessionHibernate.getTransaction().commit();
+            sessionHibernate.beginTransaction();
+            sessionHibernate.update(utilisateur);
+            sessionHibernate.update(parcours);
+            sessionHibernate.getTransaction().commit();
 
-        modelAndView.addObject(utilisateur);
-        modelAndView.setViewName("redirect:/profile/edit");
+            modelAndView.addObject(utilisateur);
+            modelAndView.setViewName("redirect:/profile/edit");
 
-        return modelAndView;
+            return modelAndView;
+        }
+
     }
 
     @RequestMapping(value = "/profile/edit/specialty/delete/{idParcours}", method = RequestMethod.GET)
@@ -243,8 +253,8 @@ public class ProfilController {
 
     /********************************************* COURS ***************************************************/
 
-    @RequestMapping(value = "/profile/edit/courses", method = RequestMethod.GET)
-    public ModelAndView editCoursProcess(HttpSession httpSession, ModelAndView modelAndView) {
+    @RequestMapping(value = "/profile/edit/courses/add", method = RequestMethod.GET)
+    public ModelAndView addCoursDisplay(ModelAndView modelAndView, HttpSession httpSession) {
         if(httpSession.isNew()) {return new ModelAndView("login");}
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
@@ -252,20 +262,76 @@ public class ProfilController {
 
         modelAndView.addObject(utilisateur).setViewName("add-cours");
 
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/profile/edit/courses/add", method = RequestMethod.POST)
+    public ModelAndView addCoursProcess(@RequestParam("cours") String coursReq,
+                                           HttpSession httpSession,
+                                           ModelAndView modelAndView) {
+
+        String erreur = "Erreur : ";
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+
+        if (coursReq.equals("unselected")) {
+            erreur = erreur + "veuillez saisir un intitulé de cours";
+            modelAndView.addObject(utilisateur);
+            modelAndView.addObject("erreur", erreur).setViewName("add-cours");
+            return modelAndView;
+        } else {
+            Cours cours = new Cours();
+            cours.setNom(capitalizeString(coursReq));
+
+            utilisateur.getProfesseur().addCours(cours);
+
+            sessionHibernate.beginTransaction();
+            sessionHibernate.persist(cours);
+            sessionHibernate.update(utilisateur);
+            sessionHibernate.update(cours);
+            sessionHibernate.getTransaction().commit();
+
+            modelAndView.addObject(utilisateur);
+            modelAndView.setViewName("redirect:/profile/edit");
+
+            return modelAndView;
+        }
+    }
+
+    @RequestMapping(value = "/profile/edit/courses/delete/{idCours}", method = RequestMethod.GET)
+    public ModelAndView deleteCoursProcess(@PathVariable("idCours") String idCours,
+                                              HttpSession httpSession,
+                                              ModelAndView modelAndView) {
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+
+        Cours cours = (Cours) sessionHibernate.get(Cours.class, new Integer(idCours));
+
+        utilisateur.getProfesseur().removeCours(cours);
+
+        sessionHibernate.beginTransaction();
+        sessionHibernate.update(utilisateur);
+        sessionHibernate.update(cours);
+        sessionHibernate.getTransaction().commit();
+
+        modelAndView.addObject(utilisateur);
+        modelAndView.setViewName("redirect:/profile/edit");
 
         return modelAndView;
     }
 
 
-    public String secureFieldString (String inputString) {
+    private String secureFieldString (String inputString) {
         return escapeHtml4(inputString.trim());
     }
 
-    public String nameProcess (String inputString) {
+    private String nameProcess (String inputString) {
         return inputString.toUpperCase();
     }
 
-    public String firstNameProcess (String inputString) {
+    private String firstNameProcess (String inputString) {
         if (inputString.isEmpty()) {
             return inputString;
         }
@@ -274,7 +340,7 @@ public class ProfilController {
         return new String(char_table);
     }
 
-    public String passWordEncryption(String password) {
+    private String passWordEncryption(String password) {
         if (password.isEmpty()) {
             return password;
         }
@@ -297,4 +363,17 @@ public class ProfilController {
         return outputPassword;
     }
 
+    private static String capitalizeString(String string) {
+        char[] chars = string.toLowerCase().toCharArray();
+        boolean found = false;
+        for (int i = 0; i < chars.length; i++) {
+            if (!found && Character.isLetter(chars[i])) {
+                chars[i] = Character.toUpperCase(chars[i]);
+                found = true;
+            } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
+                found = false;
+            }
+        }
+        return String.valueOf(chars);
+    }
 }

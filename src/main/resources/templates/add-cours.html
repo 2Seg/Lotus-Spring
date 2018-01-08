@@ -19,9 +19,9 @@
     <div th:if="${session.type == 'professeur'}">
         <div th:if="${session.type == 'professeur'}">
             <div class="container-fluide">
-                <    class="row">
+                <div class="row">
                     <div class=" col-lg-12  bg-lightgrey bloc_gris">
-                        <form class="form-horizontal" method="post" action="/profile/edit/courses">
+                        <form class="form-horizontal" method="post" action="/profile/edit/courses/add">
 
                             <div th:if="${erreur}" th:text="${erreur}" class="alert-danger" align="center">Erreur</div>
 
@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class=" col-lg-5 fond2 bloc_blanc">
                                     <div class="row form-group" >
-                                        <div class="col-lg-5  text-blue">Ajouter un cours</div>
+                                        <div class="col-lg-5  text-blue">Saisie du cours à ajouter</div>
                                     </div>
 
                                     <div class="row form-group zoneJS" >
@@ -43,8 +43,6 @@
                                                     <input type="text" id="cours" name="cours" class="form-control" placeholder="Cours enseigné" />
                                                 </div>
                                             </div>
-
-
                                         </div>
 
                                     </div>
