@@ -19,10 +19,10 @@ import static com.isep.lotus.LotusApplication.getSession;
 @Controller
 public class FixturesController {
 
-    @RequestMapping(value = "/fixtures1", method = RequestMethod.GET)
+    @RequestMapping(value = "/fixtures", method = RequestMethod.GET)
     public ModelAndView fixtures1(ModelAndView modelAndView) {
 
-//        Parcours si = new Parcours("Systèmes d'information");
+        Parcours si = new Parcours("Systèmes d'information");
         Parcours bi = new Parcours("Bussiness Intelligence");
         Parcours gl = new Parcours("Génie Logiciel");
         Parcours ns = new Parcours("Numérique et santé");
@@ -31,33 +31,49 @@ public class FixturesController {
         Parcours se = new Parcours("Systèmes embarqués");
         Parcours cre = new Parcours("Innovation et Création d'entreprise");
 
-//        Session sessionHibernate = getSession();
-//        Parcours si = (Parcours) sessionHibernate.get(Parcours.class, 9);
-//        sessionHibernate.close();
+        Cours technoWeb = new Cours("Technologies Web");
+        Cours archiSi = new Cours("Architecture Des Systèmes D'Information");
+        Cours data = new Cours("Base De Données Et Big Data");
 
-//        Eleve eleve1 = new Eleve(8740, "A2", "Académique", "2019", true, "http://linkedin.com/eliott-de-seguier", null, null, null, null, null, null, null, null, null);
-//        Utilisateur utilisateur1 = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "DE SEGUIER", "eliottdes@gmail.com", null, eleve1, null);
-//
-//        Utilisateur utilisateur2 = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr", null, null, null);
-//
-//        Utilisateur utilisateur3 = new Utilisateur("oriajo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@isep.fr", null, null, null);
-//
-//        Utilisateur utilisateur4 = new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr", null, null, null);
-//
-//        Professeur professeur1 = new Professeur();
-//        professeur1.getParcours().add(si);
-//
-//        Utilisateur utilisateur5 = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr");
-//        utilisateur5.setProfesseur(professeur1);
+        Utilisateur eliott = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "DE SEGUIER", "eliottdes@gmail.com");
+        Eleve eliottEleve = new Eleve(8740, "A2", "Académique", "2019", true, "www.linkedin.com/in/eliott-de-séguier");
+        eliott.setEleve(eliottEleve);
+        eliott.getEleve().addParcours(si);
+        eliott.getEleve().addCours(technoWeb);
+        eliott.getEleve().addCours(archiSi);
 
-//        Utilisateur utilisateur6 = new Utilisateur("herfel", passWordEncryption("aze"), "Hervé", "FELLER", "herve.feller@isep.fr", null, null, null);
-//        utilisateur5.getProfesseur().getParcours().get(0).getNom();
+        Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr");
+        Eleve manonEleve = new Eleve(5397, "A1", "Alternance", "2020", false, "www.linkedin.com/in/manon-iribarne");
+        manon.setEleve(manonEleve);
+        manon.getEleve().addParcours(si);
+        manon.getEleve().addCours(data);
+
+        Utilisateur quentin =  new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr");
+        Eleve quentinEleve = new Eleve(3627, "A2", "Académique", "2019", false, "www.linkedin.com/in/quentin-andrieu");
+        quentin.setEleve(quentinEleve);
+        quentin.getEleve().addParcours(bi);
+        quentin.getEleve().addCours(data);
+        quentin.getEleve().addCours(archiSi);
+
+        Utilisateur orianne =  new Utilisateur("oriannejo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@isep.fr");
+
+
+
+
+        Utilisateur zakia = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr");
+        Professeur zakiaProfesseur = new Professeur();
+        zakia.setProfesseur(zakiaProfesseur);
+        zakia.getProfesseur().addParcours(si);
+        zakia.getProfesseur().addParcours(iot);
+
+        Utilisateur herve = new Utilisateur("herfel", passWordEncryption("aze"), "Hervé", "FELLER", "herve.feller@isep.fr");
+
 
 
         Session session = getSession();
         Transaction tx = session.beginTransaction();
 
-//        session.persist(si);
+        session.persist(si);
         session.persist(bi);
         session.persist(gl);
         session.persist(ns);
@@ -66,77 +82,24 @@ public class FixturesController {
         session.persist(se);
         session.persist(cre);
 
-//        session.persist(utilisateur1);
-//        session.persist(utilisateur2);
-//        session.persist(utilisateur3);
-//        session.persist(utilisateur4);
-//        session.persist(utilisateur5);
-//        session.persist(utilisateur6);
+        session.persist(technoWeb);
+        session.persist(archiSi);
+        session.persist(data);
+
+        session.persist(eliott);
+        session.persist(manon);
+        session.persist(quentin);
+        session.persist(orianne);
+        session.persist(zakia);
+        session.persist(herve);
+
         tx.commit();
         session.close();
 
         return new ModelAndView("redirect:/login");
     }
 
-    @RequestMapping(value = "/fixtures2", method = RequestMethod.GET)
-    public ModelAndView fixtures2(ModelAndView modelAndView) {
-
-        Session session = getSession();
-        Parcours si = (Parcours) session.get(Parcours.class, 1);
-        Cours technoWeb = (Cours) session.get(Cours.class, 1);
-
-        Eleve eleve = new Eleve(8740, "A2", "Académique", "2019", true, "www.linkedin.com/in/eliott-de-séguier");
-        Utilisateur utilisateur = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "DE SEGUIER", "eliottdes@gmail.com");
-
-        eleve.addParcours(si);
-        eleve.addCours(technoWeb);
-        utilisateur.setEleve(eleve);
-
-
-
-        session.beginTransaction();
-        session.persist(utilisateur);
-
-        session.getTransaction().commit();
-
-        session.close();
-
-        modelAndView.setViewName("redirect:/login");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/fixtures3", method = RequestMethod.GET)
-    public ModelAndView fixtures3(ModelAndView modelAndView) {
-
-        Parcours si = new Parcours("Systèmes d'information");
-
-        Cours technoWeb = new Cours("Technologies Web");
-        Cours archiSi = new Cours ("Architectures des Systèmes d'information");
-
-        Professeur professeur = new Professeur();
-        Utilisateur utilisateur = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr");
-
-        professeur.addParcours(si);
-        professeur.addCours(technoWeb);
-        professeur.addCours(archiSi);
-        utilisateur.setProfesseur(professeur);
-
-
-        Session session = getSession();
-        session.beginTransaction();
-        session.persist(utilisateur);
-
-        session.getTransaction().commit();
-
-        session.close();
-
-
-
-        modelAndView.setViewName("redirect:/login");
-        return modelAndView;
-    }
-
-    public String passWordEncryption(String password) {
+    private String passWordEncryption(String password) {
         if (password.isEmpty()) {
             return password;
         }
