@@ -17,10 +17,6 @@ public class SejourAcademique {
     @JoinColumn(nullable = false)
     private String duree;
 
-    private Date datedebut;
-
-    private Date dateFin;
-
     @JoinColumn(nullable = false)
     private String semestre;
 
@@ -32,11 +28,9 @@ public class SejourAcademique {
 
     public SejourAcademique() {}
 
-    public SejourAcademique(Eleve eleve, String duree, Date datedebut, Date dateFin, String semestre, String pays, String etablissement) {
+    public SejourAcademique(Eleve eleve, String duree, String semestre, String pays, String etablissement) {
         this.eleve = eleve;
         this.duree = duree;
-        this.datedebut = datedebut;
-        this.dateFin = dateFin;
         this.semestre = semestre;
         this.pays = pays;
         this.etablissement = etablissement;
@@ -64,22 +58,6 @@ public class SejourAcademique {
 
     public void setDuree(String duree) {
         this.duree = duree;
-    }
-
-    public Date getDatedebut() {
-        return datedebut;
-    }
-
-    public void setDatedebut(Date datedebut) {
-        this.datedebut = datedebut;
-    }
-
-    public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
     }
 
     public String getSemestre() {
