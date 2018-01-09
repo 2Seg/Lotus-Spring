@@ -70,5 +70,7 @@ public class HomeController {
     @RequestMapping("/Recherche-prof")
     public String Recherche_prof() { return "Recherche_prof"; }
 
+    @RequestMapping("/MentionLegale")
+    public String MentionLegale() { return "MentionLegale"; }
 }
 
