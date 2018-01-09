@@ -126,7 +126,7 @@
                                     <div class="row form-group">
                                         <label for="numeroEtudiant" class=" col-lg-5  entreeCO text-orange">Numéro étudiant<span class="text-red">*</span></label>
                                         <div class=" col-lg-7">
-                                            <input type="number" id="numeroEtudiant" name="numeroEtudiant" class="form-control" th:value="${utilisateur.eleve.numeroEtudiant}" placeholder="Numéro étudiant"/>
+                                            <input type="number" id="numeroEtudiant" name="numeroEtudiant" class="form-control" th:value="${utilisateur.eleve.numeroEtudiant}" placeholder="Numéro étudiant" min="0"/>
                                         </div>
                                     </div>
 
@@ -268,31 +268,47 @@
                 <div class="row" th:if="${session.type == 'eleve'}" >
                     <div class=" col-lg-5 fond2 bloc_blanc">
                         <div class="row form-group" >
-                            <div class="col-lg-5  text-blue">Stage(s) effectué(s)</div>
+                            <div class="col-lg-5  text-blue">Activité(s) professionnelle(s)</div>
                         </div>
 
-                        <!--<div class="row form-group" >-->
-                            <!--<div class="bloc_dans_blanc">-->
+                        <div class="row form-group" >
+                            <div class="bloc_dans_blanc">
 
-                                <!--<div th:each="parcoursUtilisateur,counter : ${listParcoursUtilisateur}" class="row form-group">-->
-                                    <!--<label th:for="'parcours' + ${parcoursUtilisateur.id}" class=" col-lg-5  entreeCO text-orange">Parcours <span th:text="${counter.index + 1}">Compteur</span></label>-->
-                                    <!--<div class=" col-lg-7">-->
-                                        <!--<select name="parcours" th:id="'parcours' + ${parcoursUtilisateur.id}">-->
-                                            <!--<option disabled="">&#45;&#45; Choisir un parcours &#45;&#45;</option>-->
-                                            <!--<div th:each="parcours : ${listParcours}">-->
-                                                <!--<option th:if="${parcoursUtilisateur.nom} == ${parcours.nom}" th:value="${parcours.nom}" th:text="${parcours.nom}" selected="">Option</option>-->
-                                                <!--<option th:if="${parcoursUtilisateur.nom} != ${parcours.nom}" th:value="${parcours.nom}" th:text="${parcours.nom}">Option</option>-->
+                                <div th:each="activitePro,counter : ${listActivitePro}" class="row form-group">
+                                    <label th:for="'activitePro' + ${activitePro.id}" class=" col-lg-5  entreeCO text-orange">Activité professionnelle <span th:text="${counter.index + 1}">Compteur</span></label>
+                                    <a th:href="'/profile/edit/professional-activity/delete/' + ${activitePro.id}"><img th:src="@{/elements/icons/trash1.png}"/></a>
 
-                                            <!--</div>-->
-                                        <!--</select>-->
-                                        <!--<a th:href="'/profile/edit/specialty/delete/' + ${parcoursUtilisateur.id}"><img th:src="@{/elements/icons/trash1.png}"/></a>-->
-                                    <!--</div>-->
-                                <!--</div>-->
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th th:if="${activitePro.poste}">Poste</th>
+                                                <th th:if="${activitePro.nomEntreprise}">Entreprise</th>
+                                                <th th:if="${activitePro.typeContrat}">Type de contrat</th>
+                                                <th th:if="${activitePro.duree}">Durée</th>
+                                                <th th:if="${activitePro.pays}">Pays</th>
+                                                <th th:if="${activitePro.ville}">Ville</th>
+                                                <th th:if="${activitePro.description}">Description</th>
+                                            </tr>
+                                        </thead>
 
-                            <!--</div>-->
-                        <!--</div>-->
+                                        <tbody>
+                                            <tr>
+                                                <td th:if="${activitePro.poste}" th:text="${activitePro.poste}">Poste</td>
+                                                <td th:if="${activitePro.nomEntreprise}" th:text="${activitePro.nomEntreprise}">Entreprise</td>
+                                                <td th:if="${activitePro.typeContrat}" th:text="${activitePro.typeContrat}">Type de contrat</td>
+                                                <td th:if="${activitePro.duree}" th:text="${activitePro.duree}">Durée</td>
+                                                <td th:if="${activitePro.pays}" th:text="${activitePro.pays}">Pays</td>
+                                                <td th:if="${activitePro.ville}" th:text="${activitePro.ville}">Ville</td>
+                                                <td th:if="${activitePro.description}" th:text="${activitePro.description}">Description</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-                        <a href="/profile/edit/intership/add"><button class="btn btn-default bg-orange pull-right">Ajouter un stage</button></a>
+                            </div>
+                        </div>
+
+                        <a href="/profile/edit/professional-activity/add"><button class="btn btn-default bg-orange pull-right">Ajouter une activité professionnelle</button></a>
                     </div>
 
                 </div>

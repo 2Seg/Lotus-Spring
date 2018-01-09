@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static com.isep.lotus.LotusApplication.getSession;
@@ -28,6 +29,16 @@ public class FixturesController {
         Activite ces = new Activite("Césure");
         Activite stage = new Activite("Stage");
         Activite dipl = new Activite("Diplômé");
+
+        ActivitePro stage1 = new ActivitePro("Stage", 6, "TF1", "Stagiaire", null, "France", null);
+        ActivitePro stage2 = new ActivitePro("Stage", 1, "Selectra", "Développeur", "Développement d'outils internes à l'entreprise", "France", "Paris");
+
+        TypeContrat cdi = new TypeContrat("Contrat à Durée Indéterminée (CDI)");
+        TypeContrat cdd = new TypeContrat("Contrat à Durée Déterminée (CDD)");
+        TypeContrat stag = new TypeContrat("Stage");
+        TypeContrat appren = new TypeContrat("Apprentissage");
+        TypeContrat vie = new TypeContrat("Volontariat International en Entreprise (VIE)");
+        TypeContrat bénébéné = new TypeContrat("Bénévolat");
 
         AnneeScolaire i1 = new AnneeScolaire("I1");
         AnneeScolaire i2 = new AnneeScolaire("I2");
@@ -62,6 +73,8 @@ public class FixturesController {
         eliott.getEleve().addParcours(si);
         eliott.getEleve().addCours(technoWeb);
         eliott.getEleve().addCours(archiSi);
+        stage1.setEleve(eliottEleve);
+        stage2.setEleve(eliottEleve);
 
         Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr");
         Eleve manonEleve = new Eleve(5397, "A1", "Alternance", "2020", false, "http://www.linkedin.com/in/manon-iribarne");
@@ -96,6 +109,16 @@ public class FixturesController {
         session.persist(ces);
         session.persist(stage);
         session.persist(dipl);
+
+        session.persist(cdi);
+        session.persist(cdd);
+        session.persist(stag);
+        session.persist(appren);
+        session.persist(vie);
+        session.persist(bénébéné);
+
+        session.persist(stage1);
+        session.persist(stage2);
 
         session.persist(i1);
         session.persist(i2);

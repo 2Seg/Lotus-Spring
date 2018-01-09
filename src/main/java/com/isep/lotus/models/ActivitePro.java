@@ -3,7 +3,7 @@ package com.isep.lotus.models;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "activite_profesionnelle")
+@Entity(name = "activite_professionnelle")
 public class ActivitePro {
 
     @Id
@@ -16,15 +16,9 @@ public class ActivitePro {
 
     private String typeContrat;
 
-    private String duree;
-
-    private Date dateDebut;
-
-    private Date dateFin;
+    private Integer duree;
 
     private String nomEntreprise;
-
-    private String domaineActivite;
 
     private String poste;
 
@@ -37,14 +31,10 @@ public class ActivitePro {
 
     public ActivitePro() {}
 
-    public ActivitePro(Eleve eleve, String typeContrat, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
-        this.eleve = eleve;
+    public ActivitePro(String typeContrat, Integer duree, String nomEntreprise, String poste, String description, String pays, String ville) {
         this.typeContrat = typeContrat;
         this.duree = duree;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
         this.nomEntreprise = nomEntreprise;
-        this.domaineActivite = domaineActivite;
         this.poste = poste;
         this.description = description;
         this.pays = pays;
@@ -67,36 +57,20 @@ public class ActivitePro {
         this.eleve = eleve;
     }
 
-    public String getType() {
+    public String getTypeContrat() {
         return typeContrat;
     }
 
-    public void setType(String typeContrat) {
+    public void setTypeContrat(String typeContrat) {
         this.typeContrat = typeContrat;
     }
 
-    public String getDuree() {
+    public Integer getDuree() {
         return duree;
     }
 
-    public void setDuree(String duree) {
+    public void setDuree(Integer duree) {
         this.duree = duree;
-    }
-
-    public Date getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
     }
 
     public String getNomEntreprise() {
@@ -105,14 +79,6 @@ public class ActivitePro {
 
     public void setNomEntreprise(String nomEntreprise) {
         this.nomEntreprise = nomEntreprise;
-    }
-
-    public String getDomaineActivite() {
-        return domaineActivite;
-    }
-
-    public void setDomaineActivite(String domaineActivite) {
-        this.domaineActivite = domaineActivite;
     }
 
     public String getPoste() {

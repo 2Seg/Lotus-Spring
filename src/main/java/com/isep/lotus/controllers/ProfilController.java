@@ -1,5 +1,6 @@
 package com.isep.lotus.controllers;
 
+import com.isep.lotus.models.ActivitePro;
 import com.isep.lotus.models.Cours;
 import com.isep.lotus.models.Parcours;
 import com.isep.lotus.models.Utilisateur;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 import static com.isep.lotus.LotusApplication.getSession;
 import static org.unbescape.html.HtmlEscape.escapeHtml4;
@@ -92,6 +94,7 @@ public class ProfilController {
             modelAndView.addObject("listCoursUtilisateur", utilisateur.getEleve().getCours());
             modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
             modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
+            modelAndView.addObject("listActivitePro", utilisateur.getEleve().getActivitePros());
 
         }
 
@@ -220,7 +223,7 @@ public class ProfilController {
                                            ModelAndView modelAndView) {
 
         String erreur = "Erreur : ";
-        String message = "Parcours ajouté";
+        String message = "Parcours ajouté avec succès";
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
 
@@ -231,9 +234,9 @@ public class ProfilController {
         } else {
             Parcours parcours = (Parcours) sessionHibernate.get(Parcours.class, new Integer(parcoursReq));
 
-            if (utilisateur.checkUserType() == "professeur") {
+            if (utilisateur.checkUserType().equals("professeur")) {
                 utilisateur.getProfesseur().addParcours(parcours);
-            } else if (utilisateur.checkUserType() == "eleve") {
+            } else if (utilisateur.checkUserType().equals("eleve")) {
                 utilisateur.getEleve().addParcours(parcours);
             }
 
@@ -256,7 +259,7 @@ public class ProfilController {
                                               HttpSession httpSession,
                                               ModelAndView modelAndView) {
 
-        String message = "Parcours supprimé";
+        String message = "Parcours supprimé avec succès";
 
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
@@ -309,7 +312,7 @@ public class ProfilController {
                                         ModelAndView modelAndView) {
 
         String erreur = "Erreur : ";
-        String message = "Cours ajouté";
+        String message = "Cours ajouté avec succès";
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
 
@@ -320,9 +323,9 @@ public class ProfilController {
         } else {
             Cours cours = (Cours) sessionHibernate.get(Cours.class, new Integer(coursReq));
 
-            if (utilisateur.checkUserType() == "professeur") {
+            if (utilisateur.checkUserType().equals("professeur")) {
                 utilisateur.getProfesseur().addCours(cours);
-            } else if (utilisateur.checkUserType() == "eleve") {
+            } else if (utilisateur.checkUserType().equals("eleve")) {
                 utilisateur.getEleve().addCours(cours);
             }
 
@@ -343,7 +346,7 @@ public class ProfilController {
                                            HttpSession httpSession,
                                            ModelAndView modelAndView) {
 
-        String message = "Cours supprimé";
+        String message = "Cours supprimé avec succès";
 
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
@@ -448,6 +451,125 @@ public class ProfilController {
         modelAndView.addObject("message", message).setViewName("redirect:/profile/edit");
         return modelAndView;
     }
+
+    /********************************************* ACTIVITE PROFESSIONNELLES ***************************************************/
+
+    @RequestMapping(value = "/profile/edit/professional-activity/add", method = RequestMethod.GET)
+    public ModelAndView addActiviteProDisplay(ModelAndView modelAndView, HttpSession httpSession, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
+        if(httpSession.isNew()) {return new ModelAndView("login");}
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+        if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
+
+        if (erreur != null) {
+            modelAndView.addObject("erreur", erreur);
+        }
+        if (message != null) {
+            modelAndView.addObject("message", message);
+        }
+
+        modelAndView.addObject("listTypeContrat", sessionHibernate.createQuery("select t from type_contrat t").list());
+        modelAndView.addObject(utilisateur).setViewName("add-activitePro");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/profile/edit/professional-activity/add", method = RequestMethod.POST)
+    public ModelAndView addActiviteProProcess(@RequestParam("poste") String posteReq,
+                                               @RequestParam("entreprise") String entrepriseReq,
+                                               @RequestParam("typeContrat") String typeContratReq,
+                                               @RequestParam(value = "duree", required = false) Integer duree,
+                                               @RequestParam(value = "pays", required = false) String paysReq,
+                                               @RequestParam(value = "ville", required = false) String villeReq,
+                                               @RequestParam(value = "description", required = false) String descriptionReq,
+                                               ModelAndView modelAndView,
+                                               HttpSession httpSession) {
+
+        String erreur = "Erreur : ";
+        String message = "Activité professionnelle ajoutée avec succès";
+        String poste = firstNameProcess(secureFieldString(posteReq));
+        String typeContrat = typeContratReq;
+        String entreprise = firstNameProcess(secureFieldString(entrepriseReq));
+        String pays;
+        String ville;
+        String description;
+
+        if (!paysReq.isEmpty()) {
+            pays = secureFieldString(capitalizeString(paysReq));
+        } else {
+            pays = null;
+        }
+
+        if (!paysReq.isEmpty()) {
+            ville = secureFieldString(capitalizeString(villeReq));
+        } else {
+            ville = null;
+        }
+
+        if (!paysReq.isEmpty()) {
+            description = secureFieldString(descriptionReq);
+        } else {
+            description = null;
+        }
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+
+        if (poste.isEmpty() || entreprise.isEmpty()) {
+            erreur = erreur + "veuillez remplir tous les champs marqués d'une astérisque";
+            modelAndView.addObject("erreur", erreur).setViewName("redirect:/profile/edit/professional-activity/add");
+            return modelAndView;
+        } else {
+
+            if (typeContrat.equals("unselected")) {
+                erreur = erreur + "veuillez sélectionner un type de contrat";
+                modelAndView.addObject("erreur", erreur).setViewName("redirect:/profile/edit/professional-activity/add");
+                return modelAndView;
+            } else {
+
+                ActivitePro activitePro = new ActivitePro(typeContrat, duree, entreprise, poste, description, pays, ville);
+                activitePro.setEleve(utilisateur.getEleve());
+
+                sessionHibernate.beginTransaction();
+                sessionHibernate.persist(activitePro);
+                sessionHibernate.getTransaction().commit();
+
+                modelAndView.addObject(utilisateur).addObject("message", message);
+                modelAndView.setViewName("redirect:/profile/edit");
+
+            }
+
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/profile/edit/professional-activity/delete/{idActivitePro}", method = RequestMethod.GET)
+    public ModelAndView deleteActiviteProProcess(@PathVariable("idActivitePro") String idActivitePro,
+                                           HttpSession httpSession,
+                                           ModelAndView modelAndView) {
+
+        String message = "Activité professionnelle supprimée avec succès";
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+
+        ActivitePro activitePro = (ActivitePro) sessionHibernate.get(ActivitePro.class, new Integer(idActivitePro));
+
+        activitePro.setEleve(null);
+
+        sessionHibernate.beginTransaction();
+        sessionHibernate.delete(activitePro);
+        sessionHibernate.getTransaction().commit();
+
+        modelAndView.addObject(utilisateur).addObject("message", message);
+        modelAndView.setViewName("redirect:/profile/edit");
+
+        return modelAndView;
+    }
+
+
+
 
     private String secureFieldString (String inputString) {
         return escapeHtml4(inputString.trim());
