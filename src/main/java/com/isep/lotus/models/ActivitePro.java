@@ -14,8 +14,7 @@ public class ActivitePro {
     @JoinColumn(nullable = false)
     private Eleve eleve;
 
-    @ManyToOne
-    private TypeContrat type;
+    private String typeContrat;
 
     private String duree;
 
@@ -36,12 +35,11 @@ public class ActivitePro {
     private String ville;
 
 
-
     public ActivitePro() {}
 
-    public ActivitePro(Eleve eleve, TypeContrat type, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
+    public ActivitePro(Eleve eleve, String typeContrat, String duree, Date dateDebut, Date dateFin, String nomEntreprise, String domaineActivite, String poste, String description, String pays, String ville) {
         this.eleve = eleve;
-        this.type = type;
+        this.typeContrat = typeContrat;
         this.duree = duree;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -69,12 +67,12 @@ public class ActivitePro {
         this.eleve = eleve;
     }
 
-    public TypeContrat getType() {
-        return type;
+    public String getType() {
+        return typeContrat;
     }
 
-    public void setType(TypeContrat type) {
-        this.type = type;
+    public void setType(String typeContrat) {
+        this.typeContrat = typeContrat;
     }
 
     public String getDuree() {

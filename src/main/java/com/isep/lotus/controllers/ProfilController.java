@@ -370,7 +370,7 @@ public class ProfilController {
     /********************************************* INFO SCOLAIRES ***************************************************/
 
     @RequestMapping(value = "/profile/edit/school-info", method = RequestMethod.POST)
-    public ModelAndView editSchoolInfoProcess(@RequestParam("numeroEtudiant") int numeroEtudiantReq,
+    public ModelAndView editSchoolInfoProcess(@RequestParam("numeroEtudiant") Integer numeroEtudiantReq,
                                               @RequestParam("anneeScolaire") String anneeScolaireReq,
                                               @RequestParam("promotion") String promotionReq,
                                               @RequestParam("activite") String activiteReq,
@@ -379,7 +379,7 @@ public class ProfilController {
 
         String erreur = "Erreur : ";
         String message = "Modifications effectuées";
-        int numeroEtudiant = numeroEtudiantReq;
+        Integer numeroEtudiant = numeroEtudiantReq;
         String anneeScolaire = secureFieldString(anneeScolaireReq);
         String promotion = secureFieldString(promotionReq);
         String activite = secureFieldString(activiteReq);
@@ -388,22 +388,66 @@ public class ProfilController {
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         modelAndView.addObject(utilisateur);
 
+        if (Character.isDigit(numeroEtudiant)) {
+            erreur = erreur + "veuillez saisir un nombre pour le champ 'Numéro étudiant";
+            modelAndView.addObject("erreur", erreur).setViewName("redirect:/profile/edit");
+            return modelAndView;
+        }
+
         if (anneeScolaire.isEmpty() || promotion.isEmpty() || activite.isEmpty()) {
             erreur = erreur + "veuillez remplir tous les champs marqués d'une astérisque";
             modelAndView.addObject("erreur", erreur).setViewName("redirect:/profile/edit");
             return modelAndView;
         } else {
+            utilisateur.getEleve().setNumeroEtudiant(numeroEtudiant);
+            utilisateur.getEleve().setAnneeScolaire(anneeScolaire);
+            utilisateur.getEleve().setPromotion(promotion);
+            utilisateur.getEleve().setActivite(activite);
 
+            sessionHibernate.beginTransaction();
+            sessionHibernate.update(utilisateur);
+            sessionHibernate.getTransaction().commit();
         }
 
-
-
-
-
+        sessionHibernate.close();
+        modelAndView.addObject("message", message).setViewName("redirect:/profile/edit");
         return modelAndView;
     }
 
+    /********************************************* INFO ADDITIONNELLES ***************************************************/
 
+    @RequestMapping(value = "/profile/edit/additional-info", method = RequestMethod.POST)
+    public ModelAndView editAdditionalInfoProcess(@RequestParam(value = "contact", required = false) Boolean contactReq,
+                                                  @RequestParam("linkedin") String linkedinReq,
+                                                  ModelAndView modelAndView,
+                                                  HttpSession httpSession) {
+
+        String message = "Modifications effectuées";
+        Boolean contact = contactReq;
+        String linkedin = secureFieldString(linkedinReq);
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+        modelAndView.addObject(utilisateur);
+
+        if (contact == null) {
+            contact = true;
+        } else if (contact == true) {
+            contact = false;
+        }
+
+        utilisateur.getEleve().setContact(contact);
+        utilisateur.getEleve().setLinkedin(linkedin);
+
+        sessionHibernate.beginTransaction();
+        sessionHibernate.update(utilisateur);
+        sessionHibernate.getTransaction().commit();
+
+
+        sessionHibernate.close();
+        modelAndView.addObject("message", message).setViewName("redirect:/profile/edit");
+        return modelAndView;
+    }
 
     private String secureFieldString (String inputString) {
         return escapeHtml4(inputString.trim());

@@ -20,248 +20,282 @@
         <div class="row">
             <div class=" col-lg-12  bg-lightgrey bloc_gris">
 
-                    <div th:if="${erreur}" th:text="${erreur}" class="alert-danger" align="center">Erreur</div>
-                    <div th:if="${message}" th:text="${message}" class="alert-success" align="center">Message</div>
+                <div th:if="${erreur}" th:text="${erreur}" class="alert-danger" align="center">Erreur</div>
+                <div th:if="${message}" th:text="${message}" class="alert-success" align="center">Message</div>
 
-                    <div class="row">
-                        <div class="col-lg-5 text-blue"><h3>Modification du profil</h3></div>
-                    </div>
+                <div class="row">
+                    <div class="col-lg-5 text-blue"><h3>Modification du profil</h3></div>
+                </div>
 
-                    <div class="row">
-                        <div class=" col-lg-5 fond2 bloc_blanc">
-                            <form class="form-horizontal" method="post" action="/profile/edit/personal-info">
-                                <div class="row form-group" >
-                                    <div class="col-lg-5  text-blue">Informations personnelles</div>
-                                </div>
-
-                                <div class="row form-group">
-                                    <div class="col-lg-3 bloc_dans_blanc ">
-                                        <div class="row form-group">
-                                            <div align="center"><img th:src="@{/elements/icons/profilVide.png}"/></div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <div align="center">
-                                                <input type="file" name="photo" disabled=""/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-9 bloc_dans_blanc">
-                                        <div class="row form-group">
-                                            <label for="prenom" class=" col-lg-5  entreeCO text-orange">Prénom<span class="text-red">*</span></label>
-                                            <div class=" col-lg-7">
-                                                <input th:if="${utilisateur.prenom}" type="text" id="prenom" name="prenom" class="form-control" th:value="${utilisateur.prenom}" placeholder="Prénom"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <label for="nom" class=" col-lg-5  text-orange entreeCO">Nom<span class="text-red">*</span></label>
-                                            <div class=" col-lg-7">
-                                                <input type="text" id="nom" name="nom" class=" form-control" th:value="${utilisateur.nom}" placeholder="Nom" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <label for="email" class=" col-lg-5  entreeCO text-orange">Email <span class="text-red">*</span></label>
-                                            <div class=" col-lg-7">
-                                                <input type="email" id="email" name="email" class="form-control" th:value="${utilisateur.email}" placeholder="Email"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="submit" name="submit" value="Confirmer les modifications" class="btn btn-default bg-orange pull-right" />
-                            </form>
-                            <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
-                        </div>
-
-                        <div class=" col-lg-5 fond2 bloc_blanc">
-                            <form class="form-horizontal" method="post" action="/profile/edit/connection-info">
-                                <div class="row form-group" >
-                                    <div class="col-lg-5  text-blue">Informations de connexion</div>
-                                </div>
-
-                                <div class="row form-group" >
-                                    <div class="bloc_dans_blanc">
-
-                                        <div class="row form-group">
-                                            <label for="identifiant" class=" col-lg-5  entreeCO text-orange">Identifiant<span class="text-red">*</span></label>
-                                            <div class=" col-lg-7">
-                                                <input type="text" id="identifiant" name="identifiant" class="form-control" th:value="${utilisateur.identifiant}" placeholder="Identifiant de connexion"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <label for="mdp" class=" col-lg-5  entreeCO text-orange">Mot de passe</label>
-                                            <div class=" col-lg-7">
-                                                <input type="password" id="mdp" name="mdp" class="form-control" placeholder="Mot de passe"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <label for="conf-mdp" class=" col-lg-5 text-orange entreeCO">Confirmer le mot de passe</label>
-                                            <div class=" col-lg-7">
-                                                <input type="password" id="conf-mdp" name="conf-mdp" class="form-control"  placeholder="Confirmation du mot de passe"/>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <input type="submit" name="submit" value="Confirmer les modifications" class="btn btn-default bg-orange pull-right" />
-                            </form>
-                            <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
-                        </div>
-                    </div>
-
-
-                    <div th:if="${session.type == 'eleve'}" class="row">
-                        <div class=" col-lg-5 fond2 bloc_blanc">
-                            <form class="form-horizontal" method="post" action="/profile/edit/school-info">
-                                <div class="row form-group" >
-                                    <div class="col-lg-5  text-blue">Informations scolaires</div>
-                                </div>
-
-                                <div class="row form-group">
-                                    <div class="col-lg-9 bloc_dans_blanc">
-                                        <div class="row form-group">
-                                            <label for="numeroEtudiant" class=" col-lg-5  entreeCO text-orange">Numéro Etudiant<span class="text-red">*</span></label>
-                                            <div class=" col-lg-7">
-                                                <input type="number" id="numeroEtudiant" name="numeroEtudiant" class="form-control" th:value="${utilisateur.eleve.numeroEtudiant}" placeholder="Numéro étudiant"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <label for="anneeScolaire" class=" col-lg-5  entreeCO text-orange">Année scolaire<span class="text-red">*</span></label>
-                                            <div class=" col-lg-7">
-                                                <select name="anneeScolaire" id="anneeScolaire" >
-                                                    <option disabled="" value="unselected">-- Choisir une année scolaire --</option>
-                                                    <div th:each="annee : ${listAnneeScolaire}">
-                                                        <option th:if="${utilisateur.eleve.anneeScolaire} == ${annee.nom}" th:value="${annee.id}" th:text="${annee.nom}" selected="">Option</option>
-                                                        <option th:if="${utilisateur.eleve.anneeScolaire} != ${annee.nom}" th:value="${annee.id}" th:text="${annee.nom}">Option</option>
-                                                    </div>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <label for="promotion" class=" col-lg-5  entreeCO text-orange">Promotion<span class="text-red">*</span></label>
-                                            <div class=" col-lg-7">
-                                                <input type="text" id="promotion" name="promotion" class="form-control" th:value="${utilisateur.eleve.promotion}" placeholder="Promotion"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <label for="activite" class=" col-lg-5  entreeCO text-orange">Activité<span class="text-red">*</span></label>
-                                            <div class=" col-lg-7">
-                                                <select name="activite" id="activite" >
-                                                    <option disabled="" value="unselected">-- Choisir une activité --</option>
-                                                    <div th:each="activite : ${listActivite}">
-                                                        <option th:if="${utilisateur.eleve.activite} == ${activite.nom}" th:value="${activite.id}" th:text="${activite.nom}" selected="">Option</option>
-                                                        <option th:if="${utilisateur.eleve.activite} != ${activite.nom}" th:value="${activite.id}" th:text="${activite.nom}">Option</option>
-                                                    </div>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="submit" name="submit" value="Confirmer les modifications" class="btn btn-default bg-orange pull-right" />
-                            </form>
-                            <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
-                        </div>
-
-                        <div class=" col-lg-5 fond2 bloc_blanc">
-                            <form class="form-horizontal" method="post" action="/profile/edit/additional-info">
-                                <div class="row form-group" >
-                                    <div class="col-lg-5  text-blue">Informations additionnelles</div>
-                                </div>
-
-                                <div class="row form-group">
-                                    <div class="col-lg-9 bloc_dans_blanc">
-                                        <div class="row form-group">
-                                            <label class=" col-lg-4  entreeCO text-orange">Contact</label>
-                                            <div class="col-lg-8">
-                                                <input th:if="${utilisateur.eleve.contact == false}" checked="" type="checkbox" id="contact" name="contact" />
-                                                <input th:if="${utilisateur.eleve.contact == true}" type="checkbox" id="contact" name="contact" />
-                                                <span for="contact" class="entreeCO text-black">Je ne souhaite pas être contacté</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <label for="linkedin" class=" col-lg-5  entreeCO text-orange">LinkedIn</label>
-                                            <div class=" col-lg-7">
-                                                <input type="url" id="linkedin" name="linkedin" class="form-control" th:value="${utilisateur.eleve.linkedin}" placeholder="Lien compte LinkedIn"/>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <input type="submit" name="submit" value="Confirmer les modifications" class="btn btn-default bg-orange pull-right" />
-                            </form>
-                            <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
-                        </div>
-
-                    </div>
-
-
-                    <div class="row">
-                        <div class=" col-lg-5 fond2 bloc_blanc">
+                <div class="row">
+                    <div class=" col-lg-5 fond2 bloc_blanc">
+                        <form class="form-horizontal" method="post" action="/profile/edit/personal-info">
                             <div class="row form-group" >
-                                <div class="col-lg-5  text-blue">Parcours</div>
+                                <div class="col-lg-5  text-blue">Informations personnelles</div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-lg-3 bloc_dans_blanc ">
+                                    <div class="row form-group">
+                                        <div align="center"><img th:src="@{/elements/icons/profilVide.png}"/></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div align="center">
+                                            <input type="file" name="photo" disabled=""/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-9 bloc_dans_blanc">
+                                    <div class="row form-group">
+                                        <label for="prenom" class=" col-lg-5  entreeCO text-orange">Prénom<span class="text-red">*</span></label>
+                                        <div class=" col-lg-7">
+                                            <input th:if="${utilisateur.prenom}" type="text" id="prenom" name="prenom" class="form-control" th:value="${utilisateur.prenom}" placeholder="Prénom"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="nom" class=" col-lg-5  text-orange entreeCO">Nom<span class="text-red">*</span></label>
+                                        <div class=" col-lg-7">
+                                            <input type="text" id="nom" name="nom" class=" form-control" th:value="${utilisateur.nom}" placeholder="Nom" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="email" class=" col-lg-5  entreeCO text-orange">Email <span class="text-red">*</span></label>
+                                        <div class=" col-lg-7">
+                                            <input type="email" id="email" name="email" class="form-control" th:value="${utilisateur.email}" placeholder="Email"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" name="submit" value="Confirmer les modifications" class="btn btn-default bg-orange pull-right" />
+                        </form>
+                        <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
+                    </div>
+
+                    <div class=" col-lg-5 fond2 bloc_blanc">
+                        <form class="form-horizontal" method="post" action="/profile/edit/connection-info">
+                            <div class="row form-group" >
+                                <div class="col-lg-5  text-blue">Informations de connexion</div>
                             </div>
 
                             <div class="row form-group" >
                                 <div class="bloc_dans_blanc">
 
-                                    <div th:each="parcoursUtilisateur,counter : ${listParcoursUtilisateur}" class="row form-group">
-                                        <label th:for="'parcours' + ${parcoursUtilisateur.id}" class=" col-lg-5  entreeCO text-orange">Parcours <span th:text="${counter.index + 1}">Compteur</span></label>
+                                    <div class="row form-group">
+                                        <label for="identifiant" class=" col-lg-5  entreeCO text-orange">Identifiant<span class="text-red">*</span></label>
                                         <div class=" col-lg-7">
-                                            <select name="parcours" th:id="'parcours' + ${parcoursUtilisateur.id}">
-                                                <option disabled="">-- Choisir un parcours --</option>
-                                                <div th:each="parcours : ${listParcours}">
-                                                    <option th:if="${parcoursUtilisateur.nom} == ${parcours.nom}" th:value="${parcours.nom}" th:text="${parcours.nom}" selected="">Option</option>
-                                                    <option th:if="${parcoursUtilisateur.nom} != ${parcours.nom}" th:value="${parcours.nom}" th:text="${parcours.nom}">Option</option>
+                                            <input type="text" id="identifiant" name="identifiant" class="form-control" th:value="${utilisateur.identifiant}" placeholder="Identifiant de connexion"/>
+                                        </div>
+                                    </div>
 
-                                                </div>
-                                            </select>
-                                            <a th:href="'/profile/edit/specialty/delete/' + ${parcoursUtilisateur.id}"><img th:src="@{/elements/icons/trash1.png}"/></a>
+                                    <div class="row form-group">
+                                        <label for="mdp" class=" col-lg-5  entreeCO text-orange">Mot de passe</label>
+                                        <div class=" col-lg-7">
+                                            <input type="password" id="mdp" name="mdp" class="form-control" placeholder="Mot de passe"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="conf-mdp" class=" col-lg-5 text-orange entreeCO">Confirmer le mot de passe</label>
+                                        <div class=" col-lg-7">
+                                            <input type="password" id="conf-mdp" name="conf-mdp" class="form-control"  placeholder="Confirmation du mot de passe"/>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-
-                            <a href="/profile/edit/specialty/add"><button class="btn btn-default bg-orange pull-right">Ajouter un parcours</button></a>
-                        </div>
-
-
-                        <div class=" col-lg-5 fond2 bloc_blanc">
-                            <div class="row form-group" >
-                                <div class="col-lg-5  text-blue">Cours enseignés</div>
-                            </div>
-
-                            <div class="row form-group" >
-                                <div class="bloc_dans_blanc">
-
-                                    <div th:each="coursUtilisateur,counter : ${listCoursUtilisateur}" class="row form-group">
-                                        <label th:for="'cours' + ${coursUtilisateur.id}" class=" col-lg-5  entreeCO text-orange">Cours <span th:text="${counter.index + 1}">Compteur</span></label>
-                                        <div class=" col-lg-7">
-                                            <select name="cours" th:id="'cours' + ${coursUtilisateur.id}">
-                                                <option disabled="">-- Choisir un cours --</option>
-                                                <div th:each="cours : ${listCours}">
-                                                    <option th:if="${coursUtilisateur.nom} == ${cours.nom}" th:value="${cours.nom}" th:text="${cours.nom}" selected="">Option</option>
-                                                    <option th:if="${coursUtilisateur.nom} != ${cours.nom}" th:value="${cours.nom}" th:text="${cours.nom}">Option</option>
-
-                                                </div>
-                                            </select>
-                                            <a th:href="'/profile/edit/courses/delete/' + ${coursUtilisateur.id}"><img th:src="@{/elements/icons/trash1.png}"/></a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <a href="/profile/edit/courses/add"><button class="btn btn-default bg-orange pull-right">Ajouter un cours</button></a>
-                        </div>
+                            <input type="submit" name="submit" value="Confirmer les modifications" class="btn btn-default bg-orange pull-right" />
+                        </form>
+                        <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
                     </div>
+                </div>
+
+
+                <div class="row" th:if="${session.type == 'eleve'}">
+                    <div class=" col-lg-5 fond2 bloc_blanc">
+                        <form class="form-horizontal" method="post" action="/profile/edit/school-info">
+                            <div class="row form-group" >
+                                <div class="col-lg-5  text-blue">Informations scolaires</div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-lg-9 bloc_dans_blanc">
+                                    <div class="row form-group">
+                                        <label for="numeroEtudiant" class=" col-lg-5  entreeCO text-orange">Numéro étudiant<span class="text-red">*</span></label>
+                                        <div class=" col-lg-7">
+                                            <input type="number" id="numeroEtudiant" name="numeroEtudiant" class="form-control" th:value="${utilisateur.eleve.numeroEtudiant}" placeholder="Numéro étudiant"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="anneeScolaire" class=" col-lg-5  entreeCO text-orange">Année scolaire<span class="text-red">*</span></label>
+                                        <div class=" col-lg-7">
+                                            <select name="anneeScolaire" id="anneeScolaire" >
+                                                <option disabled="" value="unselected">-- Choisir une année scolaire --</option>
+                                                <div th:each="annee : ${listAnneeScolaire}">
+                                                    <option th:if="${utilisateur.eleve.anneeScolaire} == ${annee.nom}" th:value="${annee.nom}" th:text="${annee.nom}" selected="">Option</option>
+                                                    <option th:if="${utilisateur.eleve.anneeScolaire} != ${annee.nom}" th:value="${annee.nom}" th:text="${annee.nom}">Option</option>
+                                                </div>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="promotion" class=" col-lg-5  entreeCO text-orange">Promotion<span class="text-red">*</span></label>
+                                        <div class=" col-lg-7">
+                                            <input type="text" id="promotion" name="promotion" class="form-control" th:value="${utilisateur.eleve.promotion}" placeholder="Promotion"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="activite" class=" col-lg-5  entreeCO text-orange">Activité<span class="text-red">*</span></label>
+                                        <div class=" col-lg-7">
+                                            <select name="activite" id="activite" >
+                                                <option disabled="" value="unselected">-- Choisir une activité --</option>
+                                                <div th:each="activite : ${listActivite}">
+                                                    <option th:if="${utilisateur.eleve.activite} == ${activite.nom}" th:value="${activite.nom}" th:text="${activite.nom}" selected="">Option</option>
+                                                    <option th:if="${utilisateur.eleve.activite} != ${activite.nom}" th:value="${activite.nom}" th:text="${activite.nom}">Option</option>
+                                                </div>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" name="submit" value="Confirmer les modifications" class="btn btn-default bg-orange pull-right" />
+                        </form>
+                        <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
+                    </div>
+
+                    <div class=" col-lg-5 fond2 bloc_blanc">
+                        <form class="form-horizontal" method="post" action="/profile/edit/additional-info">
+                            <div class="row form-group" >
+                                <div class="col-lg-5  text-blue">Informations additionnelles</div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-lg-9 bloc_dans_blanc">
+                                    <div class="row form-group">
+                                        <label class=" col-lg-4  entreeCO text-orange">Contact</label>
+                                        <div class="col-lg-8">
+                                            <input th:if="${utilisateur.eleve.contact == false}" checked="" type="checkbox" id="contact" name="contact" />
+                                            <input th:if="${utilisateur.eleve.contact == true || utilisateur.eleve.contact == null}" type="checkbox" id="contact" name="contact" />
+                                            <span for="contact" class="entreeCO text-black">Je ne souhaite pas être contacté</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="linkedin" class=" col-lg-5  entreeCO text-orange">LinkedIn</label>
+                                        <div class=" col-lg-7">
+                                            <input type="url" id="linkedin" name="linkedin" class="form-control" th:value="${utilisateur.eleve.linkedin}" placeholder="Lien compte LinkedIn"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <input type="submit" name="submit" value="Confirmer les modifications" class="btn btn-default bg-orange pull-right" />
+                        </form>
+                        <a href="/profile/edit"><button class="btn btn-default bg-orange pull-right">Annuler</button></a>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class=" col-lg-5 fond2 bloc_blanc">
+                        <div class="row form-group" >
+                            <div class="col-lg-5  text-blue">Parcours</div>
+                        </div>
+
+                        <div class="row form-group" >
+                            <div class="bloc_dans_blanc">
+
+                                <div th:each="parcoursUtilisateur,counter : ${listParcoursUtilisateur}" class="row form-group">
+                                    <label th:for="'parcours' + ${parcoursUtilisateur.id}" class=" col-lg-5  entreeCO text-orange">Parcours <span th:text="${counter.index + 1}">Compteur</span></label>
+                                    <div class=" col-lg-7">
+                                        <select name="parcours" th:id="'parcours' + ${parcoursUtilisateur.id}">
+                                            <option disabled="">-- Choisir un parcours --</option>
+                                            <div th:each="parcours : ${listParcours}">
+                                                <option th:if="${parcoursUtilisateur.nom} == ${parcours.nom}" th:value="${parcours.nom}" th:text="${parcours.nom}" selected="">Option</option>
+                                                <option th:if="${parcoursUtilisateur.nom} != ${parcours.nom}" th:value="${parcours.nom}" th:text="${parcours.nom}">Option</option>
+
+                                            </div>
+                                        </select>
+                                        <a th:href="'/profile/edit/specialty/delete/' + ${parcoursUtilisateur.id}"><img th:src="@{/elements/icons/trash1.png}"/></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <a href="/profile/edit/specialty/add"><button class="btn btn-default bg-orange pull-right">Ajouter un parcours</button></a>
+                    </div>
+
+
+                    <div class=" col-lg-5 fond2 bloc_blanc">
+                        <div class="row form-group" >
+                            <div th:if="${session.type == 'professeur'}" class="col-lg-5  text-blue">Cours enseigné(s)</div>
+                            <div th:if="${session.type == 'eleve'}" class="col-lg-5  text-blue">Cours suivi(s)</div>
+                        </div>
+
+                        <div class="row form-group" >
+                            <div class="bloc_dans_blanc">
+
+                                <div th:each="coursUtilisateur,counter : ${listCoursUtilisateur}" class="row form-group">
+                                    <label th:for="'cours' + ${coursUtilisateur.id}" class=" col-lg-5  entreeCO text-orange">Cours <span th:text="${counter.index + 1}">Compteur</span></label>
+                                    <div class=" col-lg-7">
+                                        <select name="cours" th:id="'cours' + ${coursUtilisateur.id}">
+                                            <option disabled="">-- Choisir un cours --</option>
+                                            <div th:each="cours : ${listCours}">
+                                                <option th:if="${coursUtilisateur.nom} == ${cours.nom}" th:value="${cours.nom}" th:text="${cours.nom}" selected="">Option</option>
+                                                <option th:if="${coursUtilisateur.nom} != ${cours.nom}" th:value="${cours.nom}" th:text="${cours.nom}">Option</option>
+
+                                            </div>
+                                        </select>
+                                        <a th:href="'/profile/edit/courses/delete/' + ${coursUtilisateur.id}"><img th:src="@{/elements/icons/trash1.png}"/></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <a href="/profile/edit/courses/add"><button class="btn btn-default bg-orange pull-right">Ajouter un cours</button></a>
+                    </div>
+                </div>
+
+
+                <div class="row" th:if="${session.type == 'eleve'}" >
+                    <div class=" col-lg-5 fond2 bloc_blanc">
+                        <div class="row form-group" >
+                            <div class="col-lg-5  text-blue">Stage(s) effectué(s)</div>
+                        </div>
+
+                        <!--<div class="row form-group" >-->
+                            <!--<div class="bloc_dans_blanc">-->
+
+                                <!--<div th:each="parcoursUtilisateur,counter : ${listParcoursUtilisateur}" class="row form-group">-->
+                                    <!--<label th:for="'parcours' + ${parcoursUtilisateur.id}" class=" col-lg-5  entreeCO text-orange">Parcours <span th:text="${counter.index + 1}">Compteur</span></label>-->
+                                    <!--<div class=" col-lg-7">-->
+                                        <!--<select name="parcours" th:id="'parcours' + ${parcoursUtilisateur.id}">-->
+                                            <!--<option disabled="">&#45;&#45; Choisir un parcours &#45;&#45;</option>-->
+                                            <!--<div th:each="parcours : ${listParcours}">-->
+                                                <!--<option th:if="${parcoursUtilisateur.nom} == ${parcours.nom}" th:value="${parcours.nom}" th:text="${parcours.nom}" selected="">Option</option>-->
+                                                <!--<option th:if="${parcoursUtilisateur.nom} != ${parcours.nom}" th:value="${parcours.nom}" th:text="${parcours.nom}">Option</option>-->
+
+                                            <!--</div>-->
+                                        <!--</select>-->
+                                        <!--<a th:href="'/profile/edit/specialty/delete/' + ${parcoursUtilisateur.id}"><img th:src="@{/elements/icons/trash1.png}"/></a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <a href="/profile/edit/intership/add"><button class="btn btn-default bg-orange pull-right">Ajouter un stage</button></a>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

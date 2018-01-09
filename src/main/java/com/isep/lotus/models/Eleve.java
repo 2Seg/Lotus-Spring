@@ -8,7 +8,7 @@ import java.util.List;
 public class Eleve extends Utilisateur {
 
     @JoinColumn(nullable = false)
-    private int numeroEtudiant;
+    private Integer numeroEtudiant;
 
     @JoinColumn(nullable = false)
     private String anneeScolaire; // = P1, I2, A3
@@ -20,7 +20,7 @@ public class Eleve extends Utilisateur {
     private String promotion; // changer le type Date ?
 
     @JoinColumn(nullable = false)
-    private boolean contact = true;
+    private Boolean contact;
 
     private String linkedin;
 
@@ -60,11 +60,11 @@ public class Eleve extends Utilisateur {
         this.linkedin = linkedin;
     }
 
-    public int getNumeroEtudiant() {
+    public Integer getNumeroEtudiant() {
         return numeroEtudiant;
     }
 
-    public void setNumeroEtudiant(int numeroEtudiant) {
+    public void setNumeroEtudiant(Integer numeroEtudiant) {
         this.numeroEtudiant = numeroEtudiant;
     }
 
@@ -92,11 +92,11 @@ public class Eleve extends Utilisateur {
         this.promotion = promotion;
     }
 
-    public boolean isContact() {
+    public Boolean isContact() {
         return contact;
     }
 
-    public void setContact(boolean contact) {
+    public void setContact(Boolean contact) {
         this.contact = contact;
     }
 
