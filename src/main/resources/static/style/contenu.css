@@ -200,13 +200,13 @@ image_eleve{
 }
 
 .tailleboutonaccp{
-    width: 650px;
-    height: 650px
+    width: 500px;
+    height: 500px;
 }
 
 .taillepetitboutonaccp{
-    width: 650px;
-    height: 285px
+    width: 500px;
+    height: 200px;
 }
 
 .gras{
@@ -219,6 +219,6 @@ image_eleve{
 }
 
 .tailleboutonacce{
-    width: 965px;
-    height: 700px;
+    width: 700px;
+    height: 300px;
 }
