@@ -3,10 +3,19 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Liste_ancien_eleve</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/jquery1.js}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/js/dropdown.js}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/js/bootstrap.js/bootstrap.min.js}"/>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
     <link rel="stylesheet" th:href="@{/style/colors.css}"/>
     <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
     <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
 
 </head>
@@ -14,6 +23,7 @@
 <header th:replace="incluable/header/headernonconnecte :: header" />
 
 <nav th:replace="incluable/menu/menueleve :: nav" />
+
 <nav th:replace="incluable/barre_recherche :: nav" />
 
 <div class="container">
@@ -30,7 +40,7 @@
 
                 <div class="row form-group">
                     <div class="col-lg-2 text-orange text_promo"> Promo 2017 </div>
-                    <div class="col-lg-2">Nombre total:</div>
+                    <div class="col-lg-2">Nombre total :</div>
                     <div class="col-lg-push-5 col-lg-3">
                         <input type="checkbox" name="Select_all" />  Selectionner toute la catégorie
                     </div>

@@ -109,13 +109,14 @@ image_eleve{
    /* margin-left: 15%;*/
 }
 
-.filtre{
+.filtre2{
     margin-top: -50px;
+    display: flex;
 }
 
 .loupe{
     margin-top: -5px;
-    margin-left: -25px;
+    margin-left: -30px;
 }
 
 .taper{
@@ -197,16 +198,20 @@ image_eleve{
 .margeboutonacc{
     margin-top: 40px;
     margin-bottom: 40px;
+    padding-bottom: 20px;
+
 }
 
 .tailleboutonaccp{
-    width: 650px;
-    height: 650px
+
+    height: 500px;
+
 }
 
 .taillepetitboutonaccp{
-    width: 650px;
-    height: 285px
+
+    height: 200px;
+
 }
 
 .gras{
@@ -219,6 +224,7 @@ image_eleve{
 }
 
 .tailleboutonacce{
-    width: 965px;
-    height: 700px;
+
+    height: 300px;
+
 }

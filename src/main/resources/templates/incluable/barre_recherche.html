@@ -3,42 +3,102 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <scriptsrc="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" th:href="@{/bootstrap/js/jquery1.js}"/>
+     <link rel="stylesheet" th:href="@{/bootstrap/js/dropdown.js}"/>
+     <link rel="stylesheet" th:href="@{/bootstrap/js/bootstrap.js/bootstrap.min.js}"/>
+     <link rel="stylesheet" href="@{/bootstrap/css/bootstrap.css}"/>
+     <link rel="stylesheet" href="@{/style/colors.css}"/>
+     <link rel="stylesheet" href="@{/style/contenu.css}"/>
+
+     <script src="bootstrap/js/bootstrap.min.js"></script> -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" th:href="@{/style/colors.css}"/>
-    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
 </head>
+
 <body>
+
+
 <nav>
     <div class="container">
-        <div class="row">
-            <div class=" col-lg-8  col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
-                <form class="navbar-form inline-form form-group">
-                    <div class="btn loupe"> <img th:src="@{/elements/icons/loupe25.png}" /> </div>
-                    <input type="search" class="taper" placeholder="Elève, numéro étudiant..."/>
+        <div class="row ">
+            <div class="row col-lg-8 col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
+                <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-7 pull-left  ">
+                    <form class="navbar-form inline-form form-group">
+                        <div class="btn loupe"> <img th:src="@{/elements/icons/loupe25.png}" /> </div>
+                        <input type="search" class="taper" placeholder="Elève, numéro étudiant..."/>
 
-                </form>
+                    </form>
+
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-lg-push-3 col-md-push-4 col-sm-push-4   ">
+                    <ul class="nav navbar-nav pull-right filtre2 ">
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">Promotion</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">2022</a></li>
+                                <li><a href="#">2021</a></li>
+                                <li><a href="#">2020</a></li>
+                                <li><a href="#">2019</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">Année</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">A3</a></li>
+                                <li><a href="#">A2</a></li>
+                                <li><a href="#">A1</a></li>
+                                <li><a href="#">P2</a></li>
+                                <li><a href="#">P1</a></li>
+                                <li><a href="#">I2</a></li>
+                                <li><a href="#">I2</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">Parcours</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Système d'information</a></li>
+                                <li><a href="#">Système d'embarqués</a></li>
+                                <li><a href="#">Business Intelligence</a></li>
+                                <li><a href="#">Logiciel</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">Activités</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Académique</a></li>
+                                <li><a href="#">Diplomé</a></li>
+                                <li><a href="#">Stage</a></li>
+                                <li><a href="#">Apprentissage</a></li>
+                                <li><a href="#">International</a></li>
+                                <li><a href="#">Universités</a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+
 
             </div>
+
         </div>
-        <div class="row">
-
-            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-8 col-lg-push-3 col-md-push-3 col-sm-push-4 col-xs-push-8 ">
-            <ul class="nav navbar-nav pull-right  filtre ">
-
-                <li> <a href="#">Promotion</a> </li>
-
-                <li> <a href="#">Année</a> </li>
-
-                <li> <a href="#">Parcours</a> </li>
-
-                <li> <a href="#">Activité</a> </li>
-
-            </ul>
-            </div>
-        </div>
-
-
 
         <div class="row col-xs-5 col-xs-push-5">
 
@@ -50,6 +110,8 @@
 
 
 </nav>
+
+
 
 </body>
 </html>

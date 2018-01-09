@@ -3,10 +3,11 @@
         xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Accueil</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" th:href="@{/style/colors.css}"/>
-    <link rel="stylesheet" th:href="@{/style/header.css}"/>
     <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
 
 </head>
@@ -22,14 +23,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-4">
-                        <a href="/profile"><button  class="btn btn-default bg-grey margeboutonacc tailleboutonaccp text-blue gras text-acc" > Accès a votre profil <br/><img th:src="@{/elements/icons/avatar-orange.png}"/></button></a>
+                        <a href="/profile"><button  class="btn btn-default bg-grey margeboutonacc tailleboutonaccp btn-block text-blue gras text-acc" > Accès a votre profil <br/><img th:src="@{/elements/icons/avatar-orange.png}"/></button></a>
                     </div>
                     <div class="col-lg-4">
-                        <a href="/messaging"><button class="btn btn-default bg-grey margeboutonacc tailleboutonaccp text-blue gras text-acc" > Accès a votre messagerie  <br/><img th:src="@{/elements/icons/envelope-orange.png}"/></button></a>
+                        <a href="/messaging"><button class="btn btn-default bg-grey margeboutonacc tailleboutonaccp btn-block text-blue gras text-acc" > Accès a votre messagerie  <br/><img th:src="@{/elements/icons/envelope-orange.png}"/></button></a>
                     </div>
                     <div class="col-lg-4">
-                        <a href="/search"><button class="btn btn-default bg-grey margeboutonacc taillepetitboutonaccp text-blue gras text-acc" > Elèves de votre parcours <br/><img th:src="@{/elements/icons/user-groupe-orange.png}"/></button></a>
-                        <a href="/search"><button class="btn btn-default bg-grey margeboutonacc taillepetitboutonaccp text-blue gras text-acc" > Anciens élèves de votre parcours <br/><img th:src="@{/elements/icons/graduate-orange.png}"/></button></a>
+                        <a href="/search"><button class="btn btn-default bg-grey margeboutonacc taillepetitboutonaccp btn-block text-blue gras text-acc" > Elèves de votre parcours <br/><img th:src="@{/elements/icons/user-groupe-orange.png}"/></button></a>
+                        <a href="/search"><button class="btn btn-default bg-grey margeboutonacc taillepetitboutonaccp btn-block text-blue gras text-acc" > Anciens élèves de votre parcours <br/><img th:src="@{/elements/icons/graduate-orange.png}"/></button></a>
                     </div>
                 </div>
             </div>
@@ -39,10 +40,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
-                        <a href="/profile"><button  class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" > Accès a votre profil <br/><img th:src="@{/elements/icons/avatar-orange.png}"/> </button></a>
+                        <a href="/profile"><button  class="btn btn-default bg-grey margeboutonacc tailleboutonacce btn-block text-blue gras text-acc" > Accès a votre profil <br/><img th:src="@{/elements/icons/avatar-orange.png}"/> </button></a>
                     </div>
                     <div class="col-lg-6">
-                        <a href="/messaging"><button class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" > Accès a votre messagerie  <br/><img th:src="@{/elements/icons/envelope-orange.png}"/></button></a>
+                        <a href="/messaging"><button class="btn btn-default bg-grey margeboutonacc tailleboutonacce btn-block text-blue gras text-acc" > Accès a votre messagerie  <br/><img th:src="@{/elements/icons/envelope-orange.png}"/></button></a>
                     </div>
                 </div>
             </div>
