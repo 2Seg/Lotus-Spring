@@ -5,10 +5,10 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/lotus-spring</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/lotus-spring?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
-       <!-- <property name="hbm2ddl.auto">create</property>-->
+        <!--<property name="hbm2ddl.auto">create</property>-->
 
         <mapping class="com.isep.lotus.models.Activite" />
         <mapping class="com.isep.lotus.models.AnneeScolaire" />

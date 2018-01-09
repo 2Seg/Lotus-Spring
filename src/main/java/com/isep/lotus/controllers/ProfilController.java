@@ -1,14 +1,12 @@
 package com.isep.lotus.controllers;
 
-import com.isep.lotus.models.ActivitePro;
-import com.isep.lotus.models.Cours;
-import com.isep.lotus.models.Parcours;
-import com.isep.lotus.models.Utilisateur;
+import com.isep.lotus.models.*;
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
 
 import java.security.MessageDigest;
@@ -95,6 +93,7 @@ public class ProfilController {
             modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
             modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
             modelAndView.addObject("listActivitePro", utilisateur.getEleve().getActivitePros());
+            modelAndView.addObject("listSejourAca", utilisateur.getEleve().getSejourAcademiques());
 
         }
 
@@ -560,6 +559,116 @@ public class ProfilController {
 
         sessionHibernate.beginTransaction();
         sessionHibernate.delete(activitePro);
+        sessionHibernate.getTransaction().commit();
+
+        modelAndView.addObject(utilisateur).addObject("message", message);
+        modelAndView.setViewName("redirect:/profile/edit");
+
+        return modelAndView;
+    }
+
+    /********************************************* SEJOUR ACADEMIQUE ***************************************************/
+
+    @RequestMapping(value = "/profile/edit/exchange-trip/add", method = RequestMethod.GET)
+    public ModelAndView addSejourAcaDisplay(ModelAndView modelAndView, HttpSession httpSession, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
+        if(httpSession.isNew()) {return new ModelAndView("login");}
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+        if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
+
+        if (erreur != null) {
+            modelAndView.addObject("erreur", erreur);
+        }
+        if (message != null) {
+            modelAndView.addObject("message", message);
+        }
+
+        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select a from annee_scolaire a").list());
+        modelAndView.addObject(utilisateur).setViewName("add-sejourAca");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/profile/edit/exchange-trip/add", method = RequestMethod.POST)
+    public ModelAndView addSejourAcaProcess(@RequestParam("pays") String paysReq,
+                                            @RequestParam("ville") String villeReq,
+                                            @RequestParam("etablissement") String etablissementReq,
+                                            @RequestParam("anneeScolaire") String anneeScolaire,
+                                            @RequestParam(value = "semestre", required = false) Integer semestreReq,
+                                            @RequestParam(value = "duree", required = false) Integer dureeReq,
+                                            ModelAndView modelAndView,
+                                            HttpSession httpSession) {
+
+        String erreur = "Erreur : ";
+        String message = "Séjour académique ajouté avec succès";
+        String pays = capitalizeString(secureFieldString(paysReq));
+        String ville = capitalizeString(secureFieldString(villeReq));
+        String etablissement = capitalizeString(secureFieldString(etablissementReq));
+        Integer semestre;
+        Integer duree;
+
+        if (dureeReq != null) {
+            duree = dureeReq;
+        } else {
+            duree = null;
+        }
+
+        if (semestreReq != null) {
+            semestre = semestreReq;
+        } else {
+            semestre = null;
+        }
+
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+
+        if (pays.isEmpty() || ville.isEmpty() || etablissement.isEmpty()) {
+            erreur = erreur + "veuillez remplir tous les champs marqués d'une astérisque";
+            modelAndView.addObject("erreur", erreur).setViewName("redirect:/profile/edit/exchange-trip/add");
+            return modelAndView;
+        } else {
+
+            if (anneeScolaire.equals("unselected")) {
+                erreur = erreur + "veuillez sélectionner une année scolaire";
+                modelAndView.addObject("erreur", erreur).setViewName("redirect:/profile/edit/exchange-trip/add");
+                return modelAndView;
+            } else {
+
+                SejourAcademique sejourAcademique = new SejourAcademique(duree, semestre, pays, ville, anneeScolaire, etablissement);
+
+                sejourAcademique.setEleve(utilisateur.getEleve());
+
+                sessionHibernate.beginTransaction();
+                sessionHibernate.persist(sejourAcademique);
+                sessionHibernate.getTransaction().commit();
+
+                modelAndView.addObject(utilisateur).addObject("message", message);
+                modelAndView.setViewName("redirect:/profile/edit");
+
+            }
+
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/profile/edit/exchange-trip/delete/{idSejourAca}", method = RequestMethod.GET)
+    public ModelAndView deleteSejourAcaProcess(@PathVariable("idSejourAca") String idSejourAca,
+                                                 HttpSession httpSession,
+                                                 ModelAndView modelAndView) {
+
+        String message = "Séjour académique supprimé avec succès";
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+
+        SejourAcademique sejourAcademique = (SejourAcademique) sessionHibernate.get(SejourAcademique.class, new Integer(idSejourAca));
+
+        sejourAcademique.setEleve(null);
+
+        sessionHibernate.beginTransaction();
+        sessionHibernate.delete(sejourAcademique);
         sessionHibernate.getTransaction().commit();
 
         modelAndView.addObject(utilisateur).addObject("message", message);

@@ -33,6 +33,9 @@ public class FixturesController {
         ActivitePro stage1 = new ActivitePro("Stage", 6, "TF1", "Stagiaire", null, "France", null);
         ActivitePro stage2 = new ActivitePro("Stage", 1, "Selectra", "Développeur", "Développement d'outils internes à l'entreprise", "France", "Paris");
 
+        SejourAcademique australie = new SejourAcademique(8, 1, "Australie", "Brisbane", "A3", "Griffith University");
+        SejourAcademique states = new SejourAcademique(null, null, "USA", "San Francisco", "A3", "Standford University");
+
         TypeContrat cdi = new TypeContrat("Contrat à Durée Indéterminée (CDI)");
         TypeContrat cdd = new TypeContrat("Contrat à Durée Déterminée (CDD)");
         TypeContrat stag = new TypeContrat("Stage");
@@ -75,6 +78,7 @@ public class FixturesController {
         eliott.getEleve().addCours(archiSi);
         stage1.setEleve(eliottEleve);
         stage2.setEleve(eliottEleve);
+        australie.setEleve(eliottEleve);
 
         Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr");
         Eleve manonEleve = new Eleve(5397, "A1", "Alternance", "2020", false, "http://www.linkedin.com/in/manon-iribarne");
@@ -88,6 +92,7 @@ public class FixturesController {
         quentin.getEleve().addParcours(bi);
         quentin.getEleve().addCours(data);
         quentin.getEleve().addCours(archiSi);
+        states.setEleve(quentinEleve);
 
         Utilisateur orianne =  new Utilisateur("oriannejo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@isep.fr");
 
@@ -119,6 +124,9 @@ public class FixturesController {
 
         session.persist(stage1);
         session.persist(stage2);
+
+        session.persist(australie);
+        session.persist(states);
 
         session.persist(i1);
         session.persist(i2);
