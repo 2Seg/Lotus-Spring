@@ -36,6 +36,11 @@ public class FixturesController {
         SejourAcademique australie = new SejourAcademique(8, 1, "Australie", "Brisbane", "A3", "Griffith University");
         SejourAcademique states = new SejourAcademique(null, null, "USA", "San Francisco", "A3", "Standford University");
 
+        ActiviteExtra surf = new ActiviteExtra("Surf");
+        ActiviteExtra piano = new ActiviteExtra("Piano");
+        ActiviteExtra danse = new ActiviteExtra("Danse");
+        ActiviteExtra pétanque = new ActiviteExtra("Pétanque");
+
         TypeContrat cdi = new TypeContrat("Contrat à Durée Indéterminée (CDI)");
         TypeContrat cdd = new TypeContrat("Contrat à Durée Déterminée (CDD)");
         TypeContrat stag = new TypeContrat("Stage");
@@ -79,12 +84,15 @@ public class FixturesController {
         stage1.setEleve(eliottEleve);
         stage2.setEleve(eliottEleve);
         australie.setEleve(eliottEleve);
+        surf.setEleve(eliottEleve);
+        piano.setEleve(eliottEleve);
 
         Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr");
         Eleve manonEleve = new Eleve(5397, "A1", "Alternance", "2020", false, "http://www.linkedin.com/in/manon-iribarne");
         manon.setEleve(manonEleve);
         manon.getEleve().addParcours(si);
         manon.getEleve().addCours(data);
+        danse.setEleve(manonEleve);
 
         Utilisateur quentin =  new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr");
         Eleve quentinEleve = new Eleve(3627, "A2", "Académique", "2019", false, "http://www.linkedin.com/in/quentin-andrieu");
@@ -93,6 +101,7 @@ public class FixturesController {
         quentin.getEleve().addCours(data);
         quentin.getEleve().addCours(archiSi);
         states.setEleve(quentinEleve);
+        pétanque.setEleve(quentinEleve);
 
         Utilisateur orianne =  new Utilisateur("oriannejo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@isep.fr");
 
@@ -127,6 +136,11 @@ public class FixturesController {
 
         session.persist(australie);
         session.persist(states);
+
+        session.persist(surf);
+        session.persist(piano);
+        session.persist(danse);
+        session.persist(pétanque);
 
         session.persist(i1);
         session.persist(i2);

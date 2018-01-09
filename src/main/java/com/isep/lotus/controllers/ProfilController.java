@@ -82,7 +82,6 @@ public class ProfilController {
             modelAndView.addObject("listCours", sessionHibernate.createQuery("select c from cours c").list());
             modelAndView.addObject("listCoursUtilisateur", utilisateur.getProfesseur().getCours());
 
-
         } else if (httpSession.getAttribute("type") == "eleve") {
 
             modelAndView.addObject(utilisateur);
@@ -94,10 +93,9 @@ public class ProfilController {
             modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
             modelAndView.addObject("listActivitePro", utilisateur.getEleve().getActivitePros());
             modelAndView.addObject("listSejourAca", utilisateur.getEleve().getSejourAcademiques());
+            modelAndView.addObject("listActiviteExtra", utilisateur.getEleve().getActiviteExtras());
 
         }
-
-
 
         modelAndView.setViewName("/edit-profile");
         return modelAndView;
@@ -677,8 +675,84 @@ public class ProfilController {
         return modelAndView;
     }
 
+    /********************************************* ACTIVITE EXTRA-SCOLAIRE ***************************************************/
 
+    @RequestMapping(value = "/profile/edit/extra-activity/add", method = RequestMethod.GET)
+    public ModelAndView addActiviteExtraDisplay(ModelAndView modelAndView, HttpSession httpSession, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
+        if(httpSession.isNew()) {return new ModelAndView("login");}
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+        if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
 
+        if (erreur != null) {
+            modelAndView.addObject("erreur", erreur);
+        }
+        if (message != null) {
+            modelAndView.addObject("message", message);
+        }
+
+        modelAndView.addObject(utilisateur).setViewName("add-activiteExtra");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/profile/edit/extra-activity/add", method = RequestMethod.POST)
+    public ModelAndView addActiviteExtraProcess(@RequestParam("activiteExtra") String activiteExtraReq,
+                                           HttpSession httpSession,
+                                           ModelAndView modelAndView) {
+
+        String erreur = "Erreur : ";
+        String message = "Parcours ajouté avec succès";
+        String activiteExtra = capitalizeString(secureFieldString(activiteExtraReq));
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+
+        if (activiteExtra.isEmpty()) {
+            erreur = erreur + "veuillez remplir le champ muni d'une astérique";
+            modelAndView.addObject("erreur", erreur).setViewName("redirect:/profile/edit/extra-activity/add");
+            return modelAndView;
+        } else {
+
+            ActiviteExtra activiteExtra1 = new ActiviteExtra(activiteExtra);
+
+            activiteExtra1.setEleve(utilisateur.getEleve());
+
+            sessionHibernate.beginTransaction();
+            sessionHibernate.persist(activiteExtra1);
+            sessionHibernate.getTransaction().commit();
+
+            modelAndView.addObject(utilisateur).addObject("message", message);
+            modelAndView.setViewName("redirect:/profile/edit");
+
+            return modelAndView;
+        }
+
+    }
+
+    @RequestMapping(value = "/profile/edit/extra-activity/delete/{idActiviteExtra}", method = RequestMethod.GET)
+    public ModelAndView deleteActiviteExtraProcess(@PathVariable("idActiviteExtra") String idActiviteExtra,
+                                              HttpSession httpSession,
+                                              ModelAndView modelAndView) {
+
+        String message = "Activité extra-scolaire supprimée avec succès";
+
+        Session sessionHibernate = getSession();
+        Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+
+        ActiviteExtra activiteExtra = (ActiviteExtra) sessionHibernate.get(ActiviteExtra.class, new Integer(idActiviteExtra));
+
+        activiteExtra.setEleve(null);
+
+        sessionHibernate.beginTransaction();
+        sessionHibernate.delete(activiteExtra);
+        sessionHibernate.getTransaction().commit();
+
+        modelAndView.addObject(utilisateur).addObject("message", message);
+        modelAndView.setViewName("redirect:/profile/edit");
+
+        return modelAndView;
+    }
 
     private String secureFieldString (String inputString) {
         return escapeHtml4(inputString.trim());

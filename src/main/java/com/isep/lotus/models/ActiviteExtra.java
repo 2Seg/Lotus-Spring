@@ -20,8 +20,7 @@ public class ActiviteExtra {
 
     public ActiviteExtra() {}
 
-    public ActiviteExtra(Eleve eleve, String nom) {
-        this.eleve = eleve;
+    public ActiviteExtra(String nom) {
         this.nom = nom;
     }
 
