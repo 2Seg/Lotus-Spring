@@ -158,11 +158,16 @@
                                         <div class="bloc_dans_blanc">
 
                                             <div th:each="coursUtilisateur,counter : ${listCoursUtilisateur}" class="row form-group">
-                                                <div class="row form-group">
-                                                    <label th:for="'cours' + ${coursUtilisateur.id}" class="col-lg-5 entreeCO text-orange">Cours <span th:text="${counter.index + 1}">Compteur</span></label>
-                                                    <div class=" col-lg-7">
-                                                        <input type="text" th:id="'cours' + ${coursUtilisateur.id}" name="prenom" class="form-control" th:value="${coursUtilisateur.nom}" placeholder="Prénom"/>
-                                                    </div>
+                                                <label th:for="'cours' + ${coursUtilisateur.id}" class=" col-lg-5  entreeCO text-orange">Cours <span th:text="${counter.index + 1}">Compteur</span></label>
+                                                <div class=" col-lg-7">
+                                                    <select name="cours" th:id="'cours' + ${coursUtilisateur.id}">
+                                                        <option disabled="">-- Choisir un cours --</option>
+                                                        <div th:each="cours : ${listCours}">
+                                                            <option th:if="${coursUtilisateur.nom} == ${cours.nom}" th:value="${cours.nom}" th:text="${cours.nom}" selected="">Option</option>
+                                                            <option th:if="${coursUtilisateur.nom} != ${cours.nom}" th:value="${cours.nom}" th:text="${cours.nom}">Option</option>
+
+                                                        </div>
+                                                    </select>
                                                     <a th:href="'/profile/edit/courses/delete/' + ${coursUtilisateur.id}"><img th:src="@{/elements/icons/trash1.png}"/></a>
                                                 </div>
                                             </div>

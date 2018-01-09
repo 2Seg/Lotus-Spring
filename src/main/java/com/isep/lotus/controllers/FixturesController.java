@@ -31,9 +31,14 @@ public class FixturesController {
         Parcours se = new Parcours("Systèmes embarqués");
         Parcours cre = new Parcours("Innovation et Création d'entreprise");
 
-        Cours technoWeb = new Cours("Technologies Web");
-        Cours archiSi = new Cours("Architecture Des Systèmes D'Information");
-        Cours data = new Cours("Base De Données Et Big Data");
+        Cours technoWeb = new Cours("Technologies web");
+        Cours archiSi = new Cours("Architecture des Systèmes d'Information");
+        Cours data = new Cours("Base de données et Big Data");
+        Cours langue = new Cours("Langues et Culture");
+        Cours cyber = new Cours("Cybersécurité");
+        Cours glog = new Cours("Génie Logiciel");
+        Cours perso = new Cours("Engagement Personnel");
+        Cours elec = new Cours("Electronique");
 
         Utilisateur eliott = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "DE SEGUIER", "eliottdes@gmail.com");
         Eleve eliottEleve = new Eleve(8740, "A2", "Académique", "2019", true, "www.linkedin.com/in/eliott-de-séguier");
@@ -85,6 +90,11 @@ public class FixturesController {
         session.persist(technoWeb);
         session.persist(archiSi);
         session.persist(data);
+        session.persist(langue);
+        session.persist(cyber);
+        session.persist(glog);
+        session.persist(perso);
+        session.persist(elec);
 
         session.persist(eliott);
         session.persist(manon);

@@ -69,16 +69,16 @@ public class ProfilController {
             return new ModelAndView("/login");
         }
 
-        modelAndView.addObject(utilisateur);
-        modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
-        modelAndView.addObject("listParcoursUtilisateur", utilisateur.getProfesseur().getParcours());
-        modelAndView.addObject("listCoursUtilisateur", utilisateur.getProfesseur().getCours());
+        if (httpSession.getAttribute("type") == "professeur" || httpSession.getAttribute("type") == "eleve") {
 
-        if (httpSession.getAttribute("type") == "professeur") {
+            modelAndView.addObject(utilisateur);
+            modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
+            modelAndView.addObject("listParcoursUtilisateur", utilisateur.getProfesseur().getParcours());
+            modelAndView.addObject("listCours", sessionHibernate.createQuery("select c from cours c").list());
+            modelAndView.addObject("listCoursUtilisateur", utilisateur.getProfesseur().getCours());
 
 
-
-        } else if (httpSession.getAttribute("type") == "eleve") {
+        } else if (httpSession.getAttribute("type") == "none") {
 
 
 
@@ -260,6 +260,7 @@ public class ProfilController {
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
 
+        modelAndView.addObject("listCours", sessionHibernate.createQuery("select c from cours c").list());
         modelAndView.addObject(utilisateur).setViewName("add-cours");
 
         return modelAndView;
@@ -271,23 +272,20 @@ public class ProfilController {
                                            ModelAndView modelAndView) {
 
         String erreur = "Erreur : ";
-
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
 
         if (coursReq.equals("unselected")) {
-            erreur = erreur + "veuillez saisir un intitulé de cours";
+            erreur = erreur + "veuillez sélectionner une option";
             modelAndView.addObject(utilisateur);
-            modelAndView.addObject("erreur", erreur).setViewName("add-cours");
+            modelAndView.addObject("erreur", erreur).setViewName("add-parcours");
             return modelAndView;
         } else {
-            Cours cours = new Cours();
-            cours.setNom(capitalizeString(coursReq));
+            Cours cours = (Cours) sessionHibernate.get(Cours.class, new Integer(coursReq));
 
             utilisateur.getProfesseur().addCours(cours);
 
             sessionHibernate.beginTransaction();
-            sessionHibernate.persist(cours);
             sessionHibernate.update(utilisateur);
             sessionHibernate.update(cours);
             sessionHibernate.getTransaction().commit();
@@ -301,8 +299,8 @@ public class ProfilController {
 
     @RequestMapping(value = "/profile/edit/courses/delete/{idCours}", method = RequestMethod.GET)
     public ModelAndView deleteCoursProcess(@PathVariable("idCours") String idCours,
-                                              HttpSession httpSession,
-                                              ModelAndView modelAndView) {
+                                           HttpSession httpSession,
+                                           ModelAndView modelAndView) {
 
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));

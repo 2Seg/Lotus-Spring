@@ -39,8 +39,11 @@
 
                                             <div class="row form-group">
                                                 <label for="cours" class=" col-lg-5  entreeCO text-orange">Cours</label>
-                                                <div class="col-lg-7">
-                                                    <input type="text" id="cours" name="cours" class="form-control" placeholder="Cours enseigné" />
+                                                <div class=" col-lg-7">
+                                                    <select name="cours" id="cours" >
+                                                        <option selected="" value="unselected">-- Choisir un cours --</option>
+                                                        <option th:each="cours : ${listCours}" th:value="${cours.id}" th:text="${cours.nom}">Option</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

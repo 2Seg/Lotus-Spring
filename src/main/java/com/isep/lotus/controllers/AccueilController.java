@@ -16,7 +16,7 @@ public class AccueilController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView home(HttpSession httpSession, ModelAndView modelAndView) {
-        if(httpSession.isNew()) {
+        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {
             return new ModelAndView("login");
         }
         Session sessionHibernate = getSession();
