@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Connexion</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+
+</head>
+<body>
+<header th:replace="incluable/header/headernonconnecte :: header" />
+<nav th:replace="incluable/menu/menunonconnecte :: nav" />
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12 bg-lightgrey fond">
+            <div class="row form-group">
+                <div class="col-lg-5 text-blue PROFIL"> Mention Légale</div>
+                <div class="col-lg-push-2 col-lg-8 fond2 bloc_blanc"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:replace="incluable/footer :: footer" />
+
+</body>
+</html>
