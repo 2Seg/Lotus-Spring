@@ -197,16 +197,20 @@ image_eleve{
 .margeboutonacc{
     margin-top: 40px;
     margin-bottom: 40px;
+    padding-bottom: 20px;
+
 }
 
 .tailleboutonaccp{
-    width: 500px;
+
     height: 500px;
+
 }
 
 .taillepetitboutonaccp{
-    width: 500px;
+
     height: 200px;
+
 }
 
 .gras{
@@ -219,6 +223,7 @@ image_eleve{
 }
 
 .tailleboutonacce{
-    width: 700px;
+
     height: 300px;
+
 }
