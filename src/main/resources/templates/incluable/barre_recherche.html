@@ -4,15 +4,26 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+   <!-- <link rel="stylesheet" th:href="@{/bootstrap/js/jquery1.js}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/js/dropdown.js}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/js/bootstrap.js/bootstrap.min.js}"/> -->
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
     <link rel="stylesheet" th:href="@{/style/colors.css}"/>
-    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+
+
+
+    <!--<script src="bootstrap/js/bootstrap.min.js"></script> -->
 </head>
+
 <body>
+
 <nav>
     <div class="container">
-        <div class="row">
-            <div class=" col-lg-8  col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
+        <div class="row ">
+        <div class="row col-lg-8 col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
+            <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-7 pull-left  "> <!--col-lg-8  col-lg-push-2 col-xs-10 col-xs-push-1 barreR -->
                 <form class="navbar-form inline-form form-group">
                     <div class="btn loupe"> <img th:src="@{/elements/icons/loupe25.png}" /> </div>
                     <input type="search" class="taper" placeholder="Elève, numéro étudiant..."/>
@@ -20,13 +31,21 @@
                 </form>
 
             </div>
-        </div>
+       </div>
         <div class="row">
 
-            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-8 col-lg-push-3 col-md-push-3 col-sm-push-4 col-xs-push-8 ">
-            <ul class="nav navbar-nav pull-right  filtre ">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-lg-push-3 col-md-push-4 col-sm-push-4   "> <!-- col-lg-7 col-md-7 col-sm-7 col-xs-7 col-lg-push-3 col-md-push-3 col-sm-push-4 col-xs-push-8 -->
+            <ul class="nav navbar-nav pull-right filtre2 ">
 
-                <li> <a href="#">Promotion</a> </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="#">Promotion</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">2022</a></li>
+                        <li><a href="#">2021</a></li>
+                        <li><a href="#">2020</a></li>
+                        <li><a href="#">2019</a></li>
+                    </ul>
+                </li>
 
                 <li> <a href="#">Année</a> </li>
 
@@ -36,9 +55,9 @@
 
             </ul>
             </div>
+       </div>
+
         </div>
-
-
 
         <div class="row col-xs-5 col-xs-push-5">
 
@@ -50,6 +69,9 @@
 
 
 </nav>
+
+<script th:src="@{/bootstrap/js/jquery1.js}"></script>
+<script th:src="@{/bootstrap/js/dropdown.js}"></script>
 
 </body>
 </html>
