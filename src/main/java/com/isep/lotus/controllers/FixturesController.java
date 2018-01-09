@@ -22,6 +22,22 @@ public class FixturesController {
     @RequestMapping(value = "/fixtures", method = RequestMethod.GET)
     public ModelAndView fixtures1(ModelAndView modelAndView) {
 
+        Activite acad = new Activite("Académique");
+        Activite appre = new Activite("Apprentissage");
+        Activite inter = new Activite("International");
+        Activite ces = new Activite("Césure");
+        Activite stage = new Activite("Stage");
+        Activite dipl = new Activite("Diplômé");
+
+        AnneeScolaire i1 = new AnneeScolaire("I1");
+        AnneeScolaire i2 = new AnneeScolaire("I2");
+        AnneeScolaire p1 = new AnneeScolaire("P1");
+        AnneeScolaire p2 = new AnneeScolaire("P2");
+        AnneeScolaire a1 = new AnneeScolaire("A1");
+        AnneeScolaire a2 = new AnneeScolaire("A2");
+        AnneeScolaire a3 = new AnneeScolaire("A3");
+        AnneeScolaire ancien = new AnneeScolaire("Diplômé");
+
         Parcours si = new Parcours("Systèmes d'information");
         Parcours bi = new Parcours("Bussiness Intelligence");
         Parcours gl = new Parcours("Génie Logiciel");
@@ -41,29 +57,26 @@ public class FixturesController {
         Cours elec = new Cours("Electronique");
 
         Utilisateur eliott = new Utilisateur("eliottdes", passWordEncryption("aze"), "Eliott", "DE SEGUIER", "eliottdes@gmail.com");
-        Eleve eliottEleve = new Eleve(8740, "A2", "Académique", "2019", true, "www.linkedin.com/in/eliott-de-séguier");
+        Eleve eliottEleve = new Eleve(8740, "A2", "Académique", "2019", true, "http://www.linkedin.com/in/eliott-de-séguier");
         eliott.setEleve(eliottEleve);
         eliott.getEleve().addParcours(si);
         eliott.getEleve().addCours(technoWeb);
         eliott.getEleve().addCours(archiSi);
 
         Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr");
-        Eleve manonEleve = new Eleve(5397, "A1", "Alternance", "2020", false, "www.linkedin.com/in/manon-iribarne");
+        Eleve manonEleve = new Eleve(5397, "A1", "Alternance", "2020", false, "http://www.linkedin.com/in/manon-iribarne");
         manon.setEleve(manonEleve);
         manon.getEleve().addParcours(si);
         manon.getEleve().addCours(data);
 
         Utilisateur quentin =  new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr");
-        Eleve quentinEleve = new Eleve(3627, "A2", "Académique", "2019", false, "www.linkedin.com/in/quentin-andrieu");
+        Eleve quentinEleve = new Eleve(3627, "A2", "Académique", "2019", false, "http://www.linkedin.com/in/quentin-andrieu");
         quentin.setEleve(quentinEleve);
         quentin.getEleve().addParcours(bi);
         quentin.getEleve().addCours(data);
         quentin.getEleve().addCours(archiSi);
 
         Utilisateur orianne =  new Utilisateur("oriannejo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@isep.fr");
-
-
-
 
         Utilisateur zakia = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr");
         Professeur zakiaProfesseur = new Professeur();
@@ -74,9 +87,24 @@ public class FixturesController {
         Utilisateur herve = new Utilisateur("herfel", passWordEncryption("aze"), "Hervé", "FELLER", "herve.feller@isep.fr");
 
 
-
         Session session = getSession();
         Transaction tx = session.beginTransaction();
+
+        session.persist(acad);
+        session.persist(appre);
+        session.persist(inter);
+        session.persist(ces);
+        session.persist(stage);
+        session.persist(dipl);
+
+        session.persist(i1);
+        session.persist(i2);
+        session.persist(p1);
+        session.persist(p2);
+        session.persist(a1);
+        session.persist(a2);
+        session.persist(a3);
+        session.persist(ancien);
 
         session.persist(si);
         session.persist(bi);

@@ -14,6 +14,7 @@ public class Cours {
     @ManyToMany
     private List<Utilisateur> utilisateurs = new ArrayList<>();
 
+    @JoinColumn(nullable = false)
     private String nom;
 
 

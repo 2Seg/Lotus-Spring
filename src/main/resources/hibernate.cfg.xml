@@ -10,6 +10,8 @@
         <property name="hibernate.connection.password">root</property>
         <!--<property name="hbm2ddl.auto">create</property>-->
 
+        <mapping class="com.isep.lotus.models.Activite" />
+        <mapping class="com.isep.lotus.models.AnneeScolaire" />
         <mapping class="com.isep.lotus.models.ActiviteExtra" />
         <mapping class="com.isep.lotus.models.ActivitePro" />
         <mapping class="com.isep.lotus.models.Bulletin" />

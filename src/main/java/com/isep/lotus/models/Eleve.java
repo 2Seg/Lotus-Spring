@@ -14,7 +14,7 @@ public class Eleve extends Utilisateur {
     private String anneeScolaire; // = P1, I2, A3
 
     @JoinColumn(nullable = false)
-    private String statutScolaire;
+    private String activite;
 
     @JoinColumn(nullable = false)
     private String promotion; // changer le type Date ?
@@ -51,10 +51,10 @@ public class Eleve extends Utilisateur {
 
     public Eleve() {}
 
-    public Eleve(int numeroEtudiant, String anneeScolaire, String statutScolaire, String promotion, boolean contact, String linkedin) {
+    public Eleve(int numeroEtudiant, String anneeScolaire, String activite, String promotion, boolean contact, String linkedin) {
         this.numeroEtudiant = numeroEtudiant;
         this.anneeScolaire = anneeScolaire;
-        this.statutScolaire = statutScolaire;
+        this.activite = activite;
         this.promotion = promotion;
         this.contact = contact;
         this.linkedin = linkedin;
@@ -76,12 +76,12 @@ public class Eleve extends Utilisateur {
         this.anneeScolaire = anneeScolaire;
     }
 
-    public String getStatutScolaire() {
-        return statutScolaire;
+    public String getActivite() {
+        return activite;
     }
 
-    public void setStatutScolaire(String statutScolaire) {
-        this.statutScolaire = statutScolaire;
+    public void setActivite(String statutScolaire) {
+        this.activite = statutScolaire;
     }
 
     public String getPromotion() {
