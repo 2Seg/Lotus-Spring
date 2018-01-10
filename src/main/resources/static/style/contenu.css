@@ -152,8 +152,12 @@ image_eleve{
     padding-right:20px ;
     padding-left: 20px;
     padding-top: 20px;
+    margin-left :20px;
 
+}
 
+.decallage{
+    margin-left: -30px;
 }
 
 .bloc_blanc_eleve{
@@ -198,16 +202,20 @@ image_eleve{
 .margeboutonacc{
     margin-top: 40px;
     margin-bottom: 40px;
+    padding-bottom: 20px;
+
 }
 
 .tailleboutonaccp{
-    width: 650px;
-    height: 650px
+
+    height: 500px;
+
 }
 
 .taillepetitboutonaccp{
-    width: 650px;
-    height: 285px
+
+    height: 200px;
+
 }
 
 .gras{
@@ -220,6 +228,7 @@ image_eleve{
 }
 
 .tailleboutonacce{
-    width: 965px;
-    height: 700px;
+
+    height: 300px;
+
 }

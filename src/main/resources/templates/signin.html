@@ -15,7 +15,7 @@
 
 <nav th:replace="incluable/menu/menunonconnecte :: nav" />
 
-<div class="container-fluide">
+<div class="container">
 
     <div class="row">
         <div class=" col-lg-12  bg-lightgrey bloc_gris">
@@ -27,9 +27,9 @@
                     <div class="col-lg-5 text-blue"><h3>Inscription</h3></div>
                 </div>
                 <div class="row">
-                    <div class=" col-lg-7 fond2 bloc_blanc">
+                    <div class=" col-lg-6 fond2 bloc_blanc">
                         <div class="row form-group" >
-                            <div class="col-lg-5  text-blue">Informations personnelles</div>
+                            <div class="col-lg-5 text-blue">Informations personnelles</div>
                         </div>
 
                         <div class="row form-group">
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-9 bloc_dans_blanc">
+                            <div class="col-lg-8 col-lg-push-1 bloc_dans_blanc">
                                 <div class="row form-group">
                                     <label for="prenom" class=" col-lg-5  entreeCO text-orange">Prénom<span class="text-red">*</span></label>
                                     <div class=" col-lg-7">
@@ -71,7 +71,7 @@
                     </div>
 
 
-                    <div class=" col-lg-5 fond2 bloc_blanc">
+                    <div class=" col-lg-5 col-lg-push-1 fond2 bloc_blanc decallage">
                         <div class="row form-group" >
                             <div class="col-lg-5  text-blue">Informations de connexion</div>
                         </div>
@@ -81,21 +81,21 @@
 
                                 <div class="row form-group">
                                     <label for="identifiant" class=" col-lg-5  entreeCO text-orange">Identifiant<span class="text-red">*</span></label>
-                                    <div class=" col-lg-7">
+                                    <div class=" col-lg-6 pull-right">
                                         <input type="text" id="identifiant" name="identifiant" class="form-control" th:value="${lastIdentifiant}" placeholder="Identifiant de connexion"/>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <label for="mdp" class=" col-lg-5  entreeCO text-orange">Mot de passe<span class="text-red">*</span></label>
-                                    <div class=" col-lg-7">
+                                    <div class=" col-lg-6 pull-right">
                                         <input type="password" id="mdp" name="mdp" class="form-control" placeholder="Mot de passe"/>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
-                                    <label for="conf-mdp" class=" col-lg-5 text-orange entreeCO">Confirmer le mot de passe<span class="text-red">*</span></label>
-                                    <div class=" col-lg-7">
+                                    <label for="conf-mdp" class=" col-lg-6 text-orange entreeCO">Confirmer le mot de passe<span class="text-red">*</span></label>
+                                    <div class=" col-lg-6">
                                         <input type="password" id="conf-mdp" name="conf-mdp" class="form-control"  placeholder="Confirmation du mot de passe"/>
                                     </div>
                                 </div>
