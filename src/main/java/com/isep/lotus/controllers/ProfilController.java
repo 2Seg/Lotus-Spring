@@ -702,7 +702,7 @@ public class ProfilController {
                                            ModelAndView modelAndView) {
 
         String erreur = "Erreur : ";
-        String message = "Parcours ajouté avec succès";
+        String message = "Activité extra-scolaire ajoutée avec succès";
         String activiteExtra = capitalizeString(secureFieldString(activiteExtraReq));
 
         Session sessionHibernate = getSession();
