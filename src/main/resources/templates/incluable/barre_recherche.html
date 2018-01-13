@@ -41,13 +41,44 @@
 
             <script>
 
-              function taper() {
-                  var recherche = document.getElementById("recherche").value;
-                  var res = recherche.replace(" ","/=");
-                  document.getElementById("recherche").innerHTML = res;
-                  location.href='/Search?Saisi='+ res;
 
-              }
+                function taper() {
+                    var recherche = document.getElementById("recherche").value;
+                    var res = recherche.replace(/ /g,"/=");
+                    document.getElementById("recherche").innerHTML = res;
+                    location.href='/Search?Saisi='+ res;
+                }
+
+
+                /*    var href= "/Search?Saisi=";
+                    */
+                   /* this.href=this.href+document.getElementById(res).value; */
+
+
+                    /*var urlTemplate="/Search?saisi={0}"; // Tête de l'url
+
+                        $(document).on("keyup", "#recherche", function(){
+
+                            var
+                                res   = $(this).val(),
+                                renderedLink = urlTemplate.replace("{0}",res);
+
+                            $("#envoi").attr("href", renderedLink );
+
+                        });*/
+
+
+
+                 /* var recherche= document.getElementById('recherche').value; */
+
+                /*   function taper(){
+
+                       recherche.this.href=this.href+document.getElementById('recherche').value;
+                       this.href=this.href+document.getElementById('recherche').value;
+                var hu=document.getElementById("hu").value;
+                 alert(recherche);
+                   }*/
+
 
             </script>
 
