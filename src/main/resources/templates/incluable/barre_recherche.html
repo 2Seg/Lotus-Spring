@@ -31,21 +31,65 @@
         <div class="row ">
             <div class="row col-lg-8 col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
                 <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-7 pull-left  ">
-                    <form class="navbar-form inline-form form-group">
-                        <div class="btn loupe"> <img th:src="@{/elements/icons/loupe25.png}" /> </div>
-                        <input type="search" class="taper" placeholder="Elève, numéro étudiant..."/>
-
+                    <form class="navbar-form inline-form form-group" >
+                        <div class="btn loupe" type="submit"><a id="envoi" onclick="taper();" > <img th:src="@{/elements/icons/loupe25.png}" /> </a></div>
+                        <input type="text" class="taper" id="recherche" placeholder="Elève, numéro étudiant..."/>
                     </form>
 
                 </div>
             </div>
+
+            <script>
+
+
+                function taper() {
+                    var recherche = document.getElementById("recherche").value;
+                    var res = recherche.replace(/ /g,"/=");
+                    document.getElementById("recherche").innerHTML = res;
+                    location.href='/Search?Saisi='+ res;
+                }
+
+
+                /*    var href= "/Search?Saisi=";
+                    */
+                   /* this.href=this.href+document.getElementById(res).value; */
+
+
+                    /*var urlTemplate="/Search?saisi={0}"; // Tête de l'url
+
+                        $(document).on("keyup", "#recherche", function(){
+
+                            var
+                                res   = $(this).val(),
+                                renderedLink = urlTemplate.replace("{0}",res);
+
+                            $("#envoi").attr("href", renderedLink );
+
+                        });*/
+
+
+
+                 /* var recherche= document.getElementById('recherche').value; */
+
+                /*   function taper(){
+
+                       recherche.this.href=this.href+document.getElementById('recherche').value;
+                       this.href=this.href+document.getElementById('recherche').value;
+                var hu=document.getElementById("hu").value;
+                 alert(recherche);
+                   }*/
+
+
+            </script>
+
+
             <div class="row">
 
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-lg-push-3 col-md-push-4 col-sm-push-4   ">
                     <ul class="nav navbar-nav pull-right filtre2 ">
 
                         <li class="dropdown">
-                            <a data-toggle="dropdown" href="#">Promotion</a>
+                            <a data-toggle="dropdown" href="" id="envoi2">Promotion</a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">2022</a></li>
                                 <li><a href="#">2021</a></li>
