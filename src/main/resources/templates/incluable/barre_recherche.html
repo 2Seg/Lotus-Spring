@@ -39,48 +39,7 @@
                 </div>
             </div>
 
-            <script>
 
-
-                function taper() {
-                    var recherche = document.getElementById("recherche").value;
-                    var res = recherche.replace(/ /g,"/=");
-                    document.getElementById("recherche").innerHTML = res;
-                    location.href='/Search?Saisi='+ res;
-                }
-
-
-                /*    var href= "/Search?Saisi=";
-                    */
-                   /* this.href=this.href+document.getElementById(res).value; */
-
-
-                    /*var urlTemplate="/Search?saisi={0}"; // Tête de l'url
-
-                        $(document).on("keyup", "#recherche", function(){
-
-                            var
-                                res   = $(this).val(),
-                                renderedLink = urlTemplate.replace("{0}",res);
-
-                            $("#envoi").attr("href", renderedLink );
-
-                        });*/
-
-
-
-                 /* var recherche= document.getElementById('recherche').value; */
-
-                /*   function taper(){
-
-                       recherche.this.href=this.href+document.getElementById('recherche').value;
-                       this.href=this.href+document.getElementById('recherche').value;
-                var hu=document.getElementById("hu").value;
-                 alert(recherche);
-                   }*/
-
-
-            </script>
 
 
             <div class="row">
@@ -88,15 +47,15 @@
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-lg-push-3 col-md-push-4 col-sm-push-4   ">
                     <ul class="nav navbar-nav pull-right filtre2 ">
 
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" href="" id="envoi2">Promotion</a>
+                        <select class="dropdown" id="list">
+                            <option> <a data-toggle="dropdown" href="" >Promotion</a></option>
                             <ul class="dropdown-menu">
-                                <li><a href="#">2022</a></li>
-                                <li><a href="#">2021</a></li>
-                                <li><a href="#">2020</a></li>
-                                <li><a href="#">2019</a></li>
+                                <option>2022</option>
+                                <option>2021</option>
+                                <option>2020</option>
+                                <option>2019</option>
                             </ul>
-                        </li>
+                        </select>
 
                         <li class="dropdown">
                             <a data-toggle="dropdown" href="#">Année</a>
@@ -149,6 +108,33 @@
             <div class="btn text-orange "><img th:src="@{/elements/icons/reinitialiser2.png}" /><span> reinitialiser  </span></div>
 
         </div>
+
+
+        <script>
+            function taper() {
+                var recherche = document.getElementById("recherche").value;
+                var res = recherche.replace(/ /g, "/=");
+                resultat = list.options[list.selectedIndex].value;
+
+                if(resultat != "Promotion"){
+                    location.href = '/Search?Saisi=' + res + '&amp;' + 'Promotion=' + resultat;
+                } else {
+                    location.href = '/Search?Saisi=' + res;
+                }
+            }
+            
+            /*list.addEventListener('change', function() {
+                    resultat = list.options[list.selectedIndex].value;  //innerHTML ;
+
+                    /*if(recherche != 0){
+                        var res = recherche.replace(/ /g,"&amp;");
+                        location.href='/Search?Saisi='+ res + "&amp;" + 'Promotion=' + resultat;
+                    } else {
+                        location.href='/Search?Saisi=' + 'Promotion=' + resultat;
+                    }
+
+            });*/
+        </script>
 
     </div>
 
