@@ -32,7 +32,7 @@
             <div class="row col-lg-8 col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
                 <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-7 pull-left  ">
                     <form class="navbar-form inline-form form-group" >
-                        <div class="btn loupe" type="submit"><a href="" id="envoi" > <img th:src="@{/elements/icons/loupe25.png}" /> </a></div>
+                        <div class="btn loupe" type="submit"><a id="envoi" onclick="taper();" > <img th:src="@{/elements/icons/loupe25.png}" /> </a></div>
                         <input type="text" class="taper" id="recherche" placeholder="Elève, numéro étudiant..."/>
                     </form>
 
@@ -41,38 +41,13 @@
 
             <script>
 
-                    var urlTemplate="/Search?saisi={0}"; // Tête de l'url
+              function taper() {
+                  var recherche = document.getElementById("recherche").value;
+                  var res = recherche.replace(" ","/=");
+                  document.getElementById("recherche").innerHTML = res;
+                  location.href='/Search?Saisi='+ res;
 
-                    $(document).on("keyup", "#recherche", function(){
-                        var
-                            inputVal     = $(this).val(),
-                            renderedLink = urlTemplate.replace("{0}",inputVal);
-                        $("#envoi").attr("href", renderedLink );
-                        
-
-                    });
-
-
-
-
-
-               /* function taper(){
-
-                    var  inputValeur = getElementsByAttribute("recherche").value;
-
-                    if(inputValeur != ""){     // tester aussi si le champ contient des caractères spéciaux et si oui faire quelque chose pour ça
-
-                        this.href = this.href + inputValeur;
-                    }
-
-                var recherche= document.getElementById('recherche').value;
-
-                 function taper(){
-
-                     recherche.this.href=this.href+document.getElementById('recherche').value;
-                    /* this.href=this.href+document.getElementById('recherche').value;*/
-                     /*var hu=document.getElementById("hu").value;*/
-                      /* alert(recherche); */
+              }
 
             </script>
 
