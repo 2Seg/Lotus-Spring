@@ -110,8 +110,30 @@ image_eleve{
 }
 
 .filtre2{
-    margin-top: -50px;
+    margin-top: -45px;
     display: flex;
+    height: 40px;
+    margin-right: 2%;
+
+}
+
+
+
+select{
+    border:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-indent: 0.01px;
+    float:left;
+    width:80px;
+    text-align: center;
+
+}
+
+select:hover {
+    background-color:#DDDDDD;
+    text-decoration:none;
 }
 
 .loupe{
