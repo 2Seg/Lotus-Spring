@@ -16,7 +16,7 @@
     <nav th:replace="incluable/menu/menuconnecte :: nav" />
     <nav th:replace="incluable/barre_recherche :: nav" />
 
-    <div class="container-fluide">
+    <div class="container">
         <div class="row">
             <div class=" col-lg-12  bg-lightgrey bloc_gris">
                 <form class="form-horizontal" method="post" action="/profile/edit/extra-activity/add">
@@ -24,20 +24,20 @@
                     <div th:if="${erreur}" th:text="${erreur}" class="alert-danger" align="center">Erreur</div>
 
                     <div class="row">
-                        <div class="col-lg-5 text-blue"><h3>Ajouter une activité extra-scolaire</h3></div>
+                        <div class="col-lg-12 text-blue"><h3>Ajouter une activité extra-scolaire</h3></div>
                     </div>
                     <div class="row">
-                        <div class=" col-lg-5 fond2 bloc_blanc">
+                        <div class=" col-lg-12 fond2 bloc_blanc">
                             <div class="row form-group" >
-                                <div class="col-lg-5  text-blue">Saisie de l'activité extra-scolaire à ajouter</div>
+                                <div class="col-lg-12  text-blue">Saisie de l'activité extra-scolaire à ajouter</div>
                             </div>
 
                             <div class="row form-group zoneJS" >
                                 <div class="bloc_dans_blanc">
 
                                     <div class="row form-group">
-                                        <label for="activiteExtra" class=" col-lg-5  entreeCO text-orange">Activité extra-scolaire<span class="text-red">*</span></label>
-                                        <div class=" col-lg-7">
+                                        <label for="activiteExtra" class=" col-lg-3  entreeCO text-orange">Activité extra-scolaire<span class="text-red">*</span></label>
+                                        <div class=" col-lg-9">
                                             <input type="text" id="activiteExtra" name="activiteExtra" class="form-control" placeholder="Activité extra-scolaire"/>
                                         </div>
                                     </div>
