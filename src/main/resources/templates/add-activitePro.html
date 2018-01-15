@@ -16,7 +16,7 @@
     <nav th:replace="incluable/menu/menuconnecte :: nav" />
     <nav th:replace="incluable/barre_recherche :: nav" />
 
-    <div class="container-fluide">
+    <div class="container">
         <div class="row">
             <div class=" col-lg-12  bg-lightgrey bloc_gris">
                 <form class="form-horizontal" method="post" action="/profile/edit/professional-activity/add">
@@ -24,34 +24,34 @@
                     <div th:if="${erreur}" th:text="${erreur}" class="alert-danger" align="center">Erreur</div>
 
                     <div class="row">
-                        <div class="col-lg-5 text-blue"><h3>Ajouter une activité professionnelle</h3></div>
+                        <div class="col-lg-12 text-blue"><h3>Ajouter une activité professionnelle</h3></div>
                     </div>
                     <div class="row">
-                        <div class=" col-lg-5 fond2 bloc_blanc">
+                        <div class=" col-lg-12 fond2 bloc_blanc">
                             <div class="row form-group" >
-                                <div class="col-lg-5  text-blue">Saisie des informations de l'activité à ajouter</div>
+                                <div class="col-lg-12  text-blue">Saisie des informations de l'activité à ajouter</div>
                             </div>
 
                             <div class="row form-group zoneJS" >
                                 <div class="bloc_dans_blanc">
                                     <div class="row form-group">
-                                        <label for="poste" class=" col-lg-5  entreeCO text-orange">Poste<span class="text-red">*</span></label>
-                                        <div class=" col-lg-7">
+                                        <label for="poste" class=" col-lg-3  entreeCO text-orange">Poste<span class="text-red">*</span></label>
+                                        <div class=" col-lg-9">
                                             <input type="text" id="poste" name="poste" class="form-control" placeholder="Poste"/>
                                         </div>
                                     </div>
 
                                     <div class="row form-group">
-                                        <label for="entreprise" class=" col-lg-5  entreeCO text-orange">Entreprise<span class="text-red">*</span></label>
-                                        <div class=" col-lg-7">
+                                        <label for="entreprise" class=" col-lg-3  entreeCO text-orange">Entreprise<span class="text-red">*</span></label>
+                                        <div class=" col-lg-9">
                                             <input type="text" id="entreprise" name="entreprise" class="form-control" placeholder="Entreprise"/>
                                         </div>
                                     </div>
 
                                     <div class="row form-group">
-                                        <label for="typeContrat" class=" col-lg-5  entreeCO text-orange">Type de contrat<span class="text-red">*</span></label>
-                                        <div class=" col-lg-7">
-                                            <select name="typeContrat" id="typeContrat" >
+                                        <label for="typeContrat" class=" col-lg-3  entreeCO text-orange">Type de contrat<span class="text-red">*</span></label>
+                                        <div class=" col-lg-9">
+                                            <select class="form-control" name="typeContrat" id="typeContrat" >
                                                 <option selected="" value="unselected">-- Choisir un type de contrat --</option>
                                                 <option th:each="contrat : ${listTypeContrat}" th:value="${contrat.typeContrat}" th:text="${contrat.typeContrat}">Option</option>
                                             </select>
@@ -59,29 +59,29 @@
                                     </div>
 
                                     <div class="row form-group">
-                                        <label for="duree" class=" col-lg-5  entreeCO text-orange">Durée (en mois)</label>
-                                        <div class=" col-lg-7">
+                                        <label for="duree" class=" col-lg-3  entreeCO text-orange">Durée (en mois)</label>
+                                        <div class=" col-lg-9">
                                             <input type="number" id="duree" name="duree" class="form-control" placeholder="Durée (en mois)" min="0"/>
                                         </div>
                                     </div>
 
                                     <div class="row form-group">
-                                        <label for="pays" class=" col-lg-5  entreeCO text-orange">Pays</label>
-                                        <div class=" col-lg-7">
+                                        <label for="pays" class=" col-lg-3  entreeCO text-orange">Pays</label>
+                                        <div class=" col-lg-9">
                                             <input type="text" id="pays" name="pays" class="form-control" placeholder="Pays"/>
                                         </div>
                                     </div>
 
                                     <div class="row form-group">
-                                        <label for="ville" class=" col-lg-5  entreeCO text-orange">Ville</label>
-                                        <div class=" col-lg-7">
+                                        <label for="ville" class=" col-lg-3  entreeCO text-orange">Ville</label>
+                                        <div class=" col-lg-9">
                                             <input type="text" id="ville" name="ville" class="form-control" placeholder="Ville"/>
                                         </div>
                                     </div>
 
                                     <div class="row form-group">
-                                        <label for="description" class=" col-lg-5  entreeCO text-orange">Description du poste</label>
-                                        <div class=" col-lg-7">
+                                        <label for="description" class=" col-lg-3  entreeCO text-orange">Description du poste</label>
+                                        <div class=" col-lg-9">
                                             <textarea class="form-control" id="description" name="description" placeholder="Description du poste ..."></textarea>
                                         </div>
                                     </div>
