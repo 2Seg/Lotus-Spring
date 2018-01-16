@@ -58,8 +58,8 @@ public class FixturesController {
         AnneeScolaire ancien = new AnneeScolaire("Diplômé");
 
         Parcours si = new Parcours("Systèmes d'information");
-        Parcours bi = new Parcours("Bussiness Intelligence");
-        Parcours gl = new Parcours("Génie Logiciel");
+        Parcours bi = new Parcours("Business Intelligence");
+        Parcours gl = new Parcours("Ingénieur Logiciel");
         Parcours ns = new Parcours("Numérique et santé");
         Parcours iot = new Parcours("Télécommunications et IOT");
         Parcours res = new Parcours("Sécurité numérique et Réseaux");
