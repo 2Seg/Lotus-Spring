@@ -131,32 +131,31 @@
         <script>
             function taper() {
                 var recherche = document.getElementById("recherche").value;
-                var res = recherche.replace(/ /g, "/=");
-                re = res;
+
                 resultat = list.options[list.selectedIndex].value;
                 resultat2 = list2.options[list2.selectedIndex].value;
                 resultat3 = list3.options[list3.selectedIndex].value;
                 resultat4 = list4.options[list4.selectedIndex].value;
 
-                var url = '/Search?saisi=' + res ;
+                var url = '/search?saisie=' + recherche ;
 
 
 
                 switch(resultat){
                     case "2019":
-                        var promotion = et +'&;promotion=' + resultat;
+                        var promotion = '\u0026promotion=' + resultat;
                         break;
                     case "2020":
-                        var promotion = '&;promotion=' + resultat;
+                        var promotion = '\u0026promotion=' + resultat;
                         break;
                     case "2021":
-                       var promotion = '&;promotion=' + resultat;
+                       var promotion = '\u0026promotion=' + resultat;
                         break;
                     case "2022":
-                      var  promotion = '&;promotion=' + resultat;
+                      var  promotion = '\u0026promotion=' + resultat;
                         break;
                     case "2023":
-                        var  promotion = '&;promotion=' + resultat;
+                        var  promotion = '\u0026promotion=' + resultat;
                         break;
                     case "Promotion":
                         var promotion = '';
@@ -166,28 +165,28 @@
                 }
                 switch(resultat2){
                     case "A1":
-                        var annee = '&;année=' + resultat2;
+                        var annee = '\u0026annee=' + resultat2;
                         break;
                     case "A2":
-                        var annee = '&;année=' + resultat2;
+                        var annee = '\u0026annee=' + resultat2;
                         break;
                     case "A3":
-                        var annee= '&;année=' + resultat2;
+                        var annee= '\u0026annee=' + resultat2;
                         break;
                     case "P1":
-                        var  annee = '&;année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "P2":
-                        var  annee = '&;année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "I1":
-                        var  annee = '&;année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "I2":
-                        var  annee = '&;année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "Diplômé":
-                        var  annee = '&;année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "Année":
                         var annee = '';
@@ -198,28 +197,28 @@
 
                 switch(resultat3){
                     case "Systèmes d'information":
-                        var parcours = '&;parcours=' + resultat3;
+                        var parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Systèmes embarqués":
-                        var parcours = '&;parcours=' + resultat3;
+                        var parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Business Intelligence":
-                        var parcours= '&;parcours=' + resultat3;
+                        var parcours= '\u0026parcours=' + resultat3;
                         break;
                     case "Télécommunications et IOT":
-                        var  parcours = '&;parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Ingénieur logiciel":
-                        var  parcours = '&;parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Numérique et santé":
-                        var  parcours = '&;parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Innovationn et création d'entreprise":
-                        var  parcours = '&;parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Sécurité numérique et Réseaux":
-                        var  parcours = '&;parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Parcours":
                         var parcours = '';
@@ -230,22 +229,22 @@
 
                 switch(resultat4){
                     case "Académique":
-                        var activites = '&;activite=' + resultat4;
+                        var activites = '\u0026activite=' + resultat4;
                         break;
                     case "Diplômé":
-                        var activites = '&;activite=' + resultat4;
+                        var activites = '\u0026activite=' + resultat4;
                         break;
                     case "Stage":
-                        var activites= '&;activite=' + resultat4;
+                        var activites= '\u0026activite=' + resultat4;
                         break;
                     case "Apprentissage":
-                        var  activites = '&;activite=' + resultat4;
+                        var  activites = '\u0026activite=' + resultat4;
                         break;
                     case "Césure":
-                        var  activites = '&;activite=' + resultat4;
+                        var  activites = '\u0026activite=' + resultat4;
                         break;
                     case "International":
-                        var  activites = '&;activite=' + resultat4;
+                        var  activites = '\u0026activite=' + resultat4;
                         break;
                     case "Activité":
                         var activites ='';
@@ -257,7 +256,6 @@
 
 
                 location.href = url + promotion + annee + parcours + activites;
-
 
 
 
