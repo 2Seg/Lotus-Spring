@@ -41,9 +41,15 @@ public class ProfilController {
 
         } else if (httpSession.getAttribute("type") == "eleve") {
 
-            modelAndView.addObject("listParcours", utilisateur.getEleve().getParcours());
-            modelAndView.addObject("listCours", utilisateur.getEleve().getCours());
 
+            modelAndView.addObject("listParcoursUtilisateur", utilisateur.getEleve().getParcours());
+            modelAndView.addObject("listCoursUtilisateur", utilisateur.getEleve().getCours());
+            modelAndView.addObject("listActivitePro", utilisateur.getEleve().getActivitePros());
+            modelAndView.addObject("listSejourAca", utilisateur.getEleve().getSejourAcademiques());
+            modelAndView.addObject("listActiviteExtra", utilisateur.getEleve().getActiviteExtras());
+            modelAndView.addObject("listCv", utilisateur.getEleve().getCvs());
+            modelAndView.addObject("listLettreMotivation", utilisateur.getEleve().getLettreMotivations());
+            modelAndView.addObject("listBulletin", utilisateur.getEleve().getBulletins());
 
         }
 

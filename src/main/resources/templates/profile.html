@@ -80,7 +80,409 @@
     </div>
 
     <div th:if="${session.type == 'eleve'}">
-        <a href="/profile/edit">Modifier profil</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 bg-lightgrey fond">
+                    <div class="row">
+
+                        <p class=" col-sm-1 col-sm-push-0.5 text-blue PROFIL">Profil</p>
+                        <p class=" col-sm-3 pull-right text-blue PROFIL">
+                            <span th:text="${utilisateur.prenom}">Prénom</span>
+                            <span th:text="${utilisateur.nom}">Nom</span>
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="row col-lg-6 col-md-6 col-sm-10 col-xs-10">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  fond2 fond3 bloc_blanc ">
+                                <div class="text-cyan">Informations personelles</div>
+
+                                <br/>
+                                <div class="row form-group">
+                                    <div class="col-lg-4 col-sm-2 col-sm-push-0 " align="">
+                                        <img th:src="@{/elements/icons/profilVide.png}" />
+
+                                    </div>
+
+
+                                    <div class=" col-lg-8 col-md-5 col-sm-10 col-xs-6  form-group">
+
+
+
+
+                                        <div class="row form-group">
+                                            <div class=" col-lg-5 ">
+                                                <span class="text-orange">Nom:</span>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <span class="" th:text="${utilisateur.nom}">Nom</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class=" col-lg-5 ">
+                                                <span class="text-orange">Prénom:</span>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <span class="" th:text="${utilisateur.prenom}">Prénom</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class=" col-lg-5 ">
+                                                <span class="text-orange">Email:</span>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <span class=""  th:text="${utilisateur.email}">Email</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class=" col-lg-5 ">
+                                                <span class="text-orange ">Numéro étudiant:</span>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <span class="" th:text="${utilisateur.eleve.numeroEtudiant}">numeroEtudiant</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class=" col-lg-5">
+                                                <span class="text-orange">Lien Linkedin:</span>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <span class="" th:text="${utilisateur.eleve.linkedin}">lienLinkedin</span>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 fond3 bloc_blanc" >
+                                <div class="text-cyan">Séjour académique</div>
+                                <br/>
+                                <div class="row form-group" >
+                                    <div class="bloc_dans_blanc">
+
+                                        <div th:each="sejourAca,counter : ${listSejourAca}" class="row form-group">
+                                            <label th:for="'sejourAca' + ${sejourAca.id}" class=" col-lg-5  entreeCO text-orange">Séjour académique <span th:text="${counter.index + 1}">Compteur</span></label>
+
+                                            <table class="table table-bordered table-striped table-condensed">
+                                                <thead>
+                                                <tr>
+                                                    <th th:if="${sejourAca.pays}">Pays</th>
+                                                    <th th:if="${sejourAca.ville}">Ville</th>
+                                                    <th th:if="${sejourAca.etablissement}">Etablissement</th>
+                                                    <th th:if="${sejourAca.anneeScolaire}">Année scolaire</th>
+                                                    <th th:if="${sejourAca.semestre}">Semestre</th>
+                                                    <th th:if="${sejourAca.duree}">Durée</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                <tr>
+                                                    <td th:if="${sejourAca.pays}" th:text="${sejourAca.pays}">Pays</td>
+                                                    <td th:if="${sejourAca.ville}" th:text="${sejourAca.ville}">Ville</td>
+                                                    <td th:if="${sejourAca.etablissement}" th:text="${sejourAca.etablissement}">Etablissement</td>
+                                                    <td th:if="${sejourAca.anneeScolaire}" th:text="${sejourAca.anneeScolaire}">Année scolaire</td>
+                                                    <td th:if="${sejourAca.semestre}" th:text="${sejourAca.semestre}">Semestre</td>
+                                                    <td th:if="${sejourAca.duree}" th:text="${sejourAca.duree}">Durée</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 fond3 bloc_blanc" >
+                                <div class="text-cyan">Activités extra-scolaires : </div>
+                                <br/>
+                                <div class="row form-group">
+
+                                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  form-group">
+                                        <ul>
+                                            <div class="row">
+                                        <span class="text-blue">
+                                           <ul>
+                                               <ul th:each="activite : ${listActiviteExtra}">
+                                                            <li th:text="${activite.nom}">Activité extra</li>
+                                               </ul>
+                                           </ul>
+                                       </span>
+                                            </div>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 fond3 bloc_blanc" >
+                                <div class="text-cyan">Documents professionnels : </div>
+                                <br/>
+                                <div class="row form-group">
+
+                                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  form-group">
+                                        <ul>
+                                            <div class="row">
+                                                <span class="text-orange" > CV :</span>
+                                                <span>
+                                                <ul th:each="cv : ${listCV}">
+                                                    <li th:text="${cv.fichier}">Cv</li>
+                                                </ul>
+                                            </span>
+
+                                            </div>
+                                            <div class="row">
+                                                <span class="text-orange"> Lettre de motivation :</span>
+                                                <span>
+                                                <ul th:each="lettreMotivation : ${listLettreMotivation}">
+                                                     <li th:text="${lettre.fichier}">lettreMotivation</li>
+                                                </ul>
+                                            </span>
+
+                                            </div>
+                                            <div class="row">
+                                                <span class="text-orange"> Lettre de recommandation :</span>
+
+
+                                            </div>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 fond3 bloc_blanc" >
+                                <div class="text-cyan">Activité professionnelle : </div>
+                                <br/>
+                                <div class="row form-group">
+                                    <div th:each="activitePro,counter : ${listActivitePro}" class="row form-group">
+                                    <label th:for="'activitePro' + ${activitePro.id}" class=" col-lg-5  entreeCO text-orange">Activité professionnelle <span th:text="${counter.index + 1}">Compteur</span></label>
+
+
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th th:if="${activitePro.poste}">Poste</th>
+                                            <th th:if="${activitePro.nomEntreprise}">Entreprise</th>
+                                            <th th:if="${activitePro.typeContrat}">Type de contrat</th>
+                                            <th th:if="${activitePro.duree}">Durée</th>
+                                            <th th:if="${activitePro.pays}">Pays</th>
+                                            <th th:if="${activitePro.ville}">Ville</th>
+                                            <th th:if="${activitePro.description}">Description</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr>
+                                            <td th:if="${activitePro.poste}" th:text="${activitePro.poste}">Poste</td>
+                                            <td th:if="${activitePro.nomEntreprise}" th:text="${activitePro.nomEntreprise}">Entreprise</td>
+                                            <td th:if="${activitePro.typeContrat}" th:text="${activitePro.typeContrat}">Type de contrat</td>
+                                            <td th:if="${activitePro.duree}" th:text="${activitePro.duree}">Durée</td>
+                                            <td th:if="${activitePro.pays}" th:text="${activitePro.pays}">Pays</td>
+                                            <td th:if="${activitePro.ville}" th:text="${activitePro.ville}">Ville</td>
+                                            <td th:if="${activitePro.description}" th:text="${activitePro.description}">Description</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row col-lg-5 col-md-5 col-sm-10 col-xs-10 col-md-push-1 groupe">
+
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 espace bloc_blanc " >
+                                <div class="text-cyan"> Informations scolaires :</div>
+                                <br/>
+                                <div class="row form-group">
+
+                                    <div class=" row col-lg-12 col-md-12 col-sm-12 col-xs-12  form-group ">
+
+
+                                                <div class="row form-group">
+                                                    <div class=" col-lg-4">
+                                                     <span class="text-orange"> Promotion *:</span>
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <span th:text="${utilisateur.eleve.promotion}"> Promotion </span>
+                                                    </div>
+                                                </div>
+                                        <div class="row">
+                                            <div class=" col-lg-4 ">
+                                                <span class="text-orange"> Année *:</span>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <span  th:text="${utilisateur.eleve.anneeScolaire}"> Année </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class=" col-lg-4 ">
+                                                <span class="text-orange"> Parcours *:</span>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <dl>
+                                                        <span >
+                                                    <ul th:each="parcours : ${listParcoursUtilisateur}">
+                                                        <li th:text="${parcours.nom}">Parcours</li>
+                                                    </ul>
+                                                    </span>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                        <div class=" col-lg-4 ">
+                                            <span class="text-orange "> Cours *:</span>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <dl>
+                                                <div >
+                                                    <ul th:each="cours : ${listCoursUtilisateur}">
+                                                        <li th:text="${cours.nom}">Cours</li>
+                                                    </ul>
+                                                </div>
+                                            </dl>
+                                        </div>
+
+                                    </div>
+
+                                        <div class="row">
+                                            <div class=" col-lg-4 ">
+                                                <span class="text-orange">Bulletin de notes *:</span>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <dl>
+                                                    <ul class="" th:each="buletin : ${listBulletin}">
+                                                        <li th:text="${bulletin.fichier}">Cours</li>
+                                                    </ul>
+
+                                                </dl>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 stage bloc_blanc ">
+                                <div class="text-cyan"> Stage(s) :</div>
+                                <br/>
+                                <div class="form-group">
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                        <ul>
+                                            <div class="row">
+                                                <dl> <span class="text-orange"> Année *:</span> <span class="col-sm-offset-2 "> 2018</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange"> Durée *:</span> <span class="col-sm-offset-2">6 mois</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange"> Date de début *:</span> <span class="col-sm-offset-2 ">01/02/2018</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange"> Date de fin *:  </span> <span class="col-sm-offset-2 ">    01/08/2018</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange "> Nom de l'entreprise *:</span> <span class="col-sm-offset-2 ">BNP Paribas</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl><span class="text-orange "> Domaine de l'entreprise :</span> <span class="col-sm-offset-2 ">Finance</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange "> Domaine du stage :</span> <span class="col-sm-offset-2 ">Management</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange "> Poste :</span> <span class="col-sm-offset-2 ">Chef de projets</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl><span class="text-orange "> Présentation succinte de l'entreprise ou du Service *:</span> <span class="col-sm-offset-1"> L'entreprise BNP est une banque générale connu dans le mone entier et me permettra de connaitre la finance </span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl><span class="text-orange "> Contexte dans lequel s'intègre le stage *:</span> <span class="col-sm-offset-1">LE contexte du stage s'oriente autour de la gestion de plusieurs projets financiers sui seront à gérer de A à Z par moi-même. </span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange "> Mission confiée au stagiaire -Objectifs  *:</span> <span class="col-sm-offset-1">Mes objectifs sont de prospecter des clients et rendre leurs projets en temps et en heure aux clients. Je serais le lien entre le client et le developpeur. </span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange "> Si possible, principales étapes du stage *:</span> <span class="col-sm-offset-1">Les différentes étapes sont la prospection, les rendez vous clients, l'analyse des besoins, les livrables, ldocuments de spécifications, la gestion du consultant</span> </dl>
+                                            </div>
+                                            <div class="row">
+                                                <dl> <span class="text-orange "> Connaissances requises *:</span> <span class="col-sm-offset-1">les connaissances requises sont le management, les languages java/JS, des logiciels comme github  etc </span> </dl>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <dl>
+                                           <span class="text-blue">
+                                               <ul>
+                                                   <li>BNP Paribas 1er Semestre (6mois)
+                                                       <span>
+                                                           <div class="btn col-sm-offset-1 " ><img th:src="@{/elements/icons/fichier25.png}" />
+                                        </div>
+                                                        </span>
+                                                   </li>
+                                                   <li>Bubblz 2eme Semestre (6mois) <span>
+                                                           <div class="btn col-sm-offset-1" ><img th:src="@{/elements/icons/fichier25.png}" /> </div>
+                                                        </span></li>
+                                               </ul>
+                                           </span>
+                                                </dl>
+                                            </div>
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <a href="/profile/edit"><button class="btn btn-default pull-right bg-orange" > Modifier votre profil </button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>
