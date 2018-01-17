@@ -97,7 +97,7 @@ public class FixturesController {
         Utilisateur quentin =  new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr");
         Eleve quentinEleve = new Eleve(3627, "A2", "Académique", "2019", false, "http://www.linkedin.com/in/quentin-andrieu");
         quentin.setEleve(quentinEleve);
-        quentin.getEleve().addParcours(bi);
+        quentin.getEleve().addParcours(si);
         quentin.getEleve().addCours(data);
         quentin.getEleve().addCours(archiSi);
         states.setEleve(quentinEleve);

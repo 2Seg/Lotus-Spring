@@ -24,24 +24,23 @@
 
                 <form method="post" action="/message">
                     <div class="row form-group">
-                        <div class="col-lg-5 text-blue PROFIL"> MESSAGERIE
-                        </div>
+                        <div class="col-lg-5 text-blue PROFIL">Messagerie</div>
                     </div>
                     <div class="row form-group">
                         <div class="col-lg-push-2 col-lg-8 fond2 bloc_blanc">
 
                             <div class="row form-group">
-                                <div class="col-lg-3 text-orange">Email</div>
+                                <div class="col-lg-3 text-orange">Destinaire(s)</div>
                                 <div class="col-lg-9">
-                                    <input type="email" name="email" id="email" multiple="multiple" class=" form-control" />
+                                    <input type="email" name="email" id="email" multiple="multiple" class=" form-control" placeholder="example1@mail.com,example2@mail.com, ..."/>
                                 </div>
                             </div>
 
 
                             <div class="row form-group">
-                        <div class="col-lg-3 text-orange">Objet du message</div>
+                        <div class="col-lg-3 text-orange">Objet</div>
                             <div class="col-lg-9">
-                                <input type="texte" name="objmessage" id="objmessage"  class=" form-control" required="" placeholder="Sujet" />
+                                <input type="texte" name="objmessage" id="objmessage"  class=" form-control" required="" placeholder="Objet du message" />
                             </div>
                         </div>
 
@@ -52,7 +51,7 @@
 
                             <div class="col-lg-9">
 
-                             <textarea name="message" id="message" class=" form-control " required=""></textarea>
+                             <textarea name="message" id="message" class=" form-control " required="" placeholder="Message ..."></textarea>
 
                             </div>
                         </div>

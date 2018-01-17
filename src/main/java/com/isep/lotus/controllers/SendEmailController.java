@@ -1,7 +1,7 @@
 package com.isep.lotus.controllers;
 
 
-        import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
         import javax.servlet.http.HttpSession;
         import com.isep.lotus.models.Utilisateur;
         import org.hibernate.Session;
@@ -20,7 +20,6 @@ package com.isep.lotus.controllers;
         import static com.isep.lotus.LotusApplication.getSession;
 
 @Controller
-
 public class SendEmailController {
 
     @Autowired
@@ -33,7 +32,7 @@ public class SendEmailController {
 
         for(int i = 0; i < adress.length; i++)
         {   // prints debug info
-            System.out.println("To: " + adress[i]);
+//            System.out.println("To: " + adress[i]);
 
 
             // creates a simple e-mail object
@@ -47,8 +46,8 @@ public class SendEmailController {
         }
 
         // prints debug info
-        System.out.println("Subject: " + subject);
-        System.out.println("Message: " + message);
+//        System.out.println("Subject: " + subject);
+//        System.out.println("Message: " + message);
 
 
         // forwards to the view named "Result"

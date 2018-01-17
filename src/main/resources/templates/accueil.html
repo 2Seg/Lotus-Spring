@@ -29,8 +29,8 @@
                         <a href="/messaging"><button class="btn btn-default bg-grey margeboutonacc tailleboutonaccp btn-block text-blue gras text-acc" > Accès à votre messagerie  <br/><img th:src="@{/elements/icons/envelope-orange.png}"/></button></a>
                     </div>
                     <div class="col-lg-4">
-                        <a href="/search"><button class="btn btn-default bg-grey margeboutonacc taillepetitboutonaccp btn-block text-blue gras text-acc" > Elèves de votre parcours <br/><img th:src="@{/elements/icons/user-groupe-orange.png}"/></button></a>
-                        <a href="/search"><button class="btn btn-default bg-grey margeboutonacc taillepetitboutonaccp btn-block text-blue gras text-acc" > Anciens élèves de votre parcours <br/><img th:src="@{/elements/icons/graduate-orange.png}"/></button></a>
+                        <a th:href="${hrefCurrent}"><button class="btn btn-default bg-grey margeboutonacc taillepetitboutonaccp btn-block text-blue gras text-acc" > Elèves de votre parcours <br/><img th:src="@{/elements/icons/user-groupe-orange.png}"/></button></a>
+                        <a th:href="${hrefOld}"><button class="btn btn-default bg-grey margeboutonacc taillepetitboutonaccp btn-block text-blue gras text-acc" > Anciens élèves de votre parcours <br/><img th:src="@{/elements/icons/graduate-orange.png}"/></button></a>
                     </div>
                 </div>
             </div>

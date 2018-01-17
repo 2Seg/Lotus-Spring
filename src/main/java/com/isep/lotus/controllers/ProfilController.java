@@ -41,7 +41,7 @@ public class ProfilController {
 
         } else if (httpSession.getAttribute("type") == "eleve") {
 
-            modelAndView.addObject("listParcoursUtilistauer", utilisateur.getEleve().getParcours());
+            modelAndView.addObject("listParcoursUtilisateur", utilisateur.getEleve().getParcours());
             modelAndView.addObject("listCoursUtilisateur", utilisateur.getEleve().getCours());
 
 
