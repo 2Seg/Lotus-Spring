@@ -88,7 +88,7 @@ public class FixturesController {
         piano.setEleve(eliottEleve);
 
         Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr");
-        Eleve manonEleve = new Eleve(5397, "A1", "Apprentissage", "2020", false, "http://www.linkedin.com/in/manon-iribarne");
+        Eleve manonEleve = new Eleve(5397, "A2", "Académique", "2019", false, "http://www.linkedin.com/in/manon-iribarne");
         manon.setEleve(manonEleve);
         manon.getEleve().addParcours(si);
         manon.getEleve().addCours(data);
@@ -104,6 +104,102 @@ public class FixturesController {
         pétanque.setEleve(quentinEleve);
 
         Utilisateur orianne =  new Utilisateur("oriannejo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@isep.fr");
+        Eleve orianneEleve = new Eleve(6379, "A2", "Académique", "2019", true, "http://www.linkedin.com/in/orianne-joannic");
+        orianne.setEleve(orianneEleve);
+        orianne.getEleve().addParcours(si);
+
+
+        Utilisateur rhett =  new Utilisateur("rduncan", passWordEncryption("aze"), "Rhett", "DUNCAN", "rhett.duncan@isep.fr");
+        Eleve rhettEleve = new Eleve(3720, "A2", "Académique", "2019", false, "http://www.linkedin.com/in/rhett-duncan");
+        rhett.setEleve(rhettEleve);
+        rhett.getEleve().addParcours(si);
+
+        Utilisateur znatan =  new Utilisateur("znatan", passWordEncryption("aze"), "Nathan", "GEFFROY", "nathan.geffroy@isep.fr");
+        Eleve znatanEleve = new Eleve(3982, "A2", "Stage", "2019", true, "http://www.linkedin.com/in/nathan-geffroy");
+        znatan.setEleve(znatanEleve);
+        znatan.getEleve().addParcours(se);
+
+        Utilisateur fdupond =  new Utilisateur("fdupond", passWordEncryption("aze"), "Françis", "DUPOND", "francis.dupond@isep.fr");
+        Eleve fdupondEleve = new Eleve(3972, "A2", "Stage", "2019", true, "http://www.linkedin.com/in/francis-dupond");
+        fdupond.setEleve(fdupondEleve);
+        fdupond.getEleve().addParcours(ns);
+
+        Utilisateur qhugon =  new Utilisateur("qhugon", passWordEncryption("aze"), "Quentin", "HUGON", "quentin.hugon@isep.fr");
+        Eleve qhugonEleve = new Eleve(9472, "P1", "Académique", "2022", true, "http://www.linkedin.com/in/quentin-hugon");
+        qhugon.setEleve(qhugonEleve);
+
+        Utilisateur mfarcy =  new Utilisateur("mfarcy", passWordEncryption("aze"), "Maxime", "FARCY", "maxime.farcy@isep.fr");
+        Eleve mfarcyEleve = new Eleve(6281, "P1", "Académique", "2022", true, "http://www.linkedin.com/in/maxime-farcy");
+        mfarcy.setEleve(mfarcyEleve);
+
+        Utilisateur jhadi =  new Utilisateur("jhadi", passWordEncryption("aze"), "Jacques", "HADI", "jacques.hadi@gmail.com");
+        Eleve jhadiEleve = new Eleve(10384, "I1", "Académique", "2022", true, "http://www.linkedin.com/in/jacques-hadi");
+        jhadi.setEleve(jhadiEleve);
+
+        Utilisateur fvega =  new Utilisateur("fvega", passWordEncryption("aze"), "Francisco", "DE LA VEGA", "francisco.delavega@isep.fr");
+        Eleve fvegaEleve = new Eleve(8376, "I1", "Académique", "2022", false, "http://www.linkedin.com/in/francisco-delavega");
+        fvega.setEleve(fvegaEleve);
+
+        Utilisateur jdoe =  new Utilisateur("jdoe", passWordEncryption("aze"), "John", "DOE", "john.doe@isep.fr");
+        Eleve jdoeEleve = new Eleve(1987, "P2", "Académique", "2021", true, "http://www.linkedin.com/in/john-doe");
+        jdoe.setEleve(jdoeEleve);
+
+        Utilisateur lgrevoz =  new Utilisateur("lgrevoz", passWordEncryption("aze"), "Louis", "GREVOZ", "louis.grevoz@isep.fr");
+        Eleve lgrevozEleve = new Eleve(4761, "I1", "Académique", "2022", false, "http://www.linkedin.com/in/louis-grevoz");
+        lgrevoz.setEleve(lgrevozEleve);
+
+        Utilisateur clacourt =  new Utilisateur("clacourt", passWordEncryption("aze"), "Camille", "LACOURT", "camille.lacourt@yahoo.fr");
+        Eleve clacourtEleve = new Eleve(6890, "A1", "International", "2020", false, "http://www.linkedin.com/in/camille-lacourt");
+        clacourt.setEleve(clacourtEleve);
+        clacourt.getEleve().addParcours(cre);
+
+        Utilisateur kslater =  new Utilisateur("kslater", passWordEncryption("aze"), "Kelly", "SLATER", "kelly.slater@gmail.com");
+        Eleve kslaterEleve = new Eleve(7772, "P2", "Académique", "2021", false, "http://www.linkedin.com/in/kelly-slater");
+        kslater.setEleve(kslaterEleve);
+
+        Utilisateur jjf =  new Utilisateur("jjf", passWordEncryption("aze"), "John John", "FLORENCE", "jj.florence@isep.fr");
+        Eleve jjfEleve = new Eleve(9721, "I2", "International", "2021", false, "http://www.linkedin.com/in/jj-florence");
+        jjf.setEleve(jjfEleve);
+
+        Utilisateur gsouven =  new Utilisateur("gsouven", passWordEncryption("aze"), "Gaëlle", "SOUVENHEUANE", "gaelle.souvenheuane@isep.fr");
+        Eleve gsouvenEleve = new Eleve(8002, "A1", "Apprentissage", "2020", false, "http://www.linkedin.com/in/gaelle-souvenheuane");
+        gsouven.setEleve(gsouvenEleve);
+        gsouven.getEleve().addParcours(iot);
+
+        Utilisateur lvincent =  new Utilisateur("lvincent", passWordEncryption("aze"), "Luc", "VINCENT", "luc.vincent@isep.fr");
+        Eleve lvincentEleve = new Eleve(3390, "A3", "Apprentissage", "2018", false, "http://www.linkedin.com/in/luc-vincent");
+        lvincent.setEleve(lvincentEleve);
+        lvincent.getEleve().addParcours(res);
+
+        Utilisateur trey =  new Utilisateur("trey", passWordEncryption("aze"), "Tina", "REY", "tina.rey@isep.fr");
+        Eleve treyEleve = new Eleve(9876, "A3", "Apprentissage", "2018", true, "http://www.linkedin.com/in/tina-rey");
+        trey.setEleve(treyEleve);
+        trey.getEleve().addParcours(res);
+
+        Utilisateur achaix =  new Utilisateur("achaix", passWordEncryption("aze"), "Artur", "CHAIX", "arthur.chaix@isep.fr");
+        Eleve achaixEleve = new Eleve(9768, "Diplômé", "Diplômé", "2016", false, "http://www.linkedin.com/in/arthur-chaix");
+        achaix.setEleve(achaixEleve);
+        achaix.getEleve().addParcours(bi);
+
+        Utilisateur dnguy =  new Utilisateur("dnguy", passWordEncryption("aze"), "Thanh", "NGUYEN", "thanh.nguyen@isep.fr");
+        Eleve dnguyEleve = new Eleve(2719, "Diplômé", "Diplômé", "2017", false, "http://www.linkedin.com/in/thanh-nguyen");
+        dnguy.setEleve(dnguyEleve);
+        dnguy.getEleve().addParcours(si);
+
+        Utilisateur cstoff =  new Utilisateur("cstoff", passWordEncryption("aze"), "Charlotte", "STOFFEL", "charlotte.stoffel@isep.fr");
+        Eleve cstoffEleve = new Eleve(9382, "Diplômé", "Diplômé", "2017", false, "http://www.linkedin.com/in/charlotte-stoffel");
+        cstoff.setEleve(cstoffEleve);
+        cstoff.getEleve().addParcours(si);
+
+        Utilisateur cdesm =  new Utilisateur("cdesm", passWordEncryption("aze"), "Constance", "DESMARQUET", "constance.desmarquet@isep.fr");
+        Eleve cdesmEleve = new Eleve(9283, "A3", "Académique", "2018", false, "http://www.linkedin.com/in/constance-desmarquet");
+        cdesm.setEleve(cdesmEleve);
+        cdesm.getEleve().addParcours(iot);
+
+        Utilisateur wildum =  new Utilisateur("wildum", passWordEncryption("aze"), "William", "DUMONT", "william.dumont@isep.fr");
+        Eleve wildumEleve = new Eleve(2981, "A2", "Académique", "2019", false, "http://www.linkedin.com/in/william-dumont");
+        wildum.setEleve(wildumEleve);
+        wildum.getEleve().addParcours(gl);
 
         Utilisateur zakia = new Utilisateur("zakiazi", passWordEncryption("aze"), "Zakia", "KAZI-AOUL", "zakia.kazi-aoul@isep.fr");
         Professeur zakiaProfesseur = new Professeur();
@@ -173,6 +269,28 @@ public class FixturesController {
         session.persist(manon);
         session.persist(quentin);
         session.persist(orianne);
+        session.persist(rhett);
+        session.persist(znatan);
+        session.persist(fdupond);
+        session.persist(qhugon);
+        session.persist(mfarcy);
+        session.persist(jhadi);
+        session.persist(fvega);
+        session.persist(jdoe);
+        session.persist(lgrevoz);
+        session.persist(clacourt);
+        session.persist(kslater);
+        session.persist(jjf);
+        session.persist(gsouven);
+        session.persist(lvincent);
+        session.persist(trey);
+        session.persist(achaix);
+        session.persist(dnguy);
+        session.persist(cstoff);
+        session.persist(cdesm);
+        session.persist(wildum);
+
+
         session.persist(zakia);
         session.persist(herve);
 

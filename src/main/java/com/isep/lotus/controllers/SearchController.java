@@ -40,6 +40,7 @@ public class SearchController {
         List<Utilisateur> utilisateurList = new ArrayList<>();
 
         String querySelect;
+        String queryJoin;
         String queryWhere;
 
         if (saisie == null) {
@@ -53,6 +54,7 @@ public class SearchController {
 
         } else {
             querySelect = "select u from utilisateur u ";
+            queryJoin = "";
             queryWhere = "where (u.dtype like 'utilisateur' or u.dtype like 'eleve') ";
 
             if (saisie != "") {
@@ -76,10 +78,11 @@ public class SearchController {
                 queryWhere = queryWhere + "and u.activite like :activite ";
             }
             if (parcours != null) {
-                // TODO
+                queryJoin = "join u.parcours p ";
+                queryWhere = queryWhere + "and p.nom like :parcours ";
             }
 
-            String query = querySelect + queryWhere;
+            String query = querySelect + queryJoin + queryWhere;
             Query queryHibernate = sessionHibernate.createQuery(query);
 
             if (saisie != "") {
@@ -99,11 +102,11 @@ public class SearchController {
                 modelAndView.addObject("activite", activite);
             }
             if (parcours != null) {
-
+                queryHibernate.setParameter("parcours", parcours);
                 modelAndView.addObject("parcours", parcours);
             }
 
-            System.out.println(query);
+//            System.out.println(query);
 
             // Let me introduce you la boucle qui fait tout marcher <3
             for (Object object : queryHibernate.list()) {
