@@ -88,7 +88,7 @@ public class FixturesController {
         piano.setEleve(eliottEleve);
 
         Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr");
-        Eleve manonEleve = new Eleve(5397, "A1", "Alternance", "2020", false, "http://www.linkedin.com/in/manon-iribarne");
+        Eleve manonEleve = new Eleve(5397, "A1", "Apprentissage", "2020", false, "http://www.linkedin.com/in/manon-iribarne");
         manon.setEleve(manonEleve);
         manon.getEleve().addParcours(si);
         manon.getEleve().addCours(data);

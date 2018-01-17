@@ -109,7 +109,7 @@ public class SigninController {
     }
 
     public String secureFieldString (String inputString) {
-        return escapeHtml4(inputString.trim());
+        return inputString.trim();
     }
 
     public String nameProcess (String inputString) {

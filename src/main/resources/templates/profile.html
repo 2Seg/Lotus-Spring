@@ -56,12 +56,12 @@
                                         <dl th:text="${utilisateur.prenom}">Prénom</dl>
                                         <dl th:text="${utilisateur.email}">Email</dl>
                                         <dl>
-                                            <ul th:each="parcours : ${listParcours}">
+                                            <ul th:each="parcours : ${listParcoursUtilisateur}">
                                                 <li th:text="${parcours.nom}">Parcours</li>
                                             </ul>
                                         </dl>
                                         <dl>
-                                            <ul th:each="cours : ${listCours}">
+                                            <ul th:each="cours : ${listCoursUtilisateur}">
                                                 <li th:text="${cours.nom}">Cours</li>
                                             </ul>
                                         </dl>

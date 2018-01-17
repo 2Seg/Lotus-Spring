@@ -3,18 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <scriptsrc="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <link rel="stylesheet" th:href="@{/bootstrap/js/jquery1.js}"/>
-     <link rel="stylesheet" th:href="@{/bootstrap/js/dropdown.js}"/>
-     <link rel="stylesheet" th:href="@{/bootstrap/js/bootstrap.js/bootstrap.min.js}"/>
-     <link rel="stylesheet" href="@{/bootstrap/css/bootstrap.css}"/>
-     <link rel="stylesheet" href="@{/style/colors.css}"/>
-     <link rel="stylesheet" href="@{/style/contenu.css}"/>
-
-     <script src="bootstrap/js/bootstrap.min.js"></script> -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -39,9 +27,6 @@
                 </div>
             </div>
 
-
-
-
             <div class="row">
 
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-lg-push-3 col-md-push-4 col-sm-push-4   ">
@@ -55,6 +40,9 @@
                                 <option>2021</option>
                                 <option>2020</option>
                                 <option>2019</option>
+                                <option>2018</option>
+                                <option>2017</option>
+                                <option>2016</option>
                             </ul>
                         </select>
 
@@ -62,13 +50,6 @@
                             <option selected=""><a data-toggle="dropdown" href="">Année</a></option>
                             <ul class="dropdown-menu" th:each="anneeScolaire : ${listAnneeScolaire}">
                                 <option th:text="${anneeScolaire.nom}">Option</option>
-                                <!--<option>A3</option>-->
-                                <!--<option>A2</option>-->
-                                <!--<option>A1</option>-->
-                                <!--<option>P2</option>-->
-                                <!--<option>P1</option>-->
-                                <!--<option>I2</option>-->
-                                <!--<option>I1</option>-->
                             </ul>
                         </select>
 
@@ -76,12 +57,6 @@
                             <option selected=""><a data-toggle="dropdown"  href="">Activité</a></option>
                             <ul class="dropdown-menu" th:each="activite : ${listActivite}">
                                 <option th:text="${activite.nom}">Option</option>
-                                <!--<option>Académique</option>-->
-                                <!--<option>Diplomé</option>-->
-                                <!--<option>Stage</option>-->
-                                <!--<option>Apprentissage</option>-->
-                                <!--<option>International</option>-->
-                                <!--<option>Universités</option>-->
                             </ul>
                         </select>
 
@@ -89,28 +64,8 @@
                             <option selected=""><a data-toggle="dropdown" href="">Parcours</a></option>
                             <ul class="dropdown-menu" th:each="parcours : ${listParcours}">
                                 <option th:text="${parcours.nom}">Option</option>
-                                <!--<option>Systèmes d'information</option>-->
-                                <!--<option>Systèmes embarqués</option>-->
-                                <!--<option>Business Intelligence</option>-->
-                                <!--<option>Télécommunications et IOT</option>-->
-                                <!--<option>Ingénieur logiciel</option>-->
-                                <!--<option>Numérique et santé</option>-->
-                                <!--<option>Innovationn et création d'entreprise</option>-->
                             </ul>
                         </select>
-
-                      <!--  <li class="dropdown" id="list2">
-                            <a data-toggle="dropdown" href="">Activités</a>
-                            <ul class="dropdown-menu">
-                                <li><a>Académique</a></li>
-                                <li><a >Diplomé</a></li>
-                                <li><a >Stage</a></li>
-                                <li><a >Apprentissage</a></li>
-                                <li><a >International</a></li>
-                                <li><a >Universités</a></li>
-                            </ul>
-                        </li>
--->
                     </ul>
                 </div>
 
@@ -138,8 +93,6 @@
                 resultat4 = list4.options[list4.selectedIndex].value;
 
                 var url = '/search?saisie=' + recherche ;
-
-
 
                 switch(resultat){
                     case "2019":
@@ -253,17 +206,9 @@
                         break;
                 }
 
-
-
                 location.href = url + promotion + annee + parcours + activites;
 
-
-
-
             }
-            /* $('#list2 li').click(function(){
-                   // var value = $(this).text();})
-          location.href = '/Search?Saisi=' + 'Année='+ $(this).text(); */
 
         </script>
 
