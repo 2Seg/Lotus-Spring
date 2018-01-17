@@ -19,13 +19,24 @@
         <div class="row ">
             <div class="row col-lg-8 col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
                 <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-7 pull-left  ">
-                    <form class="navbar-form inline-form form-group" >
-                        <div class="btn loupe" type="submit"><a id="envoi" onclick="taper();" ><img th:src="@{/elements/icons/loupe25.png}" /></a></div>
-                        <input type="text" class="taper" id="recherche" placeholder="Elève, numéro étudiant ..."/>
+                    <form class="navbar-form "> <!--navbar-form inline-form form-group-->
+                        <div class="btn loupe" type="submit" ><a id="envoi" onclick="taper();"> <img th:src="@{/elements/icons/loupe25.png}" /> </a></div>
+                        <input class="taper" type="text"  placeholder="Elève, numéro étudiant ..." id="recherche" />  <!--<input id="recherche" onKeyPress="if (event.keyCode == 13) taper()" /> -->
+
+                        <div class="btn text-orange deplacer " >
+                            <a onClick="effacer();" style="text-decoration:none" >
+                                <img th:src="@{/elements/icons/reinitialiser2.png}" />
+                                <input type="reset" class=" text-orange reini " value="reinitialiser" />
+                            </a>
+                        </div>
+
                     </form>
 
                 </div>
             </div>
+
+
+
 
             <div class="row">
 
@@ -84,13 +95,16 @@
 
 
         <script>
-            function taper() {
-                var recherche = document.getElementById("recherche").value;
 
-                resultat = list.options[list.selectedIndex].value;
-                resultat2 = list2.options[list2.selectedIndex].value;
-                resultat3 = list3.options[list3.selectedIndex].value;
-                resultat4 = list4.options[list4.selectedIndex].value;
+               function taper() {
+
+                        var recherche = document.getElementById("recherche").value;
+                        var res = recherche.replace(/ /g, "/=");
+
+                        resultat = list.options[list.selectedIndex].value;
+                        resultat2 = list2.options[list2.selectedIndex].value;
+                        resultat3 = list3.options[list3.selectedIndex].value;
+                        resultat4 = list4.options[list4.selectedIndex].value;
 
                 var url = '/search?saisie=' + recherche ;
 
@@ -217,7 +231,31 @@
 
                 location.href = url + promotion + annee + parcours + activites;
 
-            }
+
+                }
+
+                function effacer(){
+                    if (list.options.selectedIndex>=0) {
+                        list.options.selectedIndex = "Promotion";
+
+                    }
+                    if (list2.options.selectedIndex>=0) {
+                        list2.options.selectedIndex = "Année";
+
+                    }
+                    if (list3.options.selectedIndex>=0) {
+                        list3.options.selectedIndex = "Parcours";
+
+                    }
+                    if (list4.options.selectedIndex>=0) {
+                        list4.options.selectedIndex = "Activités";
+
+                    }
+
+
+                }
+
+
 
         </script>
 
