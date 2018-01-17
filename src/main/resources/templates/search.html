@@ -34,30 +34,34 @@
             <div class="row">
 
                 <div class=" col-lg-12  bg-lightgrey bloc_gris">
-
                     <div class="row form-group">
-                        <div class="col-lg-2 text-orange text_promo">Recherche</div>
-                        <div class="col-lg-2">Nombre total : </div>
+                        <div class="col-lg-2 text-orange text_promo">Résultats</div>
+                        <div class="col-lg-2">Nombre total : <span th:text="${tailleListUtilisateur}">nombre</span></div>
                         <div class="col-lg-push-5 col-lg-3">
                             <input type="checkbox" name="select-all" id="select-all" /><label for="select-all">Tout sélectionner</label>
                         </div>
                     </div>
 
-                    <div class="row form-group">
-                        <div class="col-lg-1 col-md-2 col-sm-2 fond2 bloc_blanc_eleve" th:each="utilisateur : ${listUtilisateur}">
-                            <div class="row">
-                                <div class="pull-right">
-                                    <input type="checkbox" th:name="${utilisateur.id}"/>
-                                </div>
-                            </div>
-                            <div class="row change_margin_botom" align="center">
-                                <a href=""><img th:src="@{/elements/icons/profilVide.png}" width="90" height="auto" /></a>
-                            </div>
-                            <div class="row prenom change_margin_botom2" align="center" th:text="${utilisateur.prenom}">Prénom</div>
-                            <div class="row nom" align="center" th:text="${utilisateur.nom}">Nom</div>
-                        </div>
+                    <div th:if="${tailleListUtilisateur == 0}">
+                        <h2 align="center">Votre recheche n'a donné aucun résutat</h2>
                     </div>
 
+                    <div th:if="${tailleListUtilisateur != 0}">
+                        <div class="row form-group">
+                            <div class="col-lg-1 col-md-2 col-sm-2 fond2 bloc_blanc_eleve" th:each="utilisateur : ${listUtilisateur}">
+                                <div class="row">
+                                    <div class="pull-right">
+                                        <input type="checkbox" th:name="${utilisateur.id}"/>
+                                    </div>
+                                </div>
+                                <div class="row change_margin_botom" align="center">
+                                    <a href=""><img th:src="@{/elements/icons/profilVide.png}" width="90" height="auto" /></a>
+                                </div>
+                                <div class="row prenom change_margin_botom2" align="center" th:text="${utilisateur.prenom}">Prénom</div>
+                                <div class="row nom" align="center" th:text="${utilisateur.nom}">Nom</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

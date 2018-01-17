@@ -42,13 +42,18 @@ public class SearchController {
         String querySelect;
         String queryWhere;
 
+        if (saisie == null) {
+            saisie = "";
+        }
+
         if (saisie.replace(" ", "").equals("") && promotion == null && anneeScolaire == null && activite == null && parcours == null) {
 
             modelAndView.addObject("listUtilisateur", utilisateurList);
+            modelAndView.addObject("tailleListUtilisateur", utilisateurList.size());
 
         } else {
             querySelect = "select u from utilisateur u ";
-            queryWhere = "where u.dtype like 'Utilisateur' ";
+            queryWhere = "where (u.dtype like 'utilisateur' or u.dtype like 'eleve') ";
 
             if (saisie != "") {
                 queryWhere = queryWhere +
@@ -59,19 +64,19 @@ public class SearchController {
                         "u.activite like :saisie or " +
                         "u.anneeScolaire like :saisie or " +
                         "u.numeroEtudiant like :saisie or " +
-                        "u.promotion like :saisie " ;
+                        "u.promotion like :saisie ";
             }
             if (promotion != null) {
-                queryWhere = queryWhere + "and u.promotion like :promotion";
+                queryWhere = queryWhere + "and u.promotion like :promotion ";
             }
             if (anneeScolaire != null) {
-                queryWhere = queryWhere + "and u.anneeScolaire like :anneeScolaire";
+                queryWhere = queryWhere + "and u.anneeScolaire like :anneeScolaire ";
             }
             if (activite != null) {
-
+                queryWhere = queryWhere + "and u.activite like :activite ";
             }
             if (parcours != null) {
-
+                // TODO
             }
 
             String query = querySelect + queryWhere;
@@ -90,7 +95,7 @@ public class SearchController {
                 modelAndView.addObject("anneeScolaire", anneeScolaire);
             }
             if (activite != null) {
-
+                queryHibernate.setParameter("activite", activite);
                 modelAndView.addObject("activite", activite);
             }
             if (parcours != null) {
@@ -112,8 +117,13 @@ public class SearchController {
             }
 
             modelAndView.addObject("listUtilisateur", utilisateurList);
+            modelAndView.addObject("tailleListUtilisateur", utilisateurList.size());
 
         }
+
+        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
+        modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
+        modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
 
         modelAndView.setViewName("search");
         return modelAndView;
