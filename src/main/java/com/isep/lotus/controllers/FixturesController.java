@@ -87,14 +87,14 @@ public class FixturesController {
         surf.setEleve(eliottEleve);
         piano.setEleve(eliottEleve);
 
-        Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "manon.iribarne@isep.fr");
+        Utilisateur manon = new Utilisateur("manoniri", passWordEncryption("aze"), "Manon", "IRIBARNE", "iribarne.manon@gmail.com");
         Eleve manonEleve = new Eleve(5397, "A2", "Académique", "2019", false, "http://www.linkedin.com/in/manon-iribarne");
         manon.setEleve(manonEleve);
         manon.getEleve().addParcours(si);
         manon.getEleve().addCours(data);
         danse.setEleve(manonEleve);
 
-        Utilisateur quentin =  new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "quentin.andrieu@isep.fr");
+        Utilisateur quentin =  new Utilisateur("quent77np", passWordEncryption("aze"), "Quentin", "ANDRIEU", "andrieuquentin8@gmail.com");
         Eleve quentinEleve = new Eleve(3627, "A2", "Académique", "2019", false, "http://www.linkedin.com/in/quentin-andrieu");
         quentin.setEleve(quentinEleve);
         quentin.getEleve().addParcours(si);
@@ -103,7 +103,7 @@ public class FixturesController {
         states.setEleve(quentinEleve);
         pétanque.setEleve(quentinEleve);
 
-        Utilisateur orianne =  new Utilisateur("oriannejo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@isep.fr");
+        Utilisateur orianne =  new Utilisateur("oriannejo", passWordEncryption("aze"), "Orianne", "JOANNIC", "orianne.joannic@gmail.com");
         Eleve orianneEleve = new Eleve(6379, "A2", "Académique", "2019", true, "http://www.linkedin.com/in/orianne-joannic");
         orianne.setEleve(orianneEleve);
         orianne.getEleve().addParcours(si);
