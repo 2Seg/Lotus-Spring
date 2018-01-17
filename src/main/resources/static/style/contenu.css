@@ -254,3 +254,19 @@ select:hover {
     height: 300px;
 
 }
+
+
+.reini{
+    border:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    /*margin-top: 45px;*/
+
+}
+
+
+/*.deplacer{
+    margin-top: 45px;
+}*/
