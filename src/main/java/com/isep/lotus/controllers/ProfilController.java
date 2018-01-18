@@ -41,9 +41,17 @@ public class ProfilController {
 
         } else if (httpSession.getAttribute("type") == "eleve") {
 
+            modelAndView.addObject("listParcours", utilisateur.getEleve().getParcours());
+            modelAndView.addObject("listCours", utilisateur.getEleve().getCours());
+
             modelAndView.addObject("listParcoursUtilisateur", utilisateur.getEleve().getParcours());
             modelAndView.addObject("listCoursUtilisateur", utilisateur.getEleve().getCours());
-
+            modelAndView.addObject("listActivitePro", utilisateur.getEleve().getActivitePros());
+            modelAndView.addObject("listSejourAca", utilisateur.getEleve().getSejourAcademiques());
+            modelAndView.addObject("listActiviteExtra", utilisateur.getEleve().getActiviteExtras());
+            modelAndView.addObject("listCv", utilisateur.getEleve().getCvs());
+            modelAndView.addObject("listLettreMotivation", utilisateur.getEleve().getLettreMotivations());
+            modelAndView.addObject("listBulletin", utilisateur.getEleve().getBulletins());
 
         }
 
@@ -211,10 +219,7 @@ public class ProfilController {
             modelAndView.addObject("message", message);
         }
 
-        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
-        modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
         modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
-
         modelAndView.addObject(utilisateur).setViewName("add-parcours");
 
         return modelAndView;
@@ -302,10 +307,6 @@ public class ProfilController {
         if (message != null) {
             modelAndView.addObject("message", message);
         }
-
-        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
-        modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
-        modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
 
         modelAndView.addObject("listCours", sessionHibernate.createQuery("select c from cours c").list());
         modelAndView.addObject(utilisateur).setViewName("add-cours");
@@ -475,10 +476,6 @@ public class ProfilController {
             modelAndView.addObject("message", message);
         }
 
-        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
-        modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
-        modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
-
         modelAndView.addObject("listTypeContrat", sessionHibernate.createQuery("select t from type_contrat t").list());
         modelAndView.addObject(utilisateur).setViewName("add-activitePro");
 
@@ -595,10 +592,7 @@ public class ProfilController {
             modelAndView.addObject("message", message);
         }
 
-        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
-        modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
-        modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
-
+        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select a from annee_scolaire a").list());
         modelAndView.addObject(utilisateur).setViewName("add-sejourAca");
 
         return modelAndView;
@@ -708,10 +702,6 @@ public class ProfilController {
             modelAndView.addObject("message", message);
         }
 
-        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
-        modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
-        modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
-
         modelAndView.addObject(utilisateur).setViewName("add-activiteExtra");
 
         return modelAndView;
@@ -776,7 +766,7 @@ public class ProfilController {
     }
 
     private String secureFieldString (String inputString) {
-        return inputString.trim();
+        return escapeHtml4(inputString.trim());
     }
 
     private String nameProcess (String inputString) {
