@@ -36,11 +36,13 @@ public class ProfilController {
 
         if (httpSession.getAttribute("type") == "professeur") {
 
-            modelAndView.addObject("listParcours", utilisateur.getProfesseur().getParcours());
-            modelAndView.addObject("listCours", utilisateur.getProfesseur().getCours());
+            modelAndView.addObject("listParcoursUtilisateur", utilisateur.getProfesseur().getParcours());
+            modelAndView.addObject("listCoursUtilisateur", utilisateur.getProfesseur().getCours());
 
         } else if (httpSession.getAttribute("type") == "eleve") {
 
+            modelAndView.addObject("listParcours", utilisateur.getEleve().getParcours());
+            modelAndView.addObject("listCours", utilisateur.getEleve().getCours());
 
             modelAndView.addObject("listParcoursUtilisateur", utilisateur.getEleve().getParcours());
             modelAndView.addObject("listCoursUtilisateur", utilisateur.getEleve().getCours());
@@ -53,6 +55,9 @@ public class ProfilController {
 
         }
 
+        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
+        modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
+        modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
 
 
         modelAndView.setViewName("/profile");

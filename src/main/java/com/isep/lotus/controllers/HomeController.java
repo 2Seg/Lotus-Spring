@@ -61,7 +61,7 @@ public class HomeController {
     public String liste_ancien_eleve () { return "liste_ancien_eleve"; }
 
     @RequestMapping("/Search")
-    public String Recherche_prof() { return "Search"; }
+    public String Recherche_prof() { return "search"; }
 
     @RequestMapping("/MentionLegale")
     public String MentionLegale() { return "MentionLegale"; }

@@ -12,11 +12,14 @@ import java.util.List;
  */
 
 @Entity(name = "utilisateur")
-public class Utilisateur {
+public class Utilisateur extends Object {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(insertable = false, updatable = false)
+    private String dtype;
 
     @JoinColumn(nullable = false)
     protected String identifiant;
@@ -65,6 +68,14 @@ public class Utilisateur {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDtype() {
+        return dtype;
+    }
+
+    public void setDtype(String dtype) {
+        this.dtype = dtype;
     }
 
     public String getIdentifiant() {

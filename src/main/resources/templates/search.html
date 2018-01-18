@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Résultat de la recherche</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/style/colors.css}"/>
+    <link rel="stylesheet" th:href="@{/style/header.css}"/>
+    <link rel="stylesheet" th:href="@{/style/contenu.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <header th:replace="incluable/header/headerconnecte :: header" />
+
+    <nav th:replace="incluable/menu/menuconnecte :: nav" />
+
+    <nav th:replace="incluable/barre_recherche :: nav" />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7  text-blue">
+                Votre recherche :
+                <span th:text="${saisie}">saisie</span>
+                <span th:text="${promotion}">promotion</span>
+                <span th:text="${anneeScolaire}">annee scolaire</span>
+                <span th:text="${activite}">activite</span>
+                <span th:text="${parcours}">parcours</span>
+            </div>
+        </div>
+
+        <form class="form-horizontal" action="/messaging">
+            <div class="row">
+
+                <div class=" col-lg-12  bg-lightgrey bloc_gris">
+                    <div class="row form-group">
+                        <div class="col-lg-2 text-orange text_promo">Résultats</div>
+                        <div class="col-lg-2">Nombre total : <span th:text="${tailleListUtilisateur}">nombre</span></div>
+                        <div class="col-lg-3 pull-right">
+                            <input type="checkbox" name="select-all" id="select-all"/><label for="select-all">Tout sélectionner</label>
+                        </div>
+                    </div>
+
+                    <div th:if="${tailleListUtilisateur == 0}">
+                        <h2 align="center">Votre recheche n'a donné aucun résutat</h2>
+                    </div>
+
+                    <div th:if="${tailleListUtilisateur != 0}">
+                        <div class="row form-group">
+                            <div class="col-lg-1 col-md-2 col-sm-2 fond2 bloc_blanc_eleve" th:each="utilisateur : ${listUtilisateur}">
+                                <div class="row">
+                                    <div class="pull-right">
+                                        <input class="foo" type="checkbox" name="listIdUsers" th:value="${utilisateur.id}"/>
+                                    </div>
+                                </div>
+                                <div class="row change_margin_botom" align="center">
+                                    <a href=""><img th:src="@{/elements/icons/profilVide.png}" width="90" height="auto" /></a>
+                                </div>
+                                <div class="row prenom change_margin_botom2" align="center" th:text="${utilisateur.prenom}">Prénom</div>
+                                <div class="row nom" align="center" th:text="${utilisateur.nom}">Nom</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <input type="submit" value="Contacter" class="btn btn-default bg-orange pull-right " />
+            </div>
+        </form>
+    </div>
+
+    <script >
+        $('#select-all').click(function(event) {
+            if(this.checked) {
+                $(':checkbox').each(function() {
+                    this.checked = true;
+                });
+            }
+            else {
+                $(':checkbox').each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

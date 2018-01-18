@@ -3,18 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <scriptsrc="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <link rel="stylesheet" th:href="@{/bootstrap/js/jquery1.js}"/>
-     <link rel="stylesheet" th:href="@{/bootstrap/js/dropdown.js}"/>
-     <link rel="stylesheet" th:href="@{/bootstrap/js/bootstrap.js/bootstrap.min.js}"/>
-     <link rel="stylesheet" href="@{/bootstrap/css/bootstrap.css}"/>
-     <link rel="stylesheet" href="@{/style/colors.css}"/>
-     <link rel="stylesheet" href="@{/style/contenu.css}"/>
-
-     <script src="bootstrap/js/bootstrap.min.js"></script> -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,9 +19,17 @@
         <div class="row ">
             <div class="row col-lg-8 col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
                 <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-7 pull-left  ">
-                    <form class="navbar-form inline-form form-group" >
-                        <div class="btn loupe" type="submit"><a id="envoi" onclick="taper();" > <img th:src="@{/elements/icons/loupe25.png}" /> </a></div>
-                        <input type="text" class="taper" id="recherche" placeholder="Elève, numéro étudiant..."/>
+                    <form class="navbar-form "> <!--navbar-form inline-form form-group-->
+                        <div class="btn loupe" type="submit" ><a id="envoi" onclick="taper();"> <img th:src="@{/elements/icons/loupe25.png}" /> </a></div>
+                        <input class="taper" type="text"  placeholder="Elève, numéro étudiant ..." id="recherche" />  <!--<input id="recherche" onKeyPress="if (event.keyCode == 13) taper()" /> -->
+
+                        <div class="btn text-orange deplacer " >
+                            <a onClick="effacer();" style="text-decoration:none" >
+                                <img th:src="@{/elements/icons/reinitialiser2.png}" />
+                                <input type="reset" class=" text-orange reini " value="reinitialiser" />
+                            </a>
+                        </div>
+
                     </form>
 
                 </div>
@@ -48,65 +44,39 @@
                     <ul class="nav navbar-nav pull-right filtre2 ">
 
                         <select class="dropdown promotion bg-darkgrey:hover text-blue" id="list">
-                            <option> <a  href="" >Promotion</a></option>
-                            <ul >
+                            <option selected=""><a  href="" >Promotion</a></option>
+                            <ul>
+                                <option>2023</option>
                                 <option>2022</option>
                                 <option>2021</option>
                                 <option>2020</option>
                                 <option>2019</option>
+                                <option>2018</option>
+                                <option>2017</option>
+                                <option>2016</option>
                             </ul>
                         </select>
 
                         <select class="dropdown text-blue bg-darkgrey:hover année " id="list2">
-                            <option><a data-toggle="dropdown" href="">Année</a></option>
-                            <ul class="dropdown-menu" >
-                                <option>A3</option>
-                                <option>A2</option>
-                                <option>A1</option>
-                                <option>P2</option>
-                                <option>P1</option>
-                                <option>I2</option>
-                                <option>I1</option>
+                            <option selected=""><a data-toggle="dropdown" href="">Année</a></option>
+                            <ul class="dropdown-menu" th:each="anneeScolaire : ${listAnneeScolaire}">
+                                <option th:text="${anneeScolaire.nom}">Option</option>
                             </ul>
                         </select>
 
                         <select class="dropdown text-blue bg-darkgrey:hover activites" id="list4">
-                            <option><a data-toggle="dropdown"  href="">Activités</a></option>
-                            <ul class="dropdown-menu">
-                                <option>Académique</option>
-                                <option>Diplomé</option>
-                                <option>Stage</option>
-                                <option>Apprentissage</option>
-                                <option>International</option>
-                                <option>Universités</option>
+                            <option selected=""><a data-toggle="dropdown"  href="">Activité</a></option>
+                            <ul class="dropdown-menu" th:each="activite : ${listActivite}">
+                                <option th:text="${activite.nom}">Option</option>
                             </ul>
                         </select>
 
                         <select class="dropdown text-blue parcours" id="list3">
-                            <option><a data-toggle="dropdown" href="">Parcours</a></option>
-                            <ul class="dropdown-menu">
-                                <option>Systèmes d'information</option>
-                                <option>Systèmes embarqués</option>
-                                <option>Business Intelligence</option>
-                                <option>Télécommunications et IOT</option>
-                                <option>Ingénieur logiciel</option>
-                                <option>Numérique et santé</option>
-                                <option>Innovationn et création d'entreprise</option>
+                            <option selected=""><a data-toggle="dropdown" href="">Parcours</a></option>
+                            <ul class="dropdown-menu" th:each="parcours : ${listParcours}">
+                                <option th:text="${parcours.nom}">Option</option>
                             </ul>
                         </select>
-
-                      <!--  <li class="dropdown" id="list2">
-                            <a data-toggle="dropdown" href="">Activités</a>
-                            <ul class="dropdown-menu">
-                                <li><a>Académique</a></li>
-                                <li><a >Diplomé</a></li>
-                                <li><a >Stage</a></li>
-                                <li><a >Apprentissage</a></li>
-                                <li><a >International</a></li>
-                                <li><a >Universités</a></li>
-                            </ul>
-                        </li>
--->
                     </ul>
                 </div>
 
@@ -125,31 +95,43 @@
 
 
         <script>
-            function taper() {
-                var recherche = document.getElementById("recherche").value;
-                var res = recherche.replace(/ /g, "/=");
-                re = res;
-                resultat = list.options[list.selectedIndex].value;
-                resultat2 = list2.options[list2.selectedIndex].value;
-                resultat3 = list3.options[list3.selectedIndex].value;
-                resultat4 = list4.options[list4.selectedIndex].value;
 
-                var url = '/Search?Saisi=' + res ;
+               function taper() {
 
+                        var recherche = document.getElementById("recherche").value;
+                        var res = recherche.replace(/ /g, "/=");
 
+                        resultat = list.options[list.selectedIndex].value;
+                        resultat2 = list2.options[list2.selectedIndex].value;
+                        resultat3 = list3.options[list3.selectedIndex].value;
+                        resultat4 = list4.options[list4.selectedIndex].value;
+
+                var url = '/search?saisie=' + recherche ;
 
                 switch(resultat){
+                    case "2016":
+                        var promotion = '\u0026promotion=' + resultat;
+                        break;
+                    case "2017":
+                        var promotion = '\u0026promotion=' + resultat;
+                        break;
+                    case "2018":
+                        var promotion = '\u0026promotion=' + resultat;
+                        break;
                     case "2019":
-                        var promotion = et +'&;Promotion=' + resultat;
+                        var promotion = '\u0026promotion=' + resultat;
                         break;
                     case "2020":
-                        var promotion = '&;Promotion=' + resultat;
+                        var promotion = '\u0026promotion=' + resultat;
                         break;
                     case "2021":
-                       var promotion= '&;Promotion=' + resultat;
+                       var promotion = '\u0026promotion=' + resultat;
                         break;
                     case "2022":
-                      var  promotion = '&;Promotion=' + resultat;
+                      var  promotion = '\u0026promotion=' + resultat;
+                        break;
+                    case "2023":
+                        var  promotion = '\u0026promotion=' + resultat;
                         break;
                     case "Promotion":
                         var promotion = '';
@@ -159,25 +141,28 @@
                 }
                 switch(resultat2){
                     case "A1":
-                        var annee = '&;Année=' + resultat2;
+                        var annee = '\u0026annee=' + resultat2;
                         break;
                     case "A2":
-                        var annee = '&;Année=' + resultat2;
+                        var annee = '\u0026annee=' + resultat2;
                         break;
                     case "A3":
-                        var annee= '&;Année=' + resultat2;
+                        var annee= '\u0026annee=' + resultat2;
                         break;
                     case "P1":
-                        var  annee = '&;Année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "P2":
-                        var  annee = '&;Année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "I1":
-                        var  annee = '&;Année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "I2":
-                        var  annee = '&;Année=' + resultat2;
+                        var  annee = '\u0026annee=' + resultat2;
+                        break;
+                    case "Diplômé":
+                        var  annee = '\u0026annee=' + resultat2;
                         break;
                     case "Année":
                         var annee = '';
@@ -188,25 +173,28 @@
 
                 switch(resultat3){
                     case "Systèmes d'information":
-                        var parcours = '&;Parcours=' + resultat3;
+                        var parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Systèmes embarqués":
-                        var parcours = '&;Parcours=' + resultat3;
+                        var parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Business Intelligence":
-                        var parcours= '&;Parcours=' + resultat3;
+                        var parcours= '\u0026parcours=' + resultat3;
                         break;
                     case "Télécommunications et IOT":
-                        var  parcours = '&;Parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Ingénieur logiciel":
-                        var  parcours = '&;Parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Numérique et santé":
-                        var  parcours = '&;Parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Innovationn et création d'entreprise":
-                        var  parcours = '&;Parcours=' + resultat3;
+                        var  parcours = '\u0026parcours=' + resultat3;
+                        break;
+                    case "Sécurité numérique et Réseaux":
+                        var  parcours = '\u0026parcours=' + resultat3;
                         break;
                     case "Parcours":
                         var parcours = '';
@@ -217,45 +205,57 @@
 
                 switch(resultat4){
                     case "Académique":
-                        var activites = '&;Activites=' + resultat4;
+                        var activites = '\u0026activite=' + resultat4;
                         break;
-                    case "Diplomé":
-                        var activites = '&;Activites=' + resultat4;
+                    case "Diplômé":
+                        var activites = '\u0026activite=' + resultat4;
                         break;
                     case "Stage":
-                        var activites= '&;Activites=' + resultat4;
+                        var activites= '\u0026activite=' + resultat4;
                         break;
                     case "Apprentissage":
-                        var  activites = '&;Activites=' + resultat4;
+                        var  activites = '\u0026activite=' + resultat4;
                         break;
-                    case "P2":
-                        var  activites = '&;Activites=' + resultat4;
+                    case "Césure":
+                        var  activites = '\u0026activite=' + resultat4;
                         break;
                     case "International":
-                        var  activites = '&;Activites=' + resultat4;
+                        var  activites = '\u0026activite=' + resultat4;
                         break;
-                    case "Universités":
-                        var  activites = '&;Activites=' + resultat4;
-                        break;
-                    case "Activités":
+                    case "Activité":
                         var activites ='';
                         break;
                     default :
                         break;
                 }
 
-
-
                 location.href = url + promotion + annee + parcours + activites;
 
 
+                }
+
+                function effacer(){
+                    if (list.options.selectedIndex>=0) {
+                        list.options.selectedIndex = "Promotion";
+
+                    }
+                    if (list2.options.selectedIndex>=0) {
+                        list2.options.selectedIndex = "Année";
+
+                    }
+                    if (list3.options.selectedIndex>=0) {
+                        list3.options.selectedIndex = "Parcours";
+
+                    }
+                    if (list4.options.selectedIndex>=0) {
+                        list4.options.selectedIndex = "Activités";
+
+                    }
 
 
+                }
 
-            }
-            /* $('#list2 li').click(function(){
-                   // var value = $(this).text();})
-          location.href = '/Search?Saisi=' + 'Année='+ $(this).text(); */
+
 
         </script>
 

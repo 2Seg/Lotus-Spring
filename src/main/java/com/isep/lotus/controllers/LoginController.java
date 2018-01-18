@@ -74,7 +74,7 @@ public class LoginController {
 
 
     public String secureFieldString (String inputString) {
-        return escapeHtml4(inputString.trim().replaceAll("\\\\", ""));
+        return inputString.trim().replaceAll("\\\\", "");
     }
 
     public String passWordEncryption(String password) {
