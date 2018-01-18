@@ -55,10 +55,14 @@
         <header th:replace="incluable/header/headerconnecte :: header" />
         <nav th:replace="incluable/menu/menunonconnecte :: nav" />
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6">
-                    <button  class="btn btn-default bg-grey margeboutonacc tailleboutonacce text-blue gras text-acc" ><h2>Votre compte n'est pas encore activé. Veuillez contacter un administrateur.</h2></button>
+        <div class="container">
+            <div class="row col-lg-12 ">
+                <div class="">
+                    <button  class=" col-lg-push-1 col-lg-10 btn btn-default bg-grey   tailleboutonacce margeboutonacc text-blue gras text-acc" >
+                        <div class="col-lg-12">
+                            <p> <h3>Votre compte n'est pas encore activé. <br/> Veuillez contacter un administrateur à l'adresse mail suivante: andrieuquentin@gmail.com </h3></p>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
