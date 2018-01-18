@@ -16,8 +16,15 @@
         <div class="container-fluid bg-grey">
             <div class="row">
                 <div class="col-xs-4">
-                    <a href="/profile"><img th:src="@{/elements/icons/avatar-small.png}" /></a>
-                    <a href="/profile"><div th:if="${utilisateur.identifiant}" th:text="${utilisateur.identifiant}" class="link-darkgrey text-bold btn hide-when-small">Nom d'utilisateur</div></a>
+                    <div th:if="${session.type == 'eleve' || session.type == 'professeur'}">
+                        <a href="/profile"><img th:src="@{/elements/icons/avatar-small.png}" /></a>
+                        <a href="/profile"><div th:if="${utilisateur.identifiant}" th:text="${utilisateur.identifiant}" class="link-darkgrey text-bold btn hide-when-small">Nom d'utilisateur</div></a>
+                    </div>
+
+                    <div th:if="${session.type == 'none'}">
+                        <img th:src="@{/elements/icons/avatar-small.png}" />
+                        <div th:if="${utilisateur.identifiant}" th:text="${utilisateur.identifiant}" class="text-darkgrey text-bold btn hide-when-small">Nom d'utilisateur</div>
+                    </div>
                 </div>
                 <div class="col-xs-4" align="center">
                     <img class="" th:src="@{/elements/logos/isep.png}" />
