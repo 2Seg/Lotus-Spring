@@ -54,6 +54,10 @@ public class MessagingController {
             modelAndView.addObject("mailString", mailString);
         }
 
+        modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
+        modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
+        modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
+
         sessionHibernate.close();
         modelAndView.addObject(utilisateur);
         modelAndView.setViewName("/messaging");
