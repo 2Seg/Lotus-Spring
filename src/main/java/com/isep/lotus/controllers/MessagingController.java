@@ -54,6 +54,12 @@ public class MessagingController {
             modelAndView.addObject("mailString", mailString);
         }
 
+        String signatureMail = "\n\n\n\n\n\n----\nEnvoyé depuis le site Lotus\n" +
+                "Expéditeur : " + utilisateur.getPrenom() + " " + utilisateur.getNom() + "\n" +
+                "Email de l'expéditeur : " + utilisateur.getEmail();
+
+        modelAndView.addObject("signatureMail", signatureMail);
+
         modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
         modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
         modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
@@ -64,7 +70,7 @@ public class MessagingController {
         return modelAndView;
     }
 
-    @RequestMapping("/message")
+    @RequestMapping(value = "/message", method = RequestMethod.POST)
     public ModelAndView doSendEmail(HttpServletRequest request, @RequestParam("email") String[] adress, @RequestParam("objmessage") String subject, @RequestParam("message") String message, HttpSession httpSession,
                                     ModelAndView modelAndView) {
         // takes input from e-mail form
@@ -90,7 +96,7 @@ public class MessagingController {
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         modelAndView.addObject(utilisateur);
-        modelAndView.setViewName("accueil");
+        modelAndView.setViewName("redirect:/");
 
         return modelAndView;
     }

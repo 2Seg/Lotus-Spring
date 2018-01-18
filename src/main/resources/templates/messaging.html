@@ -51,7 +51,7 @@
 
                             <div class="col-lg-9">
 
-                             <textarea name="message" id="message" class=" form-control " required="" placeholder="Message ..."></textarea>
+                             <textarea name="message" id="message" class="form-control" rows="9"  required="" placeholder="Message ..." th:text="${signatureMail}">Message</textarea>
 
                             </div>
                         </div>
@@ -59,7 +59,7 @@
 
 
                         <div class="row form-group">
-                    <input type="submit" class="btn btn-default pull-right bg-orange"  value="Envoyer" />
+                            <input type="submit" class="btn btn-default pull-right bg-orange"  value="Envoyer" />
                         </div>
 
                     </div>
