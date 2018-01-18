@@ -16,7 +16,7 @@
     <div th:if="${session.type == 'eleve' || session.type == 'professeur'}">
         <header th:replace="incluable/header/headerconnecte :: header" />
         <nav th:replace="incluable/menu/menuconnecte :: nav" />
-        <nav th:replace="incluable/barre_recherche :: nav" />
+        <nav th:replace="incluable/barre-recherche :: nav" />
 
 
         <div th:if="${session.type == 'professeur'}">

@@ -47,5 +47,9 @@ public class AccueilController {
         return modelAndView;
     }
 
+    public ModelAndView mentionsLégales(ModelAndView modelAndView) {
+        modelAndView.setViewName("mentions-légales");
+        return modelAndView;
+    }
 
 }
