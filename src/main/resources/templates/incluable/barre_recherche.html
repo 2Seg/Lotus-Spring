@@ -17,23 +17,26 @@
 <nav>
     <div class="container">
         <div class="row ">
-            <div class="row col-lg-8 col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
-                <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-7 pull-left  ">
-                    <form class="navbar-form "> <!--navbar-form inline-form form-group-->
+            <form class="navbar-form ">
+                <div class="row col-lg-8 col-lg-push-2 col-xs-10 col-xs-push-1 barreR">
+                    <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-7 pull-left  ">
+                    <!--navbar-form inline-form form-group-->
                         <div class="btn loupe" type="submit" ><a id="envoi" onclick="taper();"> <img th:src="@{/elements/icons/loupe25.png}" /> </a></div>
                         <input class="taper" type="text"  placeholder="Elève, numéro étudiant ..." id="recherche" />  <!--<input id="recherche" onKeyPress="if (event.keyCode == 13) taper()" /> -->
-
-                        <div class="btn text-orange deplacer " >
+                     </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="btn text-orange deplacer ">
                             <a onClick="effacer();" style="text-decoration:none" >
                                 <img th:src="@{/elements/icons/reinitialiser2.png}" />
-                                <input type="reset" class=" text-orange reini " value="reinitialiser" />
+                                <input type="reset" class=" text-orange reini " value="réinitialiser" />
                             </a>
-                        </div>
+                </div>
 
                     </form>
 
-                </div>
-            </div>
+
 
 
 
@@ -87,11 +90,11 @@
 
         </div>
 
-        <div class="row col-xs-5 col-xs-push-5">
+       <!-- <div class="row col-xs-5 col-xs-push-5">
 
             <div class="btn text-orange "><img th:src="@{/elements/icons/reinitialiser2.png}" /><span> reinitialiser  </span></div>
 
-        </div>
+        </div> -->
 
 
         <script>
