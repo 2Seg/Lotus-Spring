@@ -17,7 +17,7 @@
     <nav th:replace="incluable/menu/menuconnecte :: nav" />
     <nav th:replace="incluable/barre_recherche :: nav" />
 
-    <div th:if="${session.type == 'professeur'}">
+    <div th:if="${session.type == 'professeur' and utilisateurToDisplayType != 'eleve'}">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 bg-lightgrey fond">
@@ -79,7 +79,7 @@
         </div>
     </div>
 
-    <div th:if="${session.type == 'eleve'}">
+    <div th:if="${session.type == 'eleve' || utilisateurToDisplayType == 'eleve'}">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 bg-lightgrey fond">
@@ -87,8 +87,8 @@
 
                         <p class=" col-sm-1 col-sm-push-0.5 text-blue PROFIL">Profil</p>
                         <p class=" col-sm-3 pull-right text-blue PROFIL">
-                            <span th:text="${utilisateur.prenom}">Prénom</span>
-                            <span th:text="${utilisateur.nom}">Nom</span>
+                            <span th:text="${utilisateurToDisplay.prenom}">Prénom</span>
+                            <span th:text="${utilisateurToDisplay.nom}">Nom</span>
                         </p>
                     </div>
 
@@ -113,45 +113,45 @@
 
                                         <div class="row form-group">
                                             <div class=" col-lg-5 ">
-                                                <span class="text-orange">Nom:</span>
+                                                <span class="text-orange">Nom</span>
                                             </div>
                                             <div class="col-lg-7">
-                                                <span class="" th:text="${utilisateur.nom}">Nom</span>
+                                                <span class="" th:text="${utilisateurToDisplay.nom}">Nom</span>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class=" col-lg-5 ">
-                                                <span class="text-orange">Prénom:</span>
+                                                <span class="text-orange">Prénom</span>
                                             </div>
                                             <div class="col-lg-7">
-                                                <span class="" th:text="${utilisateur.prenom}">Prénom</span>
+                                                <span class="" th:text="${utilisateurToDisplay.prenom}">Prénom</span>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class=" col-lg-5 ">
-                                                <span class="text-orange">Email:</span>
+                                                <span class="text-orange">Email</span>
                                             </div>
                                             <div class="col-lg-7">
-                                                <span class=""  th:text="${utilisateur.email}">Email</span>
+                                                <span class=""  th:text="${utilisateurToDisplay.email}">Email</span>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class=" col-lg-5 ">
-                                                <span class="text-orange ">Numéro étudiant:</span>
+                                                <span class="text-orange ">Numéro étudiant</span>
                                             </div>
                                             <div class="col-lg-7">
-                                                <span class="" th:text="${utilisateur.eleve.numeroEtudiant}">numeroEtudiant</span>
+                                                <span class="" th:text="${utilisateurToDisplay.eleve.numeroEtudiant}">numeroEtudiant</span>
                                             </div>
 
                                         </div>
 
                                         <div class="row">
                                             <div class=" col-lg-5">
-                                                <span class="text-orange">Lien Linkedin:</span>
+                                                <span class="text-orange">Lien Linkedin</span>
                                             </div>
                                             <div class="col-lg-7">
-                                                <span class="" th:text="${utilisateur.eleve.linkedin}">lienLinkedin</span>
+                                                <span class="" th:text="${utilisateurToDisplay.eleve.linkedin}">lienLinkedin</span>
                                             </div>
                                         </div>
                                     </div>
@@ -161,39 +161,42 @@
 
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 fond3 bloc_blanc" >
-                                <div class="text-cyan">Séjour académique</div>
+                                <div class="text-cyan">Séjour(s) académique(s)</div>
                                 <br/>
                                 <div class="row form-group" >
                                     <div class="bloc_dans_blanc">
-
-                                        <div th:each="sejourAca,counter : ${listSejourAca}" class="row form-group">
-                                            <label th:for="'sejourAca' + ${sejourAca.id}" class=" col-lg-5  entreeCO text-orange">Séjour académique <span th:text="${counter.index + 1}">Compteur</span></label>
-
-                                            <table class="table table-bordered table-striped table-condensed">
-                                                <thead>
-                                                <tr>
-                                                    <th th:if="${sejourAca.pays}">Pays</th>
-                                                    <th th:if="${sejourAca.ville}">Ville</th>
-                                                    <th th:if="${sejourAca.etablissement}">Etablissement</th>
-                                                    <th th:if="${sejourAca.anneeScolaire}">Année scolaire</th>
-                                                    <th th:if="${sejourAca.semestre}">Semestre</th>
-                                                    <th th:if="${sejourAca.duree}">Durée</th>
-                                                </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                <tr>
-                                                    <td th:if="${sejourAca.pays}" th:text="${sejourAca.pays}">Pays</td>
-                                                    <td th:if="${sejourAca.ville}" th:text="${sejourAca.ville}">Ville</td>
-                                                    <td th:if="${sejourAca.etablissement}" th:text="${sejourAca.etablissement}">Etablissement</td>
-                                                    <td th:if="${sejourAca.anneeScolaire}" th:text="${sejourAca.anneeScolaire}">Année scolaire</td>
-                                                    <td th:if="${sejourAca.semestre}" th:text="${sejourAca.semestre}">Semestre</td>
-                                                    <td th:if="${sejourAca.duree}" th:text="${sejourAca.duree}">Durée</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                        <div th:if="${listSejourAca.isEmpty()}">
+                                            <h2 align="center">Aucun séjour académique</h2>
                                         </div>
+                                        <div th:if="${!listSejourAca.isEmpty()}">
+                                            <div th:each="sejourAca,counter : ${listSejourAca}" class="row form-group">
+                                                <label th:for="'sejourAca' + ${sejourAca.id}" class=" col-lg-5  entreeCO text-orange">Séjour académique <span th:text="${counter.index + 1}">Compteur</span></label>
 
+                                                <table class="table table-bordered table-striped table-condensed">
+                                                    <thead>
+                                                    <tr>
+                                                        <th th:if="${sejourAca.pays}">Pays</th>
+                                                        <th th:if="${sejourAca.ville}">Ville</th>
+                                                        <th th:if="${sejourAca.etablissement}">Etablissement</th>
+                                                        <th th:if="${sejourAca.anneeScolaire}">Année scolaire</th>
+                                                        <th th:if="${sejourAca.semestre}">Semestre</th>
+                                                        <th th:if="${sejourAca.duree}">Durée</th>
+                                                    </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                    <tr>
+                                                        <td th:if="${sejourAca.pays}" th:text="${sejourAca.pays}">Pays</td>
+                                                        <td th:if="${sejourAca.ville}" th:text="${sejourAca.ville}">Ville</td>
+                                                        <td th:if="${sejourAca.etablissement}" th:text="${sejourAca.etablissement}">Etablissement</td>
+                                                        <td th:if="${sejourAca.anneeScolaire}" th:text="${sejourAca.anneeScolaire}">Année scolaire</td>
+                                                        <td th:if="${sejourAca.semestre}" th:text="${sejourAca.semestre}">Semestre</td>
+                                                        <td th:if="${sejourAca.duree}" th:text="${sejourAca.duree}">Durée</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -203,39 +206,44 @@
 
 
                             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 fond3 bloc_blanc" >
-                                <div class="text-cyan">Activité professionnelle : </div>
+                                <div class="text-cyan">Activité(s) professionnelle(s)</div>
                                 <br/>
                                 <div class="row form-group">
-                                    <div th:each="activitePro,counter : ${listActivitePro}" class="row form-group">
-                                    <label th:for="'activitePro' + ${activitePro.id}" class=" col-lg-5  entreeCO text-orange">Activité professionnelle <span th:text="${counter.index + 1}">Compteur</span></label>
+                                    <div th:if="${listActivitePro.isEmpty()}">
+                                        <h2 align="center">Aucune activité professionnelle</h2>
+                                    </div>
+                                    <div th:if="${!listActivitePro.isEmpty()}">
+                                        <div th:each="activitePro,counter : ${listActivitePro}" class="row form-group">
+                                            <label th:for="'activitePro' + ${activitePro.id}" class=" col-lg-5  entreeCO text-orange">Activité professionnelle<span th:text="${counter.index + 1}">Compteur</span></label>
 
 
-                                    <table class="table table-bordered table-striped table-condensed">
-                                        <thead>
-                                        <tr>
-                                            <th th:if="${activitePro.poste}">Poste</th>
-                                            <th th:if="${activitePro.nomEntreprise}">Entreprise</th>
-                                            <th th:if="${activitePro.typeContrat}">Type de contrat</th>
-                                            <th th:if="${activitePro.duree}">Durée</th>
-                                            <th th:if="${activitePro.pays}">Pays</th>
-                                            <th th:if="${activitePro.ville}">Ville</th>
-                                            <th th:if="${activitePro.description}">Description</th>
-                                        </tr>
-                                        </thead>
+                                            <table class="table table-bordered table-striped table-condensed">
+                                                <thead>
+                                                <tr>
+                                                    <th th:if="${activitePro.poste}">Poste</th>
+                                                    <th th:if="${activitePro.nomEntreprise}">Entreprise</th>
+                                                    <th th:if="${activitePro.typeContrat}">Type de contrat</th>
+                                                    <th th:if="${activitePro.duree}">Durée</th>
+                                                    <th th:if="${activitePro.pays}">Pays</th>
+                                                    <th th:if="${activitePro.ville}">Ville</th>
+                                                    <th th:if="${activitePro.description}">Description</th>
+                                                </tr>
+                                                </thead>
 
-                                        <tbody>
-                                        <tr>
-                                            <td th:if="${activitePro.poste}" th:text="${activitePro.poste}">Poste</td>
-                                            <td th:if="${activitePro.nomEntreprise}" th:text="${activitePro.nomEntreprise}">Entreprise</td>
-                                            <td th:if="${activitePro.typeContrat}" th:text="${activitePro.typeContrat}">Type de contrat</td>
-                                            <td th:if="${activitePro.duree}" th:text="${activitePro.duree}">Durée</td>
-                                            <td th:if="${activitePro.pays}" th:text="${activitePro.pays}">Pays</td>
-                                            <td th:if="${activitePro.ville}" th:text="${activitePro.ville}">Ville</td>
-                                            <td th:if="${activitePro.description}" th:text="${activitePro.description}">Description</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                <tbody>
+                                                <tr>
+                                                    <td th:if="${activitePro.poste}" th:text="${activitePro.poste}">Poste</td>
+                                                    <td th:if="${activitePro.nomEntreprise}" th:text="${activitePro.nomEntreprise}">Entreprise</td>
+                                                    <td th:if="${activitePro.typeContrat}" th:text="${activitePro.typeContrat}">Type de contrat</td>
+                                                    <td th:if="${activitePro.duree}" th:text="${activitePro.duree}">Durée</td>
+                                                    <td th:if="${activitePro.pays}" th:text="${activitePro.pays}">Pays</td>
+                                                    <td th:if="${activitePro.ville}" th:text="${activitePro.ville}">Ville</td>
+                                                    <td th:if="${activitePro.description}" th:text="${activitePro.description}">Description</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -244,73 +252,79 @@
                         <div class="row col-lg-5 col-md-5 col-sm-10 col-xs-10 col-md-push-1 groupe">
 
                             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2 espace bloc_blanc " >
-                                <div class="text-cyan"> Informations scolaires :</div>
+                                <div class="text-cyan">Informations scolaires</div>
                                 <br/>
                                 <div class="row form-group">
 
                                     <div class=" row col-lg-12 col-md-12 col-sm-12 col-xs-12  form-group ">
 
-
-                                                <div class="row form-group">
-                                                    <div class=" col-lg-4">
-                                                     <span class="text-orange"> Promotion *:</span>
-                                                    </div>
-                                                    <div class="col-lg-8">
-                                                        <span th:text="${utilisateur.eleve.promotion}"> Promotion </span>
-                                                    </div>
-                                                </div>
-                                        <div class="row">
-                                            <div class=" col-lg-4 ">
-                                                <span class="text-orange"> Année *:</span>
+                                        <div class="row form-group">
+                                            <div class=" col-lg-4">
+                                             <span class="text-orange">Promotion</span>
                                             </div>
                                             <div class="col-lg-8">
-                                                <span  th:text="${utilisateur.eleve.anneeScolaire}"> Année </span>
+                                                <span th:text="${utilisateurToDisplay.eleve.promotion}">Promotion</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class=" col-lg-4 ">
+                                                <span class="text-orange">Année</span>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <span  th:text="${utilisateurToDisplay.eleve.anneeScolaire}">Année</span>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class=" col-lg-4 ">
-                                                <span class="text-orange"> Parcours *:</span>
+                                                <span class="text-orange">Parcours</span>
                                             </div>
+
                                             <div class="col-lg-8">
-                                                <dl>
-                                                        <span >
-                                                    <ul th:each="parcours : ${listParcoursUtilisateur}">
-                                                        <li th:text="${parcours.nom}">Parcours</li>
-                                                    </ul>
+                                                <div th:if="${listParcoursUtilisateur.isEmpty()}">
+                                                    <p class="text-red">Aucun parcours</p>
+                                                </div>
+                                                <dl th:if="${!listParcoursUtilisateur.isEmpty()}">
+                                                    <span >
+                                                        <ul th:each="parcours : ${listParcoursUtilisateur}">
+                                                            <li th:text="${parcours.nom}">Parcours</li>
+                                                        </ul>
                                                     </span>
                                                 </dl>
                                             </div>
                                         </div>
                                         <div class="row">
-                                        <div class=" col-lg-4 ">
-                                            <span class="text-orange "> Cours *:</span>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <dl>
-                                                <div >
-                                                    <ul th:each="cours : ${listCoursUtilisateur}">
-                                                        <li th:text="${cours.nom}">Cours</li>
-                                                    </ul>
-                                                </div>
-                                            </dl>
-                                        </div>
-
-                                    </div>
-
-                                        <div class="row">
                                             <div class=" col-lg-4 ">
-                                                <span class="text-orange">Bulletin de notes *:</span>
+                                                <span class="text-orange ">Cours</span>
                                             </div>
                                             <div class="col-lg-8">
-                                                <dl>
-                                                    <ul class="" th:each="buletin : ${listBulletin}">
-                                                        <li th:text="${bulletin.fichier}">Cours</li>
-                                                    </ul>
-
+                                                <div th:if="${listCoursUtilisateur.isEmpty()}">
+                                                    <p class="text-red">Aucun cours</p>
+                                                </div>
+                                                <dl th:if="${!listCoursUtilisateur.isEmpty()}">
+                                                    <span >
+                                                        <ul th:each="cours : ${listCoursUtilisateur}">
+                                                            <li th:text="${cours.nom}">Cours</li>
+                                                        </ul>
+                                                    </span>
                                                 </dl>
                                             </div>
+
                                         </div>
+
+                                        <!--<div class="row">-->
+                                            <!--<div class=" col-lg-4 ">-->
+                                                <!--<span class="text-orange">Bulletin de notes</span>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-lg-8">-->
+                                                <!--<dl>-->
+                                                    <!--<ul class="" th:each="buletin : ${listBulletin}">-->
+                                                        <!--<li th:text="${bulletin.fichier}">Cours</li>-->
+                                                    <!--</ul>-->
+
+                                                <!--</dl>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
 
                                     </div>
 
@@ -318,15 +332,15 @@
 
                             </div>
 
-                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2  bloc_blanc" >
-                                <div class="text-cyan">Documents professionnels : </div>
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2  bloc_blanc" th:if="${listCV}">
+                                <div class="text-cyan">Documents professionnels</div>
                                 <br/>
                                 <div class="row form-group">
 
                                     <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  form-group">
                                         <ul>
                                             <div class="row">
-                                                <span class="text-orange" > CV :</span>
+                                                <span class="text-orange" >CV</span>
                                                 <span>
                                                 <ul th:each="cv : ${listCV}">
                                                     <li th:text="${cv.fichier}">Cv</li>
@@ -335,7 +349,7 @@
 
                                             </div>
                                             <div class="row">
-                                                <span class="text-orange"> Lettre de motivation :</span>
+                                                <span class="text-orange">Lettre de motivation</span>
                                                 <span>
                                                 <ul th:each="lettreMotivation : ${listLettreMotivation}">
                                                      <li th:text="${lettre.fichier}">lettreMotivation</li>
@@ -350,25 +364,21 @@
                                 </div>
 
                             </div>
+
                             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 fond2  bloc_blanc" >
-                                <div class="text-cyan">Activités extra-scolaires : </div>
+                                <div class="text-cyan">Activité(s) extra-scolaire(s)</div>
                                 <br/>
                                 <div class="row form-group">
-
-                                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  form-group">
-                                        <ul>
-                                            <div class="row">
-                                        <span class="text-blue">
-                                           <ul>
-                                               <ul th:each="activite : ${listActiviteExtra}">
-                                                            <li th:text="${activite.nom}">Activité extra</li>
-                                               </ul>
-                                           </ul>
-                                       </span>
-                                            </div>
-                                        </ul>
+                                    <div th:if="${listActiviteExtra.isEmpty()}">
+                                        <h2 align="center">Aucune activité extra-scolaire</h2>
                                     </div>
-
+                                    <div th:if="${!listActiviteExtra.isEmpty()}" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  form-group">
+                                        <div class="row">
+                                            <ul th:each="activite : ${listActiviteExtra}">
+                                                <li th:text="${activite.nom}">Activité extra</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -377,8 +387,8 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <a href="/profile/edit"><button class="btn btn-default pull-right bg-orange" > Modifier votre profil </button></a>
+                    <div class="row" th:if="${utilisateurToDisplay.id == utilisateur.id}">
+                        <a href="/profile/edit"><button class="btn btn-default pull-right bg-orange" >Modifier votre profil</button></a>
                     </div>
                 </div>
             </div>

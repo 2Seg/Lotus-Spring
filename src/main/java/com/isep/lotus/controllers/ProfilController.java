@@ -19,46 +19,64 @@ import static org.unbescape.html.HtmlEscape.escapeHtml4;
 @Controller
 public class ProfilController {
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView profileDisplay(HttpSession httpSession, ModelAndView modelAndView) {
+    @RequestMapping(value = {"/profile", "/profile/{idUser}"}, method = RequestMethod.GET)
+    public ModelAndView profileDisplay(HttpSession httpSession, ModelAndView modelAndView, @PathVariable(value = "idUser", required = false) Integer idUser) {
         if(httpSession.isNew()) {
             return new ModelAndView("login");
         }
 
         Session sessionHibernate = getSession();
+
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+        Utilisateur utilisateurToDisplay;
 
-        if (utilisateur == null) {
-            return new ModelAndView("/login");
+
+        if (idUser != null) {
+            utilisateurToDisplay = (Utilisateur) sessionHibernate.get(Utilisateur.class, idUser);
+            if (utilisateurToDisplay == null) {
+                return new ModelAndView("/accueil");
+            }
+
+
+        } else {
+            utilisateurToDisplay = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
+            if (utilisateurToDisplay == null) {
+                return new ModelAndView("/login");
+            }
         }
 
-        modelAndView.addObject(utilisateur);
+        String utilisateurToDisplayType = utilisateurToDisplay.checkUserType();
+        modelAndView.addObject("utilisateurToDisplayType", utilisateurToDisplayType);
 
-        if (httpSession.getAttribute("type") == "professeur") {
+        modelAndView.addObject("utilisateurToDisplay", utilisateurToDisplay);
+        modelAndView.addObject("utilisateur", utilisateur);
 
-            modelAndView.addObject("listParcoursUtilisateur", utilisateur.getProfesseur().getParcours());
-            modelAndView.addObject("listCoursUtilisateur", utilisateur.getProfesseur().getCours());
+        if (httpSession.getAttribute("type") == "professeur" && !utilisateurToDisplayType.equals("eleve")) {
 
-        } else if (httpSession.getAttribute("type") == "eleve") {
+            modelAndView.addObject("listParcoursUtilisateur", utilisateurToDisplay.getProfesseur().getParcours());
+            modelAndView.addObject("listCoursUtilisateur", utilisateurToDisplay.getProfesseur().getCours());
 
-            modelAndView.addObject("listParcours", utilisateur.getEleve().getParcours());
-            modelAndView.addObject("listCours", utilisateur.getEleve().getCours());
+        } else if (httpSession.getAttribute("type") == "eleve" || utilisateurToDisplayType.equals("eleve")) {
 
-            modelAndView.addObject("listParcoursUtilisateur", utilisateur.getEleve().getParcours());
-            modelAndView.addObject("listCoursUtilisateur", utilisateur.getEleve().getCours());
-            modelAndView.addObject("listActivitePro", utilisateur.getEleve().getActivitePros());
-            modelAndView.addObject("listSejourAca", utilisateur.getEleve().getSejourAcademiques());
-            modelAndView.addObject("listActiviteExtra", utilisateur.getEleve().getActiviteExtras());
-            modelAndView.addObject("listCv", utilisateur.getEleve().getCvs());
-            modelAndView.addObject("listLettreMotivation", utilisateur.getEleve().getLettreMotivations());
-            modelAndView.addObject("listBulletin", utilisateur.getEleve().getBulletins());
+            modelAndView.addObject("listParcours", utilisateurToDisplay.getEleve().getParcours());
+            modelAndView.addObject("listCours", utilisateurToDisplay.getEleve().getCours());
+
+            modelAndView.addObject("listParcoursUtilisateur", utilisateurToDisplay.getEleve().getParcours());
+            modelAndView.addObject("listCoursUtilisateur", utilisateurToDisplay.getEleve().getCours());
+            modelAndView.addObject("listActivitePro", utilisateurToDisplay.getEleve().getActivitePros());
+            modelAndView.addObject("listSejourAca", utilisateurToDisplay.getEleve().getSejourAcademiques());
+            modelAndView.addObject("listActiviteExtra", utilisateurToDisplay.getEleve().getActiviteExtras());
+            modelAndView.addObject("listCv", utilisateurToDisplay.getEleve().getCvs());
+            modelAndView.addObject("listLettreMotivation", utilisateurToDisplay.getEleve().getLettreMotivations());
+            modelAndView.addObject("listBulletin", utilisateurToDisplay.getEleve().getBulletins());
 
         }
+
+
 
         modelAndView.addObject("listAnneeScolaire", sessionHibernate.createQuery("select s from annee_scolaire s").list());
         modelAndView.addObject("listActivite", sessionHibernate.createQuery("select a from activite a").list());
         modelAndView.addObject("listParcours", sessionHibernate.createQuery("select p from parcours p").list());
-
 
         modelAndView.setViewName("/profile");
         return modelAndView;

@@ -205,7 +205,6 @@ public class FixturesController {
         Professeur zakiaProfesseur = new Professeur();
         zakia.setProfesseur(zakiaProfesseur);
         zakia.getProfesseur().addParcours(si);
-        zakia.getProfesseur().addParcours(iot);
 
         Utilisateur herve = new Utilisateur("herfel", passWordEncryption("aze"), "Hervé", "FELLER", "herve.feller@isep.fr");
 

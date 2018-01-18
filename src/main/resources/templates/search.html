@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="row change_margin_botom" align="center">
-                                    <a href=""><img th:src="@{/elements/icons/profilVide.png}" width="90" height="auto" /></a>
+                                    <a th:href="'/profile/' + ${utilisateur.id}"><img th:src="@{/elements/icons/profilVide.png}" width="90" height="auto" /></a>
                                 </div>
                                 <div class="row prenom change_margin_botom2" align="center" th:text="${utilisateur.prenom}">Prénom</div>
                                 <div class="row nom" align="center" th:text="${utilisateur.nom}">Nom</div>
