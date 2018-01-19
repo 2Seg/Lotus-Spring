@@ -22,7 +22,7 @@ public class ProfilController {
     @RequestMapping(value = {"/profile", "/profile/{idUser}"}, method = RequestMethod.GET)
     public ModelAndView profileDisplay(HttpSession httpSession, ModelAndView modelAndView, @PathVariable(value = "idUser", required = false) Integer idUser) {
         if(httpSession.isNew() || httpSession.getAttribute("id") == null) {
-            return new ModelAndView("login");
+            return new ModelAndView("redirect:/login");
         }
 
         Session sessionHibernate = getSession();
@@ -86,7 +86,7 @@ public class ProfilController {
     @RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
     public ModelAndView editProfileDisplay(HttpSession httpSession, ModelAndView modelAndView, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
         if(httpSession.isNew() || httpSession.getAttribute("id") == null) {
-            return new ModelAndView("login");
+            return new ModelAndView("redirect:/login");
         }
 
         Session sessionHibernate = getSession();
@@ -225,7 +225,7 @@ public class ProfilController {
 
     @RequestMapping(value = "/profile/edit/specialty/add", method = RequestMethod.GET)
     public ModelAndView addParcoursDisplay(ModelAndView modelAndView, HttpSession httpSession, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
-        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("login");}
+        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("redirect:/login");}
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
@@ -314,7 +314,7 @@ public class ProfilController {
 
     @RequestMapping(value = "/profile/edit/courses/add", method = RequestMethod.GET)
     public ModelAndView addCoursDisplay(ModelAndView modelAndView, HttpSession httpSession, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
-        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("login");}
+        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("redirect:/login");}
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
@@ -482,7 +482,7 @@ public class ProfilController {
 
     @RequestMapping(value = "/profile/edit/professional-activity/add", method = RequestMethod.GET)
     public ModelAndView addActiviteProDisplay(ModelAndView modelAndView, HttpSession httpSession, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
-        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("login");}
+        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("redirect:/login");}
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
@@ -598,7 +598,7 @@ public class ProfilController {
 
     @RequestMapping(value = "/profile/edit/exchange-trip/add", method = RequestMethod.GET)
     public ModelAndView addSejourAcaDisplay(ModelAndView modelAndView, HttpSession httpSession, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
-        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("login");}
+        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("redirect:/login");}
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
@@ -708,7 +708,7 @@ public class ProfilController {
 
     @RequestMapping(value = "/profile/edit/extra-activity/add", method = RequestMethod.GET)
     public ModelAndView addActiviteExtraDisplay(ModelAndView modelAndView, HttpSession httpSession, @RequestParam(value = "erreur", required = false) String erreur, @RequestParam(value = "message", required = false) String message) {
-        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("login");}
+        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("redirect:/login");}
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         if (utilisateur == null || utilisateur.checkUserType().equals("none")) {return new ModelAndView("/login");}
