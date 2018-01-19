@@ -27,7 +27,7 @@ public class MessagingController {
 
     @RequestMapping(value = "/messaging", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView messagingDisplay(HttpSession httpSession, ModelAndView modelAndView, @RequestParam(value = "listIdUsers", required = false) int[] listIdUsers) {
-        if (httpSession.isNew()) {
+        if (httpSession.isNew() || httpSession.getAttribute("id") == null) {
             return new ModelAndView("login");
         }
         Session sessionHibernate = getSession();

@@ -47,6 +47,7 @@ public class AccueilController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/legal-notice", method = RequestMethod.GET)
     public ModelAndView mentionsLégales(ModelAndView modelAndView) {
         modelAndView.setViewName("mentions-légales");
         return modelAndView;

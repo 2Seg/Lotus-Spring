@@ -30,7 +30,7 @@ public class SearchController {
                                              ModelAndView modelAndView,
                                              HttpSession httpSession) {
 
-        if(httpSession.isNew()) {return new ModelAndView("login");}
+        if(httpSession.isNew() || httpSession.getAttribute("id") == null) {return new ModelAndView("login");}
         Session sessionHibernate = getSession();
         Utilisateur utilisateur = (Utilisateur) sessionHibernate.get(Utilisateur.class, (int) httpSession.getAttribute("id"));
         if (utilisateur == null) {return new ModelAndView("/login");}
